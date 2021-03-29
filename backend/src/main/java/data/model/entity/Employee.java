@@ -1,9 +1,9 @@
-package model.entity;
+package data.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import model.embeddable.Person;
+import data.model.embeddable.Person;
 
 import javax.persistence.*;
 

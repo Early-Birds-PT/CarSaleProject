@@ -1,4 +1,4 @@
-package model.embeddable;
+package data.model.embeddable;
 
 import javax.persistence.Embeddable;
 

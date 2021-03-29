@@ -1,7 +1,7 @@
-package data.repository;
+package repository;
 
 
-import model.entity.Employee;
+import data.model.entity.Employee;
 
 public interface EmployeeRepository {
 

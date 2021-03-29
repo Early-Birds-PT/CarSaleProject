@@ -1,7 +1,7 @@
 package service;
 
 
-import model.entity.Employee;
+import data.model.entity.Employee;
 
 public interface EmployeeService {
 

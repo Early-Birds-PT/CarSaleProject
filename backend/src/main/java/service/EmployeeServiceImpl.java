@@ -1,9 +1,9 @@
 package service;
 
 
-import data.repository.EmployeeRepository;
-import data.repository.repository_impl.EmployeeRepositoryImpl;
-import model.entity.Employee;
+import repository.EmployeeRepository;
+import repository.repository_impl.EmployeeRepositoryImpl;
+import data.model.entity.Employee;
 
 public class EmployeeServiceImpl implements EmployeeService{
 
