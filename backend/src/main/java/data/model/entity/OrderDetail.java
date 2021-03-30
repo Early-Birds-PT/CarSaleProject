@@ -22,5 +22,4 @@ public class OrderDetail {
     private int quantityOrdered;
     private BigDecimal priceEach;
     private Short orderLineNumber;
-
 }

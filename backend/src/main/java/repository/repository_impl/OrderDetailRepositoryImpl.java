@@ -11,7 +11,6 @@ public class OrderDetailRepositoryImpl implements OrderDetailRepository {
 
     private EntityManager entityManager = EntityManagerProvider.getEntityManager();
 
-
     @Override
     public OrderDetail readOrderDetails(OrderProductPK id) {
 

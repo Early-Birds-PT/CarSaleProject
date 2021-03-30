@@ -9,7 +9,6 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.List;
 
 @Entity(name = "orders")
 @Data
@@ -18,7 +17,7 @@ import java.util.List;
 public class Order implements Serializable {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int orderNumber;
 
     private Date orderDate;
@@ -32,8 +31,7 @@ public class Order implements Serializable {
     @Type(type="text")
     private String comments;
 
-
-   // private int customerNumber;
-    //@ManyToOne()
-    //private Customer customer;
+    @ManyToOne
+    @JoinColumn(name = "customerNumber")
+    private Customer customer;
 }
