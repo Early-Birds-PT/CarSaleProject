@@ -1,39 +1,30 @@
 package repository.repository_impl;
 
-
 import data.EntityManagerProvider;
-import data.model.entity.Customer;
-import repository.EmployeeRepository;
-import data.model.entity.Employee;
-
+import data.model.entity.Product;
+import data.model.entity.ProductLine;
+import repository.ProductLineRepository;
 
 import javax.persistence.EntityManager;
 
-public class EmployeeRepositoryImpl implements EmployeeRepository {
-
+public class ProductLineRepositoryImpl implements ProductLineRepository {
     @Override
-    public Employee createEmployee(Employee employee) {
-
+    public ProductLine createProductLine(ProductLine productLine) {
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         entityManager.getTransaction().begin();
-        employee = entityManager.merge(employee);
+        productLine = entityManager.merge(productLine);
         entityManager.getTransaction().commit();
         entityManager.close();
-        System.out.println("Employee is created");
-
-        return employee;
-
+        return productLine;
     }
 
     @Override
-    public Employee readEmployee(int employeeNumber) {
-
+    public ProductLine readProductLine(String productLine) {
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         entityManager.getTransaction().begin();
-        Employee employee = entityManager.find(Employee.class,employeeNumber);
+        ProductLine productLine1 = entityManager.find(ProductLine.class, productLine);
         entityManager.getTransaction().commit();
         entityManager.close();
-
-        return employee;
-    }  
+        return productLine1;
+    }
 }
