@@ -1,18 +1,18 @@
 package service.impl;
 
 import data.model.embeddable.OrderProductPK;
-import data.model.entity.Order;
 import data.model.entity.OrderDetail;
 import repository.OrderRepository;
 import repository.repository_impl.OrderRepositoryImpl;
-import service.OrderService;
+import service.OrderDetailService;
 
-public class OrderServiceImpl implements OrderService {
+public class OrderDetailServiceImpl implements OrderDetailService {
 
     private OrderRepository orderRepository = new OrderRepositoryImpl();
 
+
     @Override
-    public Order readOrder(int orderNumber) {
-        return orderRepository.readOrder(orderNumber);
+    public OrderDetail readOrderDetails(OrderProductPK id) {
+        return orderRepository.readOrderDetails(id);
     }
 }

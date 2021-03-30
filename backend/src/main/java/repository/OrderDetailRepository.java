@@ -1,11 +1,10 @@
 package repository;
 
 import data.model.embeddable.OrderProductPK;
-import data.model.entity.Order;
 import data.model.entity.OrderDetail;
 
-public interface OrderRepository {
+public interface OrderDetailRepository {
 
-    Order readOrder(int orderNumber);
     OrderDetail readOrderDetails(OrderProductPK id);
+
 }
