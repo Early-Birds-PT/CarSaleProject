@@ -26,7 +26,6 @@ public class Employee {
     private String jobTitle;
 
 
-
     //@Embedded
     //private Person person;
 }

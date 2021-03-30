@@ -8,6 +8,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity(name = "offices")
 public class Office {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String officeCode;
@@ -20,7 +21,5 @@ public class Office {
     private String country;
     private String territory;
 
-    //@Embedded
-    //private Adress adress
 
 }
