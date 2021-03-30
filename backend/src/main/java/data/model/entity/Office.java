@@ -20,4 +20,7 @@ public class Office {
     private String country;
     private String territory;
 
+    //@Embedded
+    //private Adress adress
+
 }
