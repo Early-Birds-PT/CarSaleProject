@@ -50,7 +50,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     }
 
     @Override
-    public void deleteEmployee(Employee employee, int employeeNumber) {
+    public void deleteEmployee(int employeeNumber) {
 
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         Employee employee1 = entityManager.find(Employee.class,employeeNumber);
