@@ -1,10 +1,11 @@
-package service;
+package service.impl;
 
 import data.model.entity.Customer;
 import repository.CustomerRepository;
 import repository.repository_impl.CustomerRepositoryImpl;
+import service.CustomerService;
 
-public class CustomerServiceImpl implements CustomerService{
+public class CustomerServiceImpl implements CustomerService {
     private CustomerRepository customerRepository = new CustomerRepositoryImpl();
 
     @Override
