@@ -5,7 +5,6 @@ import data.model.entity.Product;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
@@ -28,7 +27,7 @@ public class OrderProductPK implements Serializable {
 
     @Override
     public String toString() {
-        return order.getOrderNumber() +
-                ", product=" + product;
+        return "orderNumber=" + order.getOrderNumber() +
+                ", productCode=" + product.getProductCode();
     }
 }

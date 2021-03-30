@@ -5,9 +5,9 @@ import data.model.embeddable.OrderProductPK;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
 import java.math.BigDecimal;
 
 @Entity(name = "orderdetails")
