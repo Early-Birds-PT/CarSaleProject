@@ -8,6 +8,5 @@ public interface EmployeeRepository {
     Employee createEmployee(Employee employee);
     Employee readEmployee(int employeeNumber);
     void updateEmployee(Employee employee);
-    void deleteEmployee(Employee employee);
-
+    void deleteEmployee(int employeeNumber);
 }
