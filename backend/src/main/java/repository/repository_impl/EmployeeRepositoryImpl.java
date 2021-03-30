@@ -22,4 +22,19 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
         return employee;
     }
+
+    @Override
+    public Employee readEmployee(int employeeNumber) {
+        return null;
+    }
+
+    @Override
+    public void updateEmployee(Employee employee) {
+
+    }
+
+    @Override
+    public void deleteEmployee(Employee employee) {
+
+    }
 }
