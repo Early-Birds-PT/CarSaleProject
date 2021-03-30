@@ -4,7 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import data.model.embeddable.Person;
-
+import java.util.Collection;
+import java.util.Objects;
 import javax.persistence.*;
 
 
@@ -28,4 +29,10 @@ public class Employee {
 
     //@Embedded
     //private Person person;
+
+    @ManyToOne
+    @JoinColumn(name = "officeCode", referencedColumnName = "officeCode", nullable = false, insertable = false, updatable = false)
+    private Office office;
+
 }
+

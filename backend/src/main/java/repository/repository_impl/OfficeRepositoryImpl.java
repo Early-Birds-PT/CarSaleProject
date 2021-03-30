@@ -50,7 +50,7 @@ public class OfficeRepositoryImpl implements OfficeRepository {
     }
 
     @Override
-    public void deleteOffice(Office office, String officeCode) {
+    public void deleteOffice(String officeCode) {
 
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         Office office1 = entityManager.find(Office.class,officeCode);

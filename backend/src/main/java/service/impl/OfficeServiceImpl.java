@@ -25,8 +25,8 @@ public class OfficeServiceImpl implements OfficeService {
     }
 
     @Override
-    public void deleteOffice(Office office, String officeCode) {
-        officeRepository.deleteOffice(office, officeCode);
+    public void deleteOffice(String officeCode) {
+        officeRepository.deleteOffice(officeCode);
     }
 }
 

@@ -9,5 +9,4 @@ public interface EmployeeRepository {
     Employee readEmployee(int employeeNumber);
     void updateEmployee(Employee employee);
     void deleteEmployee(Employee employee, int employeeNumber);
-
 }
