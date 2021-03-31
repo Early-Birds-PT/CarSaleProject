@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 import javax.persistence.*;
 
-@Entity(name = "ProductLines")
+@Entity(name = "productlines")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
