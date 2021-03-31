@@ -28,8 +28,8 @@ public class OfficeServiceImpl implements OfficeService {
     }
 
     @Override
-    public void deleteOffice(String officeCode) {
-        officeRepository.deleteOffice(officeCode);
+    public boolean deleteOffice(String officeCode) {
+        return officeRepository.deleteOffice(officeCode);
     }
 
     private int generateUniqueID() {
