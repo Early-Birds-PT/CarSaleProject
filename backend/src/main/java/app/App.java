@@ -48,21 +48,13 @@ public class App {
         System.out.println(office1);
 
        // office1.setOfficeCode(String.valueOf(generateUniqueID(officeService)));
-        office1.setCity("Brussel");
-        //officeService.createOffice(office1);
+        office1.setCity("Sivas");
+        office1 = officeService.createOffice(office1);
+        System.out.println(office1);
 
-        System.out.println(officeService.readOffice("3100"));
 
-        office1.setCity("Gent");
-        officeService.updateOffice(office1);
+        // officeService.updateOffice(office1);
     }
 
-    private static int generateUniqueID(OfficeService officeService) {
-        int number = 0;
-        do{
-            number = new Random().nextInt(100000000);
 
-        } while(officeService.readOffice(String.valueOf(number)) != null);
-        return number;
-    }
 }
