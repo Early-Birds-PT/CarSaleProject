@@ -30,7 +30,7 @@ public class Order {
     @Type(type="text")
     private String comments;
 
-    private int customerNumber;
-    // @ManyToOne()
-    //private Customer customer;
+    @ManyToOne
+    @JoinColumn(name = "customerNumber")
+    private Customer customer;
 }
