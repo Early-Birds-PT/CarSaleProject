@@ -44,14 +44,17 @@ public class App {
 
        // customerService.createCustomer(customer1);
         OfficeService officeService = new OfficeServiceImpl();
-        Office office1 = officeService.readOffice("1");
+        Office office1 = officeService.readOffice("8");
         System.out.println(office1);
 
-        office1.setOfficeCode(String.valueOf(generateUniqueID(officeService)));
+       // office1.setOfficeCode(String.valueOf(generateUniqueID(officeService)));
         office1.setCity("Brussel");
-        officeService.createOffice(office1);
+        //officeService.createOffice(office1);
 
         System.out.println(officeService.readOffice("3100"));
+
+        office1.setCity("Gent");
+        officeService.updateOffice(office1);
     }
 
     private static int generateUniqueID(OfficeService officeService) {

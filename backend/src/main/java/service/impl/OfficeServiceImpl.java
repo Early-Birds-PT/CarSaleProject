@@ -20,8 +20,8 @@ public class OfficeServiceImpl implements OfficeService {
     }
 
     @Override
-    public void updateOffice(Office office) {
-        officeRepository.updateOffice(office);
+    public Office updateOffice(Office office) {
+        return officeRepository.updateOffice(office);
     }
 
     @Override

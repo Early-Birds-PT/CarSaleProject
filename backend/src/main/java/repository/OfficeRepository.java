@@ -7,6 +7,6 @@ public interface OfficeRepository {
 
     Office createOffice(Office office);
     Office readOffice(String officeCode);
-    void updateOffice(Office office);
+    Office updateOffice(Office office);
     void deleteOffice(String officeCode);
 }

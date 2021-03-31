@@ -40,15 +40,16 @@ public class OfficeRepositoryImpl implements OfficeRepository {
     }
 
     @Override
-    public void updateOffice(Office office) {
+    public Office updateOffice(Office office) {
 
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         entityManager.getTransaction().begin();
-        entityManager.merge(office);
+        office = entityManager.merge(office);
         entityManager.getTransaction().commit();
         entityManager.close();
         System.out.println("Office is updated");
 
+        return office;
     }
 
     @Override
