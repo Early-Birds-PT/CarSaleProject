@@ -10,8 +10,8 @@ public class OfficeServiceImpl implements OfficeService {
     private OfficeRepository officeRepository = new OfficeRepositoryImpl();
 
     @Override
-    public Office createOffice(Office office, String officeCode) {
-        return officeRepository.createOffice(office, officeCode);
+    public Office createOffice(Office office) {
+        return officeRepository.createOffice(office);
     }
 
     @Override

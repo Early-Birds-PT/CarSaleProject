@@ -11,15 +11,17 @@ import javax.persistence.EntityTransaction;
 public class OfficeRepositoryImpl implements OfficeRepository {
 
     @Override
-    public Office createOffice(Office office, String officeCode) {
+    public Office createOffice(Office office) {
 
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
-        entityManager.find(Office.class, officeCode);
         transaction.begin();
-        entityManager.merge(office);
+
+        entityManager.persist(office);
+
         entityManager.getTransaction().commit();
         entityManager.close();
+
         System.out.println("Office is created");
 
         return office;

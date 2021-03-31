@@ -17,4 +17,14 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer readCustomer(int customerNumber) {
         return customerRepository.readCustomer(customerNumber);
     }
+
+    @Override
+    public Customer updateCustomer(Customer customer) {
+        return null;
+    }
+
+    @Override
+    public boolean deleteCustomer(int customerNumber) {
+        return customerRepository.deleteCustomer(customerNumber);
+    }
 }
