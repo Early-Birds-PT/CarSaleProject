@@ -27,4 +27,32 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         entityManager.close();
         return customer;
     }
+
+    @Override
+    public Customer updateCustomer(Customer customer) {
+        return null;
+    }
+
+    @Override
+    public boolean deleteCustomer(int customerNumber) {
+        EntityManager entityManager = EntityManagerProvider.getEntityManager();
+        boolean isDeleted;
+
+        entityManager.getTransaction().begin();
+        Customer customer = entityManager.find(Customer.class, customerNumber);
+
+        if(customer == null){
+            entityManager.getTransaction().rollback();
+            entityManager.close();
+
+            isDeleted = false;
+            return isDeleted;
+        }
+        entityManager.remove(customer);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+
+        isDeleted = true;
+        return isDeleted;
+    }
 }

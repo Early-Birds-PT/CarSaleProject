@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -28,6 +29,17 @@ public class Customer {
     private int salesRepEmployeeNumber;
     private BigDecimal creditLimit;
 
+    //bi-directional many-to-one association to Employee
+    @ManyToOne
+    @JoinColumn(name="salesRepEmployeeNumber",  insertable = false, updatable = false)
+    private Employee employee;
 
+    /*//bi-directional many-to-one association to Order
+    @OneToMany(mappedBy="customer",fetch = FetchType.EAGER)
+    private List<Order> orders;*/
+
+    //bi-directional many-to-one association to Payment
+    /*@OneToMany(mappedBy="customer", fetch = FetchType.LAZY)
+    private List<Payment> payments;*/
 
 }

@@ -35,5 +35,15 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         entityManager.close();
 
         return employee;
-    }  
+    }
+
+    @Override
+    public void updateEmployee(Employee employee) {
+
+    }
+
+    @Override
+    public void deleteEmployee(int employeeNumber) {
+
+    }
 }

@@ -1,25 +1,30 @@
 package repository.repository_impl;
 
 import data.EntityManagerProvider;
+import data.model.entity.Customer;
 import data.model.entity.Employee;
 import data.model.entity.Office;
+import repository.EmployeeRepository;
 import repository.OfficeRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
 
 public class OfficeRepositoryImpl implements OfficeRepository {
 
     @Override
-    public Office createOffice(Office office, String officeCode) {
+    public Office createOffice(Office office) {
 
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
-        entityManager.find(Office.class, officeCode);
         transaction.begin();
-        entityManager.merge(office);
+
+        entityManager.persist(office);
+
         entityManager.getTransaction().commit();
         entityManager.close();
+
         System.out.println("Office is created");
 
         return office;
@@ -38,27 +43,63 @@ public class OfficeRepositoryImpl implements OfficeRepository {
     }
 
     @Override
-    public void updateOffice(Office office) {
+    public Office updateOffice(Office office) {
 
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         entityManager.getTransaction().begin();
-        entityManager.merge(office);
+        office = entityManager.merge(office);
         entityManager.getTransaction().commit();
         entityManager.close();
         System.out.println("Office is updated");
 
+        return office;
     }
 
     @Override
-    public void deleteOffice(String officeCode) {
+    public boolean deleteOffice(String officeCode) {
+
 
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
-        Office office1 = entityManager.find(Office.class,officeCode);
+        boolean isDeleted;
+
         entityManager.getTransaction().begin();
-        entityManager.remove(office1);
+        Office office = entityManager.find(Office.class, officeCode);
+
+        if(office == null){
+            entityManager.getTransaction().rollback();
+            entityManager.close();
+
+            isDeleted = false;
+            return isDeleted;
+        }
+
+        if(setOfficeCodeToNull(entityManager)){
+            entityManager.remove(office);
+        } else {
+            System.out.println("Can not set to null");
+            return false;
+        }
+
         entityManager.getTransaction().commit();
         entityManager.close();
-        System.out.println("Office is deleted");
 
+        isDeleted = true;
+        return isDeleted;
+
+    }
+
+    public boolean setOfficeCodeToNull(EntityManager entityManager){
+        String query = "UPDATE employees e SET e.officeCode = null WHERE e.officeCode = :officeCode";
+        TypedQuery<String> typedQuery = entityManager.createQuery(query, String.class);
+        if(typedQuery == null) return false;
+        return true;
+
+        /*try {
+            entityManager.createNamedQuery("Employee.setOfficeCodeToNull", Employee.class);
+            return true;
+        } catch (Exception exception){
+            exception.printStackTrace();
+            return false;
+        }*/
     }
 }

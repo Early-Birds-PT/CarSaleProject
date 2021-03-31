@@ -4,9 +4,9 @@ import data.model.entity.Office;
 
 public interface OfficeService {
 
-    Office createOffice(Office office, String officeCode);
+    Office createOffice(Office office);
     Office readOffice(String officeCode);
-    void updateOffice(Office office);
-    void deleteOffice(String officeCode);
+    Office updateOffice(Office office);
+    boolean deleteOffice(String officeCode);
 
 }

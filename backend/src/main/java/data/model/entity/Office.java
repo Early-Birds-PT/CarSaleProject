@@ -1,7 +1,10 @@
 package data.model.entity;
 
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -10,7 +13,6 @@ import javax.persistence.*;
 public class Office {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String officeCode;
     private String city;
     private String phone;
