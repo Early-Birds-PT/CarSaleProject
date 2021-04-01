@@ -35,6 +35,7 @@ public class OrderRepositoryImpl implements OrderRepository {
         TypedQuery<Order> typedQuery = em.createQuery(query, Order.class);
         typedQuery.setParameter("customer", customer);
         List<Order> orderList = typedQuery.getResultList();
+        //orderList.forEach(order -> order.setCustomer(null));
         em.getTransaction().commit();
 
         em.close();
