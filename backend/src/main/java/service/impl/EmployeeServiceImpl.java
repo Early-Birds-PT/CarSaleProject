@@ -7,12 +7,15 @@ import repository.repository_impl.EmployeeRepositoryImpl;
 import data.model.entity.Employee;
 import service.EmployeeService;
 
+import java.util.Random;
+
 public class EmployeeServiceImpl implements EmployeeService {
 
     private EmployeeRepository employeeRepository = new EmployeeRepositoryImpl();
 
     @Override
     public Employee createEmployee(Employee employee) {
+        employee.setEmployeeNumber(generateUniqueID());
         return employeeRepository.createEmployee(employee);
     }
 
@@ -36,5 +39,13 @@ public class EmployeeServiceImpl implements EmployeeService {
         //employee.setEmployee(null);
         employee.setOffice(office);
         return employeeRepository.updateEmployee(employee);
+    }
+
+    private int generateUniqueID() {
+        int number = 0;
+        do{
+            number = new Random().nextInt(100000000);
+        } while(employeeRepository.readEmployee(number) != null);
+        return number;
     }
 }
