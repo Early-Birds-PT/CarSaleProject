@@ -27,4 +27,6 @@ public class CustomerServiceImpl implements CustomerService {
     public boolean deleteCustomer(int customerNumber) {
         return customerRepository.deleteCustomer(customerNumber);
     }
+
+    // TODO : findAllCustomersByEmployee or define Customer list in Employee entity
 }
