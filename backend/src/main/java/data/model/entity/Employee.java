@@ -28,21 +28,14 @@ public class Employee implements Serializable {
     private String firstName;
     private String extension;
     private String email;
-    private String officeCode;
-    private int reportsTo;
     private String jobTitle;
 
-
-    //@Embedded
-    //private Person person;
+    @ManyToOne
+    @JoinColumn(name = "reportsTo" )
+    private Employee employee;
 
     @ManyToOne
-    @JoinColumn(name = "officeCode", referencedColumnName = "officeCode", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "officeCode")
     private Office office;
-
-   /* //bi-directional many-to-one association to Customer
-    @OneToMany(mappedBy="employee")
-    private List<Customer> customers;*/
-
 }
 
