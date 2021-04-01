@@ -10,8 +10,9 @@ import javax.persistence.*;
 import java.sql.Date;
 
 
-//@NamedQuery(name = "Order.findAllOrdersByCustomer",query = "SELECT o FROM orders o  WHERE o.customerNumber = :customerNumber")
-@Entity(name = "orders")
+//@NamedQuery(name = "Order.findAllOrdersByCustomer", query = "SELECT o FROM orders o  WHERE o.customerNumber = :customerNumber")
+@Entity
+@Table(name = "orders")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

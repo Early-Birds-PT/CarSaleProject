@@ -21,4 +21,16 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> findAllOrdersByCustomer(Customer customer) {
         return orderRepository.findAllOrdersByCustomer(customer);
     }
+
+    @Override
+    public Order updateOrder(Order order) {
+        return null;
+    }
+
+    @Override
+    public boolean deleteOrder(int orderNumber) {
+        return false;
+    }
+
+
 }

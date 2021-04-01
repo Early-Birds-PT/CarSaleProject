@@ -14,31 +14,6 @@ public class App {
 
     public static void main(String[] args) {
 
-        OrderService orderService = new OrderServiceImpl();
-
-        ProductService productService = new ProductServiceImpl();
-
-        Order order = orderService.readOrder(10100);
-        Product product = productService.readProduct("S18_1749");
-
-
-        OrderDetailService orderDetailService = new OrderDetailServiceImpl();
-
-        System.out.println(orderDetailService.createOrderDetail(new OrderDetail(new OrderProductPK(order, product),5,new BigDecimal(10), (short) 5)));
-
-
-        //OrderDetail orderDetail = orderDetailService.readOrderDetail(new OrderProductPK(order, product));
-
-      // orderDetail.setQuantityOrdered(1000);
-
-        //System.out.println(orderDetailService.updateOrderDetail(orderDetail));
-       /* CustomerService customerService = new CustomerServiceImpl();
-        Customer customer = customerService.readCustomer(363);
-        //System.out.println(customerService.deleteCustomer(103));
-
-        OrderService orderService = new OrderServiceImpl();
-        List<Order> orders = orderService.findAllOrdersByCustomer(customer);
-        System.out.println(orders);
 
        /* PaymentService paymentService = new PaymentServiceImpl();
         Payment payment = paymentService.readPayment("HQ336336");
