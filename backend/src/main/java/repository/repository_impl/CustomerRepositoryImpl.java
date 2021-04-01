@@ -30,7 +30,15 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public Customer updateCustomer(Customer customer) {
-        return null;
+        EntityManager entityManager = EntityManagerProvider.getEntityManager();
+        entityManager.getTransaction().begin();
+
+        customer = entityManager.merge(customer);
+
+        entityManager.getTransaction().commit();
+        entityManager.close();
+
+        return customer;
     }
 
     @Override

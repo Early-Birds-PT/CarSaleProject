@@ -14,7 +14,6 @@ import java.util.List;
 @Entity(name = "customers")
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int customerNumber;
     private String customerName;
     private String contactLastName;
