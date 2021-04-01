@@ -28,7 +28,6 @@ public class OrderRepositoryImpl implements OrderRepository {
     @Override
     public List<Order> findAllOrdersByCustomer(Customer customer) {
 
-
         String query = "SELECT o FROM Order o WHERE o.customer = :customer";
         EntityManager em = EntityManagerProvider.getEntityManager();
 
@@ -36,12 +35,30 @@ public class OrderRepositoryImpl implements OrderRepository {
         TypedQuery<Order> typedQuery = em.createQuery(query, Order.class);
         typedQuery.setParameter("customer", customer);
         List<Order> orderList = typedQuery.getResultList();
+        //orderList.forEach(order -> order.setCustomer(null));
         em.getTransaction().commit();
 
         em.close();
         return orderList;
-
-
-
     }
+
+    @Override
+    public Order updateOrder(Order order) {
+        EntityManager entityManager = EntityManagerProvider.getEntityManager();
+        entityManager.getTransaction().begin();
+
+        order = entityManager.merge(order);
+
+        entityManager.getTransaction().commit();
+        entityManager.close();
+
+        return order;
+    }
+
+    @Override
+    public boolean deleteOrder(int orderNumber) {
+        return false;
+    }
+
+
 }

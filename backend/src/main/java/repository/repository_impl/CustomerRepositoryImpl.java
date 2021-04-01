@@ -64,10 +64,13 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             return isDeleted;
         }
 
-        List<Order> orderList = orderRepository.findAllOrdersByCustomer(readCustomer(customerNumber));
+        /*List<Order> orderList = orderRepository.findAllOrdersByCustomer(readCustomer(customerNumber));
         orderList.forEach(
-                order -> order.setCustomer(null)
-        );
+                order -> {
+                    order.getCustomer().setCustomerNumber(-1);
+                    orderRepository.updateOrder(order);
+                }
+        );*/
 
         entityManager.remove(customer);
         entityManager.getTransaction().commit();
