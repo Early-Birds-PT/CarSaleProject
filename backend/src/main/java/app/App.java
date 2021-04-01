@@ -1,17 +1,9 @@
 package app;
 
-import data.model.entity.Customer;
-import data.model.entity.Office;
-import data.model.entity.Order;
-import data.model.entity.Payment;
-import service.CustomerService;
-import service.OfficeService;
-import service.PaymentService;
-import service.impl.CustomerServiceImpl;
-import service.OrderService;
-import service.impl.OfficeServiceImpl;
-import service.impl.OrderServiceImpl;
-import service.impl.PaymentServiceImpl;
+import data.model.embeddable.OrderProductPK;
+import data.model.entity.*;
+import service.*;
+import service.impl.*;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -22,7 +14,25 @@ public class App {
 
     public static void main(String[] args) {
 
-        CustomerService customerService = new CustomerServiceImpl();
+        OrderService orderService = new OrderServiceImpl();
+
+        ProductService productService = new ProductServiceImpl();
+
+        Order order = orderService.readOrder(10100);
+        Product product = productService.readProduct("S18_1749");
+
+
+        OrderDetailService orderDetailService = new OrderDetailServiceImpl();
+
+        System.out.println(orderDetailService.deleteOrderDetail(new OrderProductPK(order, product)));
+
+
+        //OrderDetail orderDetail = orderDetailService.readOrderDetail(new OrderProductPK(order, product));
+
+      // orderDetail.setQuantityOrdered(1000);
+
+        //System.out.println(orderDetailService.updateOrderDetail(orderDetail));
+       /* CustomerService customerService = new CustomerServiceImpl();
         Customer customer = customerService.readCustomer(363);
         //System.out.println(customerService.deleteCustomer(103));
 
