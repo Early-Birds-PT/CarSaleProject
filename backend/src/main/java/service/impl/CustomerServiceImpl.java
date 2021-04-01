@@ -1,14 +1,20 @@
 package service.impl;
 
 import data.model.entity.Customer;
+import data.model.entity.Order;
 import repository.CustomerRepository;
 import repository.repository_impl.CustomerRepositoryImpl;
 import service.CustomerService;
+import service.OrderService;
 
+import java.util.List;
 import java.util.Random;
 
 public class CustomerServiceImpl implements CustomerService {
+
     private CustomerRepository customerRepository = new CustomerRepositoryImpl();
+    private OrderService orderService = new OrderServiceImpl();
+
 
     @Override
     public Customer createCustomer(Customer customer) {

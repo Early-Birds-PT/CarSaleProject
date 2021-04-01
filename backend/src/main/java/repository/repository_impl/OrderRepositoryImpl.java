@@ -1,5 +1,6 @@
 package repository.repository_impl;
 
+import com.mysql.cj.Session;
 import data.EntityManagerProvider;
 import data.model.entity.Customer;
 import data.model.entity.Order;
@@ -26,20 +27,21 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     @Override
     public List<Order> findAllOrdersByCustomer(Customer customer) {
-//        return entityManager.createNamedQuery("Order.findAllOrdersByCustomer", Order.class )
-//                .setParameter("customerNumber", customer.getCustomerNumber())
-//                .getResultList();
 
-        String query = "SELECT o FROM orders o  WHERE o.customerNumber = :customerNumber";
+
+        String query = "SELECT o FROM Order o WHERE o.customer = :customer";
         EntityManager em = EntityManagerProvider.getEntityManager();
 
         em.getTransaction().begin();
         TypedQuery<Order> typedQuery = em.createQuery(query, Order.class);
-        typedQuery.setParameter("customerNumber", customer.getCustomerNumber());
+        typedQuery.setParameter("customer", customer);
         List<Order> orderList = typedQuery.getResultList();
         em.getTransaction().commit();
 
         em.close();
         return orderList;
+
+
+
     }
 }

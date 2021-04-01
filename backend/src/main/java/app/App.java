@@ -23,12 +23,13 @@ public class App {
     public static void main(String[] args) {
 
         CustomerService customerService = new CustomerServiceImpl();
-        Customer customer = customerService.readCustomer(363);
-        //System.out.println(customerService.deleteCustomer(103));
+       // Customer customer = customerService.readCustomer(363);
+        System.out.println(customerService.deleteCustomer(103));
 
-        OrderService orderService = new OrderServiceImpl();
-        List<Order> orders = orderService.findAllOrdersByCustomer(customer);
-        System.out.println(orders);
+//        OrderService orderService = new OrderServiceImpl();
+//        List<Order> orders = orderService.findAllOrdersByCustomer(customer);
+//        System.out.println(orders);
+
 
        /* PaymentService paymentService = new PaymentServiceImpl();
         Payment payment = paymentService.readPayment("HQ336336");
