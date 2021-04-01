@@ -1,6 +1,7 @@
 package service.impl;
 
 
+import data.model.entity.Office;
 import repository.EmployeeRepository;
 import repository.repository_impl.EmployeeRepositoryImpl;
 import data.model.entity.Employee;
@@ -21,12 +22,19 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void updateEmployee(Employee employee) {
-        employeeRepository.updateEmployee(employee);
+    public Employee updateEmployee(Employee employee) {
+        return employeeRepository.updateEmployee(employee);
     }
 
     @Override
-    public void deleteEmployee(int employeeNumber) {
-        employeeRepository.deleteEmployee(employeeNumber);
+    public boolean deleteEmployee(int employeeNumber) {
+        return employeeRepository.deleteEmployee(employeeNumber);
+    }
+
+    @Override
+    public Employee transferEmployee(Employee employee, Office office) {
+        //employee.setEmployee(null);
+        employee.setOffice(office);
+        return employeeRepository.updateEmployee(employee);
     }
 }

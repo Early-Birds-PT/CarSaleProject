@@ -38,12 +38,20 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     }
 
     @Override
-    public void updateEmployee(Employee employee) {
+    public Employee updateEmployee(Employee employee) {
+        EntityManager entityManager = EntityManagerProvider.getEntityManager();
+        entityManager.getTransaction().begin();
+        employee = entityManager.merge(employee);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        System.out.println("Employee is updated");
 
+        return employee;
     }
 
     @Override
-    public void deleteEmployee(int employeeNumber) {
+    public boolean deleteEmployee(int employeeNumber) {
+        return false;
 
     }
 }
