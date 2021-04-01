@@ -5,14 +5,14 @@ import data.model.entity.Order;
 import data.model.entity.OrderDetail;
 import data.model.entity.Product;
 import repository.OrderDetailRepository;
-import repository.repository_impl.OrderDetailRepositoryImpl;
 import service.OrderDetailService;
+import utils.RepositoryBeanFactory;
 
 import java.util.List;
 
 public class OrderDetailServiceImpl implements OrderDetailService {
 
-    private OrderDetailRepository orderDetailRepository = new OrderDetailRepositoryImpl();
+    private OrderDetailRepository orderDetailRepository = RepositoryBeanFactory.getOrderDetailRepository();
 
     @Override
     public OrderDetail readOrderDetail(OrderProductPK id) {

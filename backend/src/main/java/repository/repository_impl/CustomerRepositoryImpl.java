@@ -2,18 +2,15 @@ package repository.repository_impl;
 
 import data.EntityManagerProvider;
 import data.model.entity.Customer;
-import data.model.entity.Order;
 import repository.CustomerRepository;
 import repository.OrderRepository;
-import service.OrderService;
-import service.impl.OrderServiceImpl;
+import utils.RepositoryBeanFactory;
 
 import javax.persistence.EntityManager;
-import java.util.List;
 
 public class CustomerRepositoryImpl implements CustomerRepository {
 
-    private OrderRepository orderRepository = new OrderRepositoryImpl();
+    private OrderRepository orderRepository = RepositoryBeanFactory.getOrderRepository();
 
     @Override
     public Customer createCustomer(Customer customer) {
@@ -63,14 +60,6 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             isDeleted = false;
             return isDeleted;
         }
-
-        /*List<Order> orderList = orderRepository.findAllOrdersByCustomer(readCustomer(customerNumber));
-        orderList.forEach(
-                order -> {
-                    order.getCustomer().setCustomerNumber(-1);
-                    orderRepository.updateOrder(order);
-                }
-        );*/
 
         entityManager.remove(customer);
         entityManager.getTransaction().commit();

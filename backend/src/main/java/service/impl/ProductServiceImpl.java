@@ -3,14 +3,15 @@ package service.impl;
 import data.model.entity.Product;
 import data.model.entity.ProductLine;
 import repository.ProductRepository;
-import repository.repository_impl.ProductRepositoryImpl;
 import service.ProductService;
+import utils.RepositoryBeanFactory;
 
 import java.util.List;
 import java.util.Random;
 
 public class ProductServiceImpl implements ProductService {
-    private ProductRepository productRepository = new ProductRepositoryImpl();
+
+    private ProductRepository productRepository = RepositoryBeanFactory.getProductRepository();
 
         @Override
         public Product createProduct(Product product) {

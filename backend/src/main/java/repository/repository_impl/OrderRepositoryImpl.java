@@ -6,6 +6,7 @@ import data.model.entity.Order;
 import data.model.entity.OrderDetail;
 import repository.OrderDetailRepository;
 import repository.OrderRepository;
+import utils.RepositoryBeanFactory;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -13,8 +14,7 @@ import java.util.List;
 
 public class OrderRepositoryImpl implements OrderRepository {
 
-    private EntityManager entityManager = EntityManagerProvider.getEntityManager();
-    private OrderDetailRepository orderDetailRepository = new OrderDetailRepositoryImpl();
+    private OrderDetailRepository orderDetailRepository = RepositoryBeanFactory.getOrderDetailRepository();
 
     @Override
     public Order readOrder(int orderNumber) {

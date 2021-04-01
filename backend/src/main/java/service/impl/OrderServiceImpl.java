@@ -5,13 +5,14 @@ import data.model.entity.Order;
 import repository.OrderRepository;
 import repository.repository_impl.OrderRepositoryImpl;
 import service.OrderService;
+import utils.RepositoryBeanFactory;
 
 import java.util.List;
 import java.util.Random;
 
 public class OrderServiceImpl implements OrderService {
 
-    private OrderRepository orderRepository = new OrderRepositoryImpl();
+    private OrderRepository orderRepository = RepositoryBeanFactory.getOrderRepository();
 
     @Override
     public Order readOrder(int orderNumber) {

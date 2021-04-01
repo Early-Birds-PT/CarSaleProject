@@ -1,16 +1,15 @@
 package service.impl;
 
-import data.model.entity.Employee;
 import data.model.entity.Office;
 import repository.OfficeRepository;
-import repository.repository_impl.OfficeRepositoryImpl;
 import service.OfficeService;
+import utils.RepositoryBeanFactory;
 
 import java.util.Random;
 
 public class OfficeServiceImpl implements OfficeService {
 
-    private OfficeRepository officeRepository = new OfficeRepositoryImpl();
+    private OfficeRepository officeRepository = RepositoryBeanFactory.getOfficeRepository();
 
     @Override
     public Office createOffice(Office office) {

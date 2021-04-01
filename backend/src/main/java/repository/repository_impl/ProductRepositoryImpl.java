@@ -4,9 +4,9 @@ import data.EntityManagerProvider;
 import data.model.entity.OrderDetail;
 import data.model.entity.Product;
 import data.model.entity.ProductLine;
+import repository.OrderDetailRepository;
 import repository.ProductRepository;
-import service.OrderDetailService;
-import service.impl.OrderDetailServiceImpl;
+import utils.RepositoryBeanFactory;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ProductRepositoryImpl implements ProductRepository {
 
-    private OrderDetailService orderDetailService = new OrderDetailServiceImpl();
+    private OrderDetailRepository orderDetailRepository = RepositoryBeanFactory.getOrderDetailRepository();
 
     @Override
     public Product createProduct(Product product) {
@@ -67,9 +67,9 @@ public class ProductRepositoryImpl implements ProductRepository {
             return isDeleted;
         }
 
-        List<OrderDetail> orderDetails = orderDetailService.findAllOrderDetailsByProduct(product);
+        List<OrderDetail> orderDetails = orderDetailRepository.findAllOrderDetailsByProduct(product);
         // all related orderDetails should be deleted before deleting product
-        orderDetails.forEach(orderDetail -> orderDetailService.deleteOrderDetail(orderDetail.getId()));
+        orderDetails.forEach(orderDetail -> orderDetailRepository.deleteOrderDetail(orderDetail.getId()));
 
         entityManager.remove(product);
         entityManager.getTransaction().commit();

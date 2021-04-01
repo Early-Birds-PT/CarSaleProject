@@ -13,12 +13,9 @@ import java.util.List;
 
 public class OrderDetailRepositoryImpl implements OrderDetailRepository {
 
-    private EntityManager entityManager = EntityManagerProvider.getEntityManager();
-
-
     @Override
     public OrderDetail readOrderDetail(OrderProductPK id) {
-
+        EntityManager entityManager = EntityManagerProvider.getEntityManager();
         entityManager.getTransaction().begin();
 
         OrderDetail order = entityManager.find(OrderDetail.class,id);

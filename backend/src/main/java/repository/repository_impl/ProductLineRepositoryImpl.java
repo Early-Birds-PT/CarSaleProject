@@ -5,13 +5,14 @@ import data.model.entity.Product;
 import data.model.entity.ProductLine;
 import repository.ProductLineRepository;
 import repository.ProductRepository;
+import utils.RepositoryBeanFactory;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
 public class ProductLineRepositoryImpl implements ProductLineRepository {
 
-    private ProductRepository productRepository = new ProductRepositoryImpl();
+    private ProductRepository productRepository = RepositoryBeanFactory.getProductRepository();
 
     @Override
     public ProductLine createProductLine(ProductLine productLine) {
