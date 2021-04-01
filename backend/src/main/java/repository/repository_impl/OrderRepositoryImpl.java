@@ -1,10 +1,13 @@
 package repository.repository_impl;
 
 import data.EntityManagerProvider;
+import data.model.entity.Customer;
 import data.model.entity.Order;
 import repository.OrderRepository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class OrderRepositoryImpl implements OrderRepository {
 
@@ -19,5 +22,24 @@ public class OrderRepositoryImpl implements OrderRepository {
         entityManager.close();
 
         return order;
+    }
+
+    @Override
+    public List<Order> findAllOrdersByCustomer(Customer customer) {
+//        return entityManager.createNamedQuery("Order.findAllOrdersByCustomer", Order.class )
+//                .setParameter("customerNumber", customer.getCustomerNumber())
+//                .getResultList();
+
+        String query = "SELECT o FROM orders o  WHERE o.customerNumber = :customerNumber";
+        EntityManager em = EntityManagerProvider.getEntityManager();
+
+        em.getTransaction().begin();
+        TypedQuery<Order> typedQuery = em.createQuery(query, Order.class);
+        typedQuery.setParameter("customerNumber", customer.getCustomerNumber());
+        List<Order> orderList = typedQuery.getResultList();
+        em.getTransaction().commit();
+
+        em.close();
+        return orderList;
     }
 }

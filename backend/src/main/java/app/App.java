@@ -14,19 +14,21 @@ import service.impl.OrderServiceImpl;
 import service.impl.PaymentServiceImpl;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
 public class App {
 
     public static void main(String[] args) {
-        /*OrderService orderService = new OrderServiceImpl();
-        Order order = orderService.readOrder(10112);
-        System.out.println(order);*/
 
-        /*CustomerService customerService = new CustomerServiceImpl();
-        Customer customer = customerService.readCustomer(103);
-        System.out.println(customer);*/
+        CustomerService customerService = new CustomerServiceImpl();
+        Customer customer = customerService.readCustomer(363);
+        //System.out.println(customerService.deleteCustomer(103));
+
+        OrderService orderService = new OrderServiceImpl();
+        List<Order> orders = orderService.findAllOrdersByCustomer(customer);
+        System.out.println(orders);
 
        /* PaymentService paymentService = new PaymentServiceImpl();
         Payment payment = paymentService.readPayment("HQ336336");
@@ -43,7 +45,7 @@ public class App {
         customer1.setCity("Leuven");*/
 
        // customerService.createCustomer(customer1);
-        OfficeService officeService = new OfficeServiceImpl();
+        //OfficeService officeService = new OfficeServiceImpl();
         /*Office office1 = officeService.readOffice("8");
         System.out.println(office1);*/
 
@@ -52,10 +54,12 @@ public class App {
         office1 = officeService.createOffice(office1);
         System.out.println(office1);*/
 
-        officeService.deleteOffice("5");
+        //officeService.deleteOffice("5");
 
 
         // officeService.updateOffice(office1);
+
+
     }
 
 
