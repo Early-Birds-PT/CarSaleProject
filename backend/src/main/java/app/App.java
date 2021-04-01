@@ -1,26 +1,22 @@
 package app;
 
 
-import data.model.embeddable.OrderProductPK;
-
-import data.model.entity.*;
-import service.*;
-import service.impl.*;
-
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
+import service.EmployeeService;
+import service.impl.EmployeeServiceImpl;
 
 public class App {
 
     public static void main(String[] args) {
 
+        EmployeeService employeeService = new EmployeeServiceImpl();
+
+        System.out.println(employeeService.deleteEmployee(1102));
+
 
 //        CustomerService customerService = new CustomerServiceImpl();
 //       // Customer customer = customerService.readCustomer(363);
 //        System.out.println(customerService.deleteCustomer(103));
-
+/*
         ProductService productService = new ProductServiceImpl();
         ProductLineService productLineService = new ProductLineServiceImpl();
 
