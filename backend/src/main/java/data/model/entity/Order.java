@@ -1,9 +1,7 @@
 package data.model.entity;
 
 import data.model.enums.OrderStatus;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -13,7 +11,8 @@ import java.sql.Date;
 //@NamedQuery(name = "Order.findAllOrdersByCustomer", query = "SELECT o FROM orders o  WHERE o.customerNumber = :customerNumber")
 @Entity
 @Table(name = "orders")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Order {

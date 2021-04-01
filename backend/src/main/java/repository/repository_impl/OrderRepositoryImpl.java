@@ -1,9 +1,10 @@
 package repository.repository_impl;
 
-import com.mysql.cj.Session;
 import data.EntityManagerProvider;
 import data.model.entity.Customer;
 import data.model.entity.Order;
+import data.model.entity.OrderDetail;
+import repository.OrderDetailRepository;
 import repository.OrderRepository;
 
 import javax.persistence.EntityManager;
@@ -13,12 +14,28 @@ import java.util.List;
 public class OrderRepositoryImpl implements OrderRepository {
 
     private EntityManager entityManager = EntityManagerProvider.getEntityManager();
+    private OrderDetailRepository orderDetailRepository = new OrderDetailRepositoryImpl();
 
     @Override
     public Order readOrder(int orderNumber) {
+        EntityManager entityManager = EntityManagerProvider.getEntityManager();
+
         entityManager.getTransaction().begin();
 
         Order order = entityManager.find(Order.class,orderNumber);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+
+        return order;
+    }
+
+    @Override
+    public Order createOrder(Order order) {
+        EntityManager entityManager = EntityManagerProvider.getEntityManager();
+        entityManager.getTransaction().begin();
+
+        order = entityManager.merge(order);
+
         entityManager.getTransaction().commit();
         entityManager.close();
 
@@ -43,21 +60,44 @@ public class OrderRepositoryImpl implements OrderRepository {
     }
 
     @Override
-    public Order updateOrder(Order order) {
+    public Order updateOrder(Order order1) {
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         entityManager.getTransaction().begin();
 
-        order = entityManager.merge(order);
+        order1 = entityManager.merge(order1);
 
         entityManager.getTransaction().commit();
         entityManager.close();
 
-        return order;
+        return order1;
     }
 
     @Override
     public boolean deleteOrder(int orderNumber) {
-        return false;
+        EntityManager entityManager = EntityManagerProvider.getEntityManager();
+        boolean isDeleted;
+
+        entityManager.getTransaction().begin();
+        Order order = entityManager.find(Order.class, orderNumber);
+
+        if (order == null) {
+            entityManager.getTransaction().rollback();
+            entityManager.close();
+
+            isDeleted = false;
+            return isDeleted;
+        }
+
+        List<OrderDetail> orderDetails = orderDetailRepository.findAllOrderDetailsByOrder(order);
+        // all related orderDetails should be deleted before deleting order
+        orderDetails.forEach(orderDetail -> orderDetailRepository.deleteOrderDetail(orderDetail.getId()));
+
+        entityManager.remove(order);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+
+        isDeleted = true;
+        return isDeleted;
     }
 
 

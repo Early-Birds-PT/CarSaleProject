@@ -2,7 +2,9 @@ package repository.repository_impl;
 
 import data.EntityManagerProvider;
 import data.model.embeddable.OrderProductPK;
-import data.model.entity.*;
+import data.model.entity.Order;
+import data.model.entity.OrderDetail;
+import data.model.entity.Product;
 import repository.OrderDetailRepository;
 
 import javax.persistence.EntityManager;
@@ -12,6 +14,7 @@ import java.util.List;
 public class OrderDetailRepositoryImpl implements OrderDetailRepository {
 
     private EntityManager entityManager = EntityManagerProvider.getEntityManager();
+
 
     @Override
     public OrderDetail readOrderDetail(OrderProductPK id) {
