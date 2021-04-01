@@ -24,8 +24,9 @@ public class Order {
     private Date requiredDate;
     private Date shippedDate;
 
-    @Enumerated(EnumType.STRING)
-    private OrderStatus status;
+   // @Enumerated(EnumType.STRING)
+    //private OrderStatus status;
+    private String status;
 
     @Column(length = 65535, columnDefinition="TEXT")
     @Type(type="text")
