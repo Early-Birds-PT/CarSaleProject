@@ -1,10 +1,12 @@
 package service.impl;
 
 import data.model.entity.Product;
+import data.model.entity.ProductLine;
 import repository.ProductRepository;
 import repository.repository_impl.ProductRepositoryImpl;
 import service.ProductService;
 
+import java.util.List;
 import java.util.Random;
 
 public class ProductServiceImpl implements ProductService {
@@ -30,6 +32,12 @@ public class ProductServiceImpl implements ProductService {
     public boolean deleteProduct(String productCode) {
         return productRepository.deleteProduct(productCode);
     }
+
+    @Override
+    public List<Product> findAllProductsByProductLine(ProductLine productLine) {
+        return productRepository.findAllProductsByProductLine(productLine);
+    }
+
     private int generateUniqueID() {
         int number = 0;
         do{

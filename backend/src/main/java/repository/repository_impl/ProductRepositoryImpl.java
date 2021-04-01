@@ -1,6 +1,7 @@
 package repository.repository_impl;
 
 import data.EntityManagerProvider;
+import data.model.entity.OrderDetail;
 import data.model.entity.Product;
 import data.model.entity.ProductLine;
 import jdk.dynalink.linker.LinkerServices;
@@ -12,6 +13,8 @@ import service.impl.OrderDetailServiceImpl;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Transient;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class ProductRepositoryImpl implements ProductRepository {
 
@@ -76,5 +79,21 @@ public class ProductRepositoryImpl implements ProductRepository {
 
         isDeleted = true;
         return isDeleted;
+    }
+
+    @Override
+    public List<Product> findAllProductsByProductLine(ProductLine productLine) {
+        String query = "SELECT p FROM Product p WHERE p.productLine = :productLine";
+        EntityManager em = EntityManagerProvider.getEntityManager();
+
+        em.getTransaction().begin();
+        TypedQuery<Product> typedQuery = em.createQuery(query, Product.class);
+        typedQuery.setParameter("productLine", productLine);
+        List<Product> products = typedQuery.getResultList();
+        //orderList.forEach(order -> order.setCustomer(null));
+        em.getTransaction().commit();
+
+        em.close();
+        return products;
     }
 }
