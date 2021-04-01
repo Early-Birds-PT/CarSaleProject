@@ -22,13 +22,13 @@ public class ProductLineServiceImpl implements ProductLineService {
     }
 
     @Override
-    public ProductLine updateProductLine(ProductLine pruductLine) {
-        return null;
+    public ProductLine updateProductLine(ProductLine productLine) {
+        return productLineRepository.updateProductLine(productLine);
     }
 
     @Override
     public boolean deleteProductLine(String productLine) {
-        return false;
+        return deleteProductLine(productLine);
     }
     private int generateUniqueID() {
         int number = 0;
