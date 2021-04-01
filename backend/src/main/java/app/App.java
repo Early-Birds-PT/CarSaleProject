@@ -24,7 +24,7 @@ public class App {
 
         CustomerService customerService = new CustomerServiceImpl();
        // Customer customer = customerService.readCustomer(363);
-        System.out.println(customerService.deleteCustomer(103));
+        System.out.println(customerService.deleteCustomer(363));
 
 //        OrderService orderService = new OrderServiceImpl();
 //        List<Order> orders = orderService.findAllOrdersByCustomer(customer);

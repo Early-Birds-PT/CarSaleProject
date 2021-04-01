@@ -33,4 +33,8 @@ public class Customer {
     @ManyToOne
     @JoinColumn(name = "salesRepEmployeeNumber", insertable = false, updatable = false)
     private Employee employee;
+
+    //bi-directional many-to-one association to Order
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="customer")
+    private List<Order> orders;
 }

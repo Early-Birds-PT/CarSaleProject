@@ -9,4 +9,6 @@ public interface OrderRepository {
 
     Order readOrder(int orderNumber);
     List<Order> findAllOrdersByCustomer(Customer customer);
+    Order updateOrder(Order order);
+    boolean deleteOrder(int orderNumber);
 }
