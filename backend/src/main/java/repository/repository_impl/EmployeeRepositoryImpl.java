@@ -6,6 +6,8 @@ import repository.EmployeeRepository;
 import data.model.entity.Employee;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class EmployeeRepositoryImpl implements EmployeeRepository {
 
@@ -48,7 +50,6 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
         entityManager.getTransaction().commit();
         entityManager.close();
-        System.out.println("Employee is updated");
 
         return employee;
     }
@@ -69,6 +70,12 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
             isDeleted = false;
             return isDeleted;
         }
+        List<Employee> employees =findAllEmployeesByRefersTo(employee);
+
+        employees.forEach(e -> {
+            e.setEmployee(null);
+            updateEmployee(e);
+        });
 
         entityManager.remove(employee);
         entityManager.getTransaction().commit();
@@ -76,5 +83,21 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
         isDeleted = true;
         return isDeleted;
+    }
+
+    @Override
+    public List<Employee> findAllEmployeesByRefersTo(Employee employee) {
+        String query = "SELECT e FROM Employee e WHERE e.employee = :employee";
+        EntityManager em = EntityManagerProvider.getEntityManager();
+
+        em.getTransaction().begin();
+        TypedQuery<Employee> typedQuery = em.createQuery(query, Employee.class);
+        typedQuery.setParameter("employee", employee);
+        List<Employee> employees = typedQuery.getResultList();
+
+        em.getTransaction().commit();
+
+        em.close();
+        return employees;
     }
 }

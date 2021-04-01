@@ -7,6 +7,7 @@ import repository.repository_impl.EmployeeRepositoryImpl;
 import data.model.entity.Employee;
 import service.EmployeeService;
 
+import java.util.List;
 import java.util.Random;
 
 public class EmployeeServiceImpl implements EmployeeService {
@@ -32,6 +33,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public boolean deleteEmployee(int employeeNumber) {
         return employeeRepository.deleteEmployee(employeeNumber);
+    }
+
+    @Override
+    public List<Employee> findAllEmployeesByRefersTo(Employee employee) {
+        return employeeRepository.findAllEmployeesByRefersTo(employee);
     }
 
     @Override
