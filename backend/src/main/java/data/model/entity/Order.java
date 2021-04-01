@@ -9,6 +9,8 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.sql.Date;
 
+
+@NamedQuery(name = "Order.findAllOrdersByCustomer",query = "SELECT o FROM orders o  WHERE o.customerNumber = :customerNumber")
 @Entity(name = "orders")
 @Data
 @NoArgsConstructor
@@ -16,9 +18,7 @@ import java.sql.Date;
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int orderNumber;
-
     private Date orderDate;
     private Date requiredDate;
     private Date shippedDate;

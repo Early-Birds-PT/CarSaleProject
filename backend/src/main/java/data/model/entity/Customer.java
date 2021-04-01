@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Entity(name = "customers")
 public class Customer {
+
     @Id
     private int customerNumber;
     private String customerName;
