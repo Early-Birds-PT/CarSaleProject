@@ -22,10 +22,21 @@ public class App {
 //        System.out.println(customerService.deleteCustomer(103));
 
         ProductService productService = new ProductServiceImpl();
+        ProductLineService productLineService = new ProductLineServiceImpl();
+
+        ProductLine productLine = productLineService.readProductLine("Motorcycles");
+
+        productLine.setTextDescription("Updated");
+        //productLine.setProductLine("New Product Line");
+
+        System.out.println(productLineService.updateProductLine(productLine));
+
+        //System.out.println(productLineService.deleteProductLine("Planes"));
+        //productService.findAllProductsByProductLine(productLine).forEach(System.out::println);
 
         //Product product = productService.readProduct("S10_1678");
 
-        System.out.println(productService.deleteProduct("S10_1678"));
+        //System.out.println(productService.deleteProduct("S10_1678"));
         //OrderDetailService orderDetailService = new OrderDetailServiceImpl();
 
         //List<OrderDetail> orderDetails = orderDetailService.findAllOrderDetailsByProduct(product);
