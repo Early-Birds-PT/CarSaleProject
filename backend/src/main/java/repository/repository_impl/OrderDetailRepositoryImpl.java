@@ -83,11 +83,11 @@ public class OrderDetailRepositoryImpl implements OrderDetailRepository {
         em.getTransaction().begin();
         TypedQuery<OrderDetail> typedQuery = em.createQuery(query, OrderDetail.class);
         typedQuery.setParameter("product", product);
-        List<OrderDetail> orderList = typedQuery.getResultList();
+        List<OrderDetail> orderDetailListList = typedQuery.getResultList();
         //orderList.forEach(order -> order.setCustomer(null));
         em.getTransaction().commit();
 
         em.close();
-        return orderList;
+        return orderDetailListList;
     }
 }
