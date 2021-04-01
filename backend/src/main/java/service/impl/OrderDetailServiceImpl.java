@@ -1,6 +1,7 @@
 package service.impl;
 
 import data.model.embeddable.OrderProductPK;
+import data.model.entity.Order;
 import data.model.entity.OrderDetail;
 import data.model.entity.Product;
 import repository.OrderDetailRepository;
@@ -36,5 +37,10 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     @Override
     public List<OrderDetail> findAllOrderDetailsByProduct(Product product) {
         return orderDetailRepository.findAllOrderDetailsByProduct(product);
+    }
+
+    @Override
+    public List<OrderDetail> findAllOrderDetailsByOrder(Order order) {
+        return orderDetailRepository.findAllOrderDetailsByOrder(order);
     }
 }

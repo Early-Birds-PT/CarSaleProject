@@ -90,4 +90,20 @@ public class OrderDetailRepositoryImpl implements OrderDetailRepository {
         em.close();
         return orderDetailListList;
     }
+
+    @Override
+    public List<OrderDetail> findAllOrderDetailsByOrder(Order order) {
+        String query = "SELECT o FROM OrderDetail o WHERE o.id.order = :order";
+        EntityManager em = EntityManagerProvider.getEntityManager();
+
+        em.getTransaction().begin();
+        TypedQuery<OrderDetail> typedQuery = em.createQuery(query, OrderDetail.class);
+        typedQuery.setParameter("order", order);
+        List<OrderDetail> orderDetailListList = typedQuery.getResultList();
+        //orderList.forEach(order -> order.setCustomer(null));
+        em.getTransaction().commit();
+
+        em.close();
+        return orderDetailListList;
+    }
 }
