@@ -24,7 +24,7 @@ public class App {
 
         OrderDetailService orderDetailService = new OrderDetailServiceImpl();
 
-        System.out.println(orderDetailService.deleteOrderDetail(new OrderProductPK(order, product)));
+        System.out.println(orderDetailService.createOrderDetail(new OrderDetail(new OrderProductPK(order, product),5,new BigDecimal(10), (short) 5)));
 
 
         //OrderDetail orderDetail = orderDetailService.readOrderDetail(new OrderProductPK(order, product));
