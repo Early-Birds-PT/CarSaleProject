@@ -2,9 +2,12 @@ package service.impl;
 
 import data.model.embeddable.OrderProductPK;
 import data.model.entity.OrderDetail;
+import data.model.entity.Product;
 import repository.OrderDetailRepository;
 import repository.repository_impl.OrderDetailRepositoryImpl;
 import service.OrderDetailService;
+
+import java.util.List;
 
 public class OrderDetailServiceImpl implements OrderDetailService {
 
@@ -28,5 +31,10 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     @Override
     public boolean deleteOrderDetail(OrderProductPK id) {
         return orderDetailRepository.deleteOrderDetail(id);
+    }
+
+    @Override
+    public List<OrderDetail> findAllOrderDetailsByProduct(Product product) {
+        return orderDetailRepository.findAllOrderDetailsByProduct(product);
     }
 }

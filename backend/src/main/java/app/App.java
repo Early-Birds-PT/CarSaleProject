@@ -1,7 +1,6 @@
 package app;
 
 
-
 import data.model.embeddable.OrderProductPK;
 
 import data.model.entity.*;
@@ -24,18 +23,18 @@ public class App {
 
         ProductService productService = new ProductServiceImpl();
 
-        Product product = productService.readProduct("S10_1678");
-
-        product.setProductName("UPDATED");
-
-        System.out.println(productService.updateProduct(product));
+        //Product product = productService.readProduct("S10_1678");
 
         System.out.println(productService.deleteProduct("S10_1678"));
+        //OrderDetailService orderDetailService = new OrderDetailServiceImpl();
 
+        //List<OrderDetail> orderDetails = orderDetailService.findAllOrderDetailsByProduct(product);
 
+        //orderDetails.forEach(System.out::println);
 
+        // System.out.println(productService.updateProduct(product));
 
-
+        //System.out.println(productService.deleteProduct("S10_1678"));
 
 
 //        OrderService orderService = new OrderServiceImpl();
@@ -57,12 +56,12 @@ public class App {
         customer1.setCreditLimit(BigDecimal.valueOf(1000));
         customer1.setCity("Leuven");*/
 
-       // customerService.createCustomer(customer1);
+        // customerService.createCustomer(customer1);
         //OfficeService officeService = new OfficeServiceImpl();
         /*Office office1 = officeService.readOffice("8");
         System.out.println(office1);*/
 
-       // office1.setOfficeCode(String.valueOf(generateUniqueID(officeService)));
+        // office1.setOfficeCode(String.valueOf(generateUniqueID(officeService)));
         /*office1.setCity("Sivas");
         office1 = officeService.createOffice(office1);
         System.out.println(office1);*/

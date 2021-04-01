@@ -2,6 +2,9 @@ package service;
 
 import data.model.embeddable.OrderProductPK;
 import data.model.entity.OrderDetail;
+import data.model.entity.Product;
+
+import java.util.List;
 
 public interface OrderDetailService {
 
@@ -10,4 +13,5 @@ public interface OrderDetailService {
     OrderDetail createOrderDetail(OrderDetail orderDetail);
     OrderDetail updateOrderDetail(OrderDetail orderDetail);
     boolean deleteOrderDetail(OrderProductPK id);
+    List<OrderDetail> findAllOrderDetailsByProduct(Product product);
 }

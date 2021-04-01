@@ -2,11 +2,12 @@ package repository.repository_impl;
 
 import data.EntityManagerProvider;
 import data.model.embeddable.OrderProductPK;
-import data.model.entity.Employee;
-import data.model.entity.OrderDetail;
+import data.model.entity.*;
 import repository.OrderDetailRepository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class OrderDetailRepositoryImpl implements OrderDetailRepository {
 
@@ -72,5 +73,21 @@ public class OrderDetailRepositoryImpl implements OrderDetailRepository {
 
         isDeleted = true;
         return isDeleted;
+    }
+
+    public List<OrderDetail> findAllOrderDetailsByProduct(Product product) {
+
+        String query = "SELECT o FROM OrderDetail o WHERE o.id.product = :product";
+        EntityManager em = EntityManagerProvider.getEntityManager();
+
+        em.getTransaction().begin();
+        TypedQuery<OrderDetail> typedQuery = em.createQuery(query, OrderDetail.class);
+        typedQuery.setParameter("product", product);
+        List<OrderDetail> orderList = typedQuery.getResultList();
+        //orderList.forEach(order -> order.setCustomer(null));
+        em.getTransaction().commit();
+
+        em.close();
+        return orderList;
     }
 }

@@ -3,6 +3,9 @@ package repository;
 import data.model.embeddable.OrderProductPK;
 import data.model.entity.Employee;
 import data.model.entity.OrderDetail;
+import data.model.entity.Product;
+
+import java.util.List;
 
 public interface OrderDetailRepository {
 
@@ -11,4 +14,5 @@ public interface OrderDetailRepository {
     OrderDetail createOrderDetail(OrderDetail orderDetail);
     OrderDetail updateOrderDetail(OrderDetail orderDetail);
     boolean deleteOrderDetail(OrderProductPK id);
+    List<OrderDetail> findAllOrderDetailsByProduct(Product product);
 }
