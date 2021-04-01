@@ -57,13 +57,14 @@ public class OfficeRepositoryImpl implements OfficeRepository {
 
     @Override
     public boolean deleteOffice(String officeCode) {
-
+        // all related employee should be transferred  to other office before delete operation
 
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         boolean isDeleted;
 
         entityManager.getTransaction().begin();
         Office office = entityManager.find(Office.class, officeCode);
+
 
         if(office == null){
             entityManager.getTransaction().rollback();
@@ -72,7 +73,7 @@ public class OfficeRepositoryImpl implements OfficeRepository {
             isDeleted = false;
             return isDeleted;
         }
-
+/*
         if(setOfficeCodeToNull(entityManager)){
             entityManager.remove(office);
         } else {
@@ -80,6 +81,9 @@ public class OfficeRepositoryImpl implements OfficeRepository {
             return false;
         }
 
+ */
+
+        entityManager.remove(office);
         entityManager.getTransaction().commit();
         entityManager.close();
 

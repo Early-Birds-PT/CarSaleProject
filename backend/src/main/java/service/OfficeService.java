@@ -1,5 +1,6 @@
 package service;
 
+import data.model.entity.Employee;
 import data.model.entity.Office;
 
 public interface OfficeService {
@@ -8,5 +9,4 @@ public interface OfficeService {
     Office readOffice(String officeCode);
     Office updateOffice(Office office);
     boolean deleteOffice(String officeCode);
-
 }
