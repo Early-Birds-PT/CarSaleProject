@@ -1,13 +1,18 @@
 package repository.repository_impl;
 
 import data.EntityManagerProvider;
-import data.model.entity.*;
+import data.model.entity.Product;
+import data.model.entity.ProductLine;
 import repository.ProductLineRepository;
+import repository.ProductRepository;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
 public class ProductLineRepositoryImpl implements ProductLineRepository {
+
+    private ProductRepository productRepository = new ProductRepositoryImpl();
+
     @Override
     public ProductLine createProductLine(ProductLine productLine) {
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
@@ -57,8 +62,10 @@ public class ProductLineRepositoryImpl implements ProductLineRepository {
             isDeleted = false;
             return isDeleted;
         }
-
-        entityManager.remove(productLine);
+        List<Product> products = productRepository.findAllProductsByProductLine(productLine1);
+        // all related products should be deleted before deleting productLine
+        products.forEach(product -> productRepository.deleteProduct(product.getProductCode()));
+        entityManager.remove(productLine1);
         entityManager.getTransaction().commit();
         entityManager.close();
 

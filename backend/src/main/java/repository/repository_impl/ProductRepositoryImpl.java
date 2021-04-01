@@ -4,15 +4,12 @@ import data.EntityManagerProvider;
 import data.model.entity.OrderDetail;
 import data.model.entity.Product;
 import data.model.entity.ProductLine;
-import jdk.dynalink.linker.LinkerServices;
-import org.hibernate.Transaction;
 import repository.ProductRepository;
 import service.OrderDetailService;
 import service.impl.OrderDetailServiceImpl;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Transient;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
@@ -62,8 +59,7 @@ public class ProductRepositoryImpl implements ProductRepository {
         entityManager.getTransaction().begin();
         Product product = entityManager.find(Product.class, productCode);
 
-
-        if(product== null){
+        if (product == null) {
             entityManager.getTransaction().rollback();
             entityManager.close();
 
@@ -71,7 +67,9 @@ public class ProductRepositoryImpl implements ProductRepository {
             return isDeleted;
         }
 
-       orderDetailService.findAllOrderDetailsByProduct(product).forEach(orderDetail ->orderDetailService.deleteOrderDetail(orderDetail.getId()));
+        List<OrderDetail> orderDetails = orderDetailService.findAllOrderDetailsByProduct(product);
+        // all related orderDetails should be deleted before deleting product
+        orderDetails.forEach(orderDetail -> orderDetailService.deleteOrderDetail(orderDetail.getId()));
 
         entityManager.remove(product);
         entityManager.getTransaction().commit();
@@ -90,7 +88,6 @@ public class ProductRepositoryImpl implements ProductRepository {
         TypedQuery<Product> typedQuery = em.createQuery(query, Product.class);
         typedQuery.setParameter("productLine", productLine);
         List<Product> products = typedQuery.getResultList();
-        //orderList.forEach(order -> order.setCustomer(null));
         em.getTransaction().commit();
 
         em.close();
