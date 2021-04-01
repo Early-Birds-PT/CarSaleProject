@@ -2,6 +2,7 @@ package repository.repository_impl;
 
 import data.EntityManagerProvider;
 import data.model.entity.Product;
+import data.model.entity.ProductLine;
 import org.hibernate.Transaction;
 import repository.ProductRepository;
 
@@ -30,5 +31,43 @@ public class ProductRepositoryImpl implements ProductRepository {
         transaction.commit();
         entityManager.close();
         return product;
+    }
+
+    @Override
+    public Product updateProduct(Product product) {
+        EntityManager entityManager = EntityManagerProvider.getEntityManager();
+        entityManager.getTransaction().begin();
+
+        product = entityManager.merge(product);
+
+        entityManager.getTransaction().commit();
+        entityManager.close();
+
+        return product;
+    }
+
+    @Override
+    public boolean deleteProduct(String productCode) {
+        EntityManager entityManager = EntityManagerProvider.getEntityManager();
+        boolean isDeleted;
+
+        entityManager.getTransaction().begin();
+        Product product = entityManager.find(Product.class, productCode);
+
+
+        if(product== null){
+            entityManager.getTransaction().rollback();
+            entityManager.close();
+
+            isDeleted = false;
+            return isDeleted;
+        }
+
+        entityManager.remove(product);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+
+        isDeleted = true;
+        return isDeleted;
     }
 }
