@@ -1,6 +1,7 @@
 package data.model.entity;
 
 import lombok.*;
+
 import javax.persistence.*;
 
 @Data
@@ -10,7 +11,6 @@ import javax.persistence.*;
 public class Office {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String officeCode;
     private String city;
     private String phone;

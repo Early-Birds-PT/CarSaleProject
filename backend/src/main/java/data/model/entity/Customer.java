@@ -13,7 +13,6 @@ import java.math.BigDecimal;
 @Entity(name = "customers")
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int customerNumber;
     private String customerName;
     private String contactLastName;
@@ -28,6 +27,7 @@ public class Customer {
     private int salesRepEmployeeNumber;
     private BigDecimal creditLimit;
 
-
-
+    @ManyToOne
+    @JoinColumn(name="salesRepEmployeeNumber",  insertable = false, updatable = false)
+    private Employee employee;
 }

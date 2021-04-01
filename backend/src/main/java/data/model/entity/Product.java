@@ -34,6 +34,4 @@ public class Product {
     private Short quantityInStock;
     private BigDecimal buyPrice;
     private BigDecimal msrp;
-
-
 }

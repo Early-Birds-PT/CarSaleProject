@@ -3,11 +3,9 @@ package data.model.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import data.model.embeddable.Person;
-import java.util.Collection;
-import java.util.Objects;
-import javax.persistence.*;
 
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity(name = "employees")
 @Data
@@ -16,23 +14,19 @@ import javax.persistence.*;
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int employeeNumber;
     private String lastName;
     private String firstName;
     private String extension;
     private String email;
-    private String officeCode;
-    private int reportsTo;
     private String jobTitle;
 
-
-    //@Embedded
-    //private Person person;
+    @ManyToOne
+    @JoinColumn(name = "reportsTo" )
+    private Employee employee;
 
     @ManyToOne
-    @JoinColumn(name = "officeCode", referencedColumnName = "officeCode", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "officeCode")
     private Office office;
-
 }
 
