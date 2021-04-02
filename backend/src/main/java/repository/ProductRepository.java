@@ -12,4 +12,5 @@ public interface ProductRepository {
     Product updateProduct(Product product);
     boolean deleteProduct(String productCode);
     List<Product> findAllProductsByProductLine(ProductLine productLine);
+    List<Product> getAllProducts();
 }

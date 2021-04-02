@@ -5,6 +5,7 @@ import data.model.embeddable.PaymentId;
 import data.model.entity.Customer;
 import data.model.entity.Employee;
 import data.model.entity.Payment;
+import data.model.entity.Product;
 import service.EmployeeService;
 import service.impl.EmployeeServiceImpl;
 import utils.ServiceBeanFactory;
@@ -21,6 +22,9 @@ public class App {
 
         List<Employee> allEmployees= ServiceBeanFactory.getEmployeeService().getAllEmployees();
         allEmployees.forEach(employee -> System.out.println(employee));
+
+        List<Product> allProducts = ServiceBeanFactory.getProductService().getAllProducts();
+        allProducts.forEach(product -> System.out.println(product));
 
         /*Customer customer = ServiceBeanFactory.getCustomerService().readCustomer(103);
         PaymentId paymentId = new PaymentId("OM314933",customer);
