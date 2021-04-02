@@ -42,16 +42,15 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee transferEmployee(Employee employee, Office office) {
-        //employee.setEmployee(null);
         employee.setOffice(office);
         return employeeRepository.updateEmployee(employee);
     }
 
     private int generateUniqueID() {
         int number = 0;
-        do{
+        do {
             number = new Random().nextInt(100000000);
-        } while(employeeRepository.readEmployee(number) != null);
+        } while (employeeRepository.readEmployee(number) != null);
         return number;
     }
 }
