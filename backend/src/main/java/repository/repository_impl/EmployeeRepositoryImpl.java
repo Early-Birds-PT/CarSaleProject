@@ -1,7 +1,7 @@
 package repository.repository_impl;
 
 
-import data.EntityManagerProvider;
+import repository.entity_manager.EntityManagerProvider;
 import data.model.entity.Employee;
 import repository.EmployeeRepository;
 import javax.persistence.EntityManager;
