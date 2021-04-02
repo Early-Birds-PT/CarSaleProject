@@ -1,17 +1,28 @@
 package app;
 
 
+import data.model.embeddable.PaymentId;
+import data.model.entity.Customer;
+import data.model.entity.Payment;
 import service.EmployeeService;
 import service.impl.EmployeeServiceImpl;
 import utils.ServiceBeanFactory;
+
+import java.math.BigDecimal;
 
 public class App {
 
     public static void main(String[] args) {
 
-      //  ServiceBeanFactory.getCustomerService().deleteCustomer(103);
+        Customer customer = ServiceBeanFactory.getCustomerService().readCustomer(103);
+        PaymentId paymentId = new PaymentId("OM314933",customer);
       //  ServiceBeanFactory.getOrderService().deleteOrder(10100);
-        ServiceBeanFactory.getCustomerService().deleteCustomer(128);
+      //  ServiceBeanFactory.getCustomerService().deleteCustomer(128);
+        Payment payment = ServiceBeanFactory.getPaymentService().readPayment(paymentId);
+      //  payment.setAmount(new BigDecimal(999999.45));
+      //  System.out.println(ServiceBeanFactory.getPaymentService().updatePayment(payment));
+        payment.setPaymentId(new PaymentId("14082001",customer));
+        System.out.println(ServiceBeanFactory.getPaymentService().createPayment(payment));
 
         /*EmployeeService employeeService = new EmployeeServiceImpl();
 

@@ -1,5 +1,6 @@
 package service.impl;
 
+import data.model.embeddable.PaymentId;
 import data.model.entity.Payment;
 import repository.PaymentRepository;
 import service.PaymentService;
@@ -15,7 +16,19 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public Payment readPayment(String checkNumber) {
-        return paymentRepository.readPayment(checkNumber);
+    public Payment readPayment(PaymentId paymentId) {
+        return paymentRepository.readPayment(paymentId);
     }
+
+    @Override
+    public Payment updatePayment(Payment payment) {
+        return paymentRepository.updatePayment(payment);
+    }
+
+    @Override
+    public boolean deletePayment(PaymentId paymentId) {
+        return paymentRepository.deletePayment(paymentId);
+    }
+
+
 }
