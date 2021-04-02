@@ -3,15 +3,19 @@ package data.model.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "customers")
+@Entity
+@Table(name = "customers")
 public class Customer {
+
     @Id
     private int customerNumber;
     private String customerName;
@@ -28,6 +32,7 @@ public class Customer {
     private BigDecimal creditLimit;
 
     @ManyToOne
-    @JoinColumn(name="salesRepEmployeeNumber",  insertable = false, updatable = false)
+    @JoinColumn(name = "salesRepEmployeeNumber", insertable = false, updatable = false)
     private Employee employee;
+
 }

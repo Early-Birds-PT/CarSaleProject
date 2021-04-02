@@ -8,9 +8,11 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 
-@Entity(name = "orderdetails")
+@Entity
+@Table(name = "orderdetails")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

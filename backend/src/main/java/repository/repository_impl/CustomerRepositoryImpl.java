@@ -2,11 +2,21 @@ package repository.repository_impl;
 
 import data.EntityManagerProvider;
 import data.model.entity.Customer;
+import data.model.entity.Order;
+import data.model.entity.OrderDetail;
+import data.model.entity.Payment;
 import repository.CustomerRepository;
+import repository.OrderRepository;
+import repository.PaymentRepository;
+import utils.RepositoryBeanFactory;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 public class CustomerRepositoryImpl implements CustomerRepository {
+
+    private OrderRepository orderRepository = RepositoryBeanFactory.getOrderRepository();
+    private PaymentRepository paymentRepository = RepositoryBeanFactory.getPaymentRepository();
 
     @Override
     public Customer createCustomer(Customer customer) {
@@ -56,6 +66,17 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             isDeleted = false;
             return isDeleted;
         }
+
+
+        List<Order> orders = orderRepository.findAllOrdersByCustomer(customer);
+        // all related orders should be deleted before deleting customer
+        orders.forEach(order -> orderRepository.deleteOrder(order.getOrderNumber()));
+
+        List<Payment> payments = paymentRepository.findAllPaymentsByCustomer(customer);
+        // all related payments should be deleted before deleting customer
+        payments.forEach(payment -> paymentRepository.deletePayment(payment.getPaymentId()));
+
+
         entityManager.remove(customer);
         entityManager.getTransaction().commit();
         entityManager.close();

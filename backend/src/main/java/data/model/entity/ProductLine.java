@@ -14,7 +14,6 @@ import javax.persistence.*;
 public class ProductLine {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String productLine;
     @Column(length = 4000)
     private String textDescription;

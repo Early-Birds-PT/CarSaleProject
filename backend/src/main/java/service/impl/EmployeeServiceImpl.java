@@ -1,17 +1,18 @@
 package service.impl;
 
 
+import data.model.entity.Employee;
 import data.model.entity.Office;
 import repository.EmployeeRepository;
-import repository.repository_impl.EmployeeRepositoryImpl;
-import data.model.entity.Employee;
 import service.EmployeeService;
+import utils.RepositoryBeanFactory;
 
+import java.util.List;
 import java.util.Random;
 
 public class EmployeeServiceImpl implements EmployeeService {
 
-    private EmployeeRepository employeeRepository = new EmployeeRepositoryImpl();
+    private EmployeeRepository employeeRepository = RepositoryBeanFactory.getEmployeeRepository();
 
     @Override
     public Employee createEmployee(Employee employee) {
@@ -32,6 +33,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public boolean deleteEmployee(int employeeNumber) {
         return employeeRepository.deleteEmployee(employeeNumber);
+    }
+
+    @Override
+    public List<Employee> findAllEmployeesByRefersTo(Employee employee) {
+        return employeeRepository.findAllEmployeesByRefersTo(employee);
     }
 
     @Override

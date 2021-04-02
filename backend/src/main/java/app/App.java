@@ -1,32 +1,69 @@
 package app;
 
+
+import data.model.embeddable.PaymentId;
 import data.model.entity.Customer;
-import data.model.entity.Office;
-import data.model.entity.Order;
 import data.model.entity.Payment;
-import service.CustomerService;
-import service.OfficeService;
-import service.PaymentService;
-import service.impl.CustomerServiceImpl;
-import service.OrderService;
-import service.impl.OfficeServiceImpl;
-import service.impl.OrderServiceImpl;
-import service.impl.PaymentServiceImpl;
+import service.EmployeeService;
+import service.impl.EmployeeServiceImpl;
+import utils.ServiceBeanFactory;
 
 import java.math.BigDecimal;
-import java.util.Random;
-import java.util.UUID;
 
 public class App {
 
     public static void main(String[] args) {
-        /*OrderService orderService = new OrderServiceImpl();
-        Order order = orderService.readOrder(10112);
-        System.out.println(order);*/
 
-        /*CustomerService customerService = new CustomerServiceImpl();
-        Customer customer = customerService.readCustomer(103);
-        System.out.println(customer);*/
+        Customer customer = ServiceBeanFactory.getCustomerService().readCustomer(103);
+        PaymentId paymentId = new PaymentId("OM314933",customer);
+      //  ServiceBeanFactory.getOrderService().deleteOrder(10100);
+      //  ServiceBeanFactory.getCustomerService().deleteCustomer(128);
+        Payment payment = ServiceBeanFactory.getPaymentService().readPayment(paymentId);
+      //  payment.setAmount(new BigDecimal(999999.45));
+      //  System.out.println(ServiceBeanFactory.getPaymentService().updatePayment(payment));
+        payment.setPaymentId(new PaymentId("14082001",customer));
+        System.out.println(ServiceBeanFactory.getPaymentService().createPayment(payment));
+
+        /*EmployeeService employeeService = new EmployeeServiceImpl();
+
+        System.out.println(employeeService.deleteEmployee(1102));*/
+
+
+//        CustomerService customerService = new CustomerServiceImpl();
+//       // Customer customer = customerService.readCustomer(363);
+//        System.out.println(customerService.deleteCustomer(103));
+/*
+        ProductService productService = new ProductServiceImpl();
+        ProductLineService productLineService = new ProductLineServiceImpl();
+
+        ProductLine productLine = productLineService.readProductLine("Motorcycles");
+
+        productLine.setTextDescription("Updated");
+        //productLine.setProductLine("New Product Line");
+
+        System.out.println(productLineService.updateProductLine(productLine));
+
+        //System.out.println(productLineService.deleteProductLine("Planes"));
+        //productService.findAllProductsByProductLine(productLine).forEach(System.out::println);
+
+        //Product product = productService.readProduct("S10_1678");
+
+        //System.out.println(productService.deleteProduct("S10_1678"));
+        //OrderDetailService orderDetailService = new OrderDetailServiceImpl();
+
+        //List<OrderDetail> orderDetails = orderDetailService.findAllOrderDetailsByProduct(product);
+
+        //orderDetails.forEach(System.out::println);
+
+        // System.out.println(productService.updateProduct(product));
+
+        //System.out.println(productService.deleteProduct("S10_1678"));
+
+
+//        OrderService orderService = new OrderServiceImpl();
+//        List<Order> orders = orderService.findAllOrdersByCustomer(customer);
+//        System.out.println(orders);
+
 
        /* PaymentService paymentService = new PaymentServiceImpl();
         Payment payment = paymentService.readPayment("HQ336336");
@@ -42,20 +79,22 @@ public class App {
         customer1.setCreditLimit(BigDecimal.valueOf(1000));
         customer1.setCity("Leuven");*/
 
-       // customerService.createCustomer(customer1);
-        OfficeService officeService = new OfficeServiceImpl();
+        // customerService.createCustomer(customer1);
+        //OfficeService officeService = new OfficeServiceImpl();
         /*Office office1 = officeService.readOffice("8");
         System.out.println(office1);*/
 
-       // office1.setOfficeCode(String.valueOf(generateUniqueID(officeService)));
+        // office1.setOfficeCode(String.valueOf(generateUniqueID(officeService)));
         /*office1.setCity("Sivas");
         office1 = officeService.createOffice(office1);
         System.out.println(office1);*/
 
-        officeService.deleteOffice("5");
+        //officeService.deleteOffice("5");
 
 
         // officeService.updateOffice(office1);
+
+
     }
 
 

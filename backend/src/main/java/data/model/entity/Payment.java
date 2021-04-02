@@ -1,5 +1,6 @@
 package data.model.entity;
 
+import data.model.embeddable.PaymentId;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,14 +12,15 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "payments")
+@Entity
+@Table(name = "payments")
 public class Payment {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String checkNumber;
+
+    @EmbeddedId
+    private PaymentId paymentId;
 
     @ManyToOne
-    @JoinColumn(name = "customerNumber")
+    @JoinColumn(name = "customerNumber", insertable = false, updatable = false)
     private Customer customer;
     private Date paymentDate;
     private BigDecimal amount;

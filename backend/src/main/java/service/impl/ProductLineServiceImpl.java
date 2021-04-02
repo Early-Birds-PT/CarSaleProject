@@ -2,11 +2,12 @@ package service.impl;
 
 import data.model.entity.ProductLine;
 import repository.ProductLineRepository;
-import repository.repository_impl.ProductLineRepositoryImpl;
 import service.ProductLineService;
+import utils.RepositoryBeanFactory;
 
 public class ProductLineServiceImpl implements ProductLineService {
-    private ProductLineRepository productLineRepository = new ProductLineRepositoryImpl();
+
+    private ProductLineRepository productLineRepository = RepositoryBeanFactory.getProductLineRepository();
 
     @Override
     public ProductLine createProductLine(ProductLine productLine) {
@@ -16,5 +17,15 @@ public class ProductLineServiceImpl implements ProductLineService {
     @Override
     public ProductLine readProductLine(String productLine) {
         return productLineRepository.readProductLine(productLine);
+    }
+
+    @Override
+    public ProductLine updateProductLine(ProductLine productLine) {
+        return productLineRepository.updateProductLine(productLine);
+    }
+
+    @Override
+    public boolean deleteProductLine(String productLine) {
+        return productLineRepository.deleteProductLine(productLine);
     }
 }
