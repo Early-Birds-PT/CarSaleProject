@@ -2,11 +2,14 @@ package repository.repository_impl;
 
 import data.EntityManagerProvider;
 import data.model.entity.Customer;
+import data.model.entity.Order;
+import data.model.entity.OrderDetail;
 import repository.CustomerRepository;
 import repository.OrderRepository;
 import utils.RepositoryBeanFactory;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 public class CustomerRepositoryImpl implements CustomerRepository {
 
@@ -60,6 +63,13 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             isDeleted = false;
             return isDeleted;
         }
+
+
+        List<Order> orders = orderRepository.findAllOrdersByCustomer(customer);
+        // all related orders should be deleted before deleting customer
+        orders.forEach(order -> orderRepository.deleteOrder(order.getOrderNumber()));
+
+
 
         entityManager.remove(customer);
         entityManager.getTransaction().commit();

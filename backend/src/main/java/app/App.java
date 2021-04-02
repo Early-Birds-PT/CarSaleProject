@@ -3,14 +3,19 @@ package app;
 
 import service.EmployeeService;
 import service.impl.EmployeeServiceImpl;
+import utils.ServiceBeanFactory;
 
 public class App {
 
     public static void main(String[] args) {
 
-        EmployeeService employeeService = new EmployeeServiceImpl();
+      //  ServiceBeanFactory.getCustomerService().deleteCustomer(103);
+      //  ServiceBeanFactory.getOrderService().deleteOrder(10100);
+        ServiceBeanFactory.getCustomerService().deleteCustomer(128);
 
-        System.out.println(employeeService.deleteEmployee(1102));
+        /*EmployeeService employeeService = new EmployeeServiceImpl();
+
+        System.out.println(employeeService.deleteEmployee(1102));*/
 
 
 //        CustomerService customerService = new CustomerServiceImpl();
