@@ -3,7 +3,6 @@ package repository.repository_impl;
 import data.EntityManagerProvider;
 import data.model.entity.Office;
 import repository.OfficeRepository;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
@@ -53,7 +52,6 @@ public class OfficeRepositoryImpl implements OfficeRepository {
 
     @Override
     public boolean deleteOffice(String officeCode) {
-        // TODO: all related employee should be transferred  to other office before delete operation
 
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         boolean isDeleted;
@@ -78,5 +76,4 @@ public class OfficeRepositoryImpl implements OfficeRepository {
         return isDeleted;
 
     }
-
 }

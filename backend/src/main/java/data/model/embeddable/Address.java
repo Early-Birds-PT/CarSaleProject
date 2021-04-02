@@ -1,15 +1,14 @@
 package data.model.embeddable;
 
 import javax.persistence.Embeddable;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
 public class Address {
+
     private String addressLine1;
     private String addressLine2;
     private String city;

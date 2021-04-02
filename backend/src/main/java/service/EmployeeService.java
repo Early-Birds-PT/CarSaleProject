@@ -16,5 +16,4 @@ public interface EmployeeService {
     List<Employee> findAllEmployeesByRefersTo(Employee employee);
     Employee transferEmployee(Employee employee, Office office);
     List<Employee> getAllEmployees();
-
 }

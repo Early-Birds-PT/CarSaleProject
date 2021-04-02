@@ -19,6 +19,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public Customer createCustomer(Customer customer) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         entityManager.getTransaction().begin();
         customer = entityManager.merge(customer);
@@ -29,6 +30,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public Customer readCustomer(int customerNumber) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         entityManager.getTransaction().begin();
         Customer customer = entityManager.find(Customer.class, customerNumber);
@@ -39,6 +41,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public Customer updateCustomer(Customer customer) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         entityManager.getTransaction().begin();
 
@@ -52,6 +55,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public boolean deleteCustomer(int customerNumber) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         boolean isDeleted;
 
@@ -66,7 +70,6 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             return isDeleted;
         }
 
-
         List<Order> orders = orderRepository.findAllOrdersByCustomer(customer);
         // all related orders should be deleted before deleting customer
         orders.forEach(order -> orderRepository.deleteOrder(order.getOrderNumber()));
@@ -74,7 +77,6 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         List<Payment> payments = paymentRepository.findAllPaymentsByCustomer(customer);
         // all related payments should be deleted before deleting customer
         payments.forEach(payment -> paymentRepository.deletePayment(payment.getPaymentId()));
-
 
         entityManager.remove(customer);
         entityManager.getTransaction().commit();
@@ -86,6 +88,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public List<Customer> getAllCustomers() {
+
         String query = "SELECT c FROM Customer c";
         EntityManager em = EntityManagerProvider.getEntityManager();
 

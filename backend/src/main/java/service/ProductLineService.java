@@ -8,5 +8,4 @@ public interface ProductLineService {
     ProductLine readProductLine(String productLine);
     ProductLine updateProductLine(ProductLine pruductLine);
     boolean deleteProductLine(String productLine);
-
 }

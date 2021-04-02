@@ -7,7 +7,6 @@ import data.model.entity.OrderDetail;
 import repository.OrderDetailRepository;
 import repository.OrderRepository;
 import utils.RepositoryBeanFactory;
-
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
@@ -18,6 +17,7 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     @Override
     public Order readOrder(int orderNumber) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
 
         entityManager.getTransaction().begin();
@@ -31,6 +31,7 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     @Override
     public Order createOrder(Order order) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         entityManager.getTransaction().begin();
 
@@ -52,7 +53,6 @@ public class OrderRepositoryImpl implements OrderRepository {
         TypedQuery<Order> typedQuery = em.createQuery(query, Order.class);
         typedQuery.setParameter("customer", customer);
         List<Order> orderList = typedQuery.getResultList();
-        //orderList.forEach(order -> order.setCustomer(null));
         em.getTransaction().commit();
 
         em.close();
@@ -61,6 +61,7 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     @Override
     public Order updateOrder(Order order1) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         entityManager.getTransaction().begin();
 
@@ -74,6 +75,7 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     @Override
     public boolean deleteOrder(int orderNumber) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         boolean isDeleted;
 
@@ -99,6 +101,4 @@ public class OrderRepositoryImpl implements OrderRepository {
         isDeleted = true;
         return isDeleted;
     }
-
-
 }

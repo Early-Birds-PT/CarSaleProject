@@ -2,20 +2,15 @@ package data.model.embeddable;
 
 import data.model.entity.Order;
 import data.model.entity.Product;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-
-import javax.persistence.Embeddable;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import lombok.*;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Embeddable
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class OrderProductPK implements Serializable {
+public class OrderDetailId implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="orderNumber", insertable = false, updatable = false)

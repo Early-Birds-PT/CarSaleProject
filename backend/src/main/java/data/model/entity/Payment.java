@@ -4,7 +4,6 @@ import data.model.embeddable.PaymentId;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;

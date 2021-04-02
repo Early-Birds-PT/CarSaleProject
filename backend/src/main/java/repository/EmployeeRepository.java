@@ -1,9 +1,6 @@
 package repository;
 
-
-import data.model.entity.Customer;
 import data.model.entity.Employee;
-
 import java.util.List;
 
 public interface EmployeeRepository {
