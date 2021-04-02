@@ -1,6 +1,7 @@
 package repository;
 
 
+import data.model.entity.Customer;
 import data.model.entity.Employee;
 
 import java.util.List;
@@ -12,4 +13,5 @@ public interface EmployeeRepository {
     Employee updateEmployee(Employee employee);
     boolean deleteEmployee(int employeeNumber);
     List<Employee> findAllEmployeesByRefersTo(Employee employee);
+    List<Employee> getAllEmployees();
 }

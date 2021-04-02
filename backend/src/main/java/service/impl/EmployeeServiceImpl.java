@@ -46,6 +46,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.updateEmployee(employee);
     }
 
+    @Override
+    public List<Employee> getAllEmployees() {
+        return employeeRepository.getAllEmployees();
+    }
+
     private int generateUniqueID() {
         int number = 0;
         do {
