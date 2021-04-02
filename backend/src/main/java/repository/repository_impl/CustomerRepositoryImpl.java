@@ -3,14 +3,13 @@ package repository.repository_impl;
 import data.EntityManagerProvider;
 import data.model.entity.Customer;
 import data.model.entity.Order;
-import data.model.entity.OrderDetail;
 import data.model.entity.Payment;
 import repository.CustomerRepository;
 import repository.OrderRepository;
 import repository.PaymentRepository;
 import utils.RepositoryBeanFactory;
-
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class CustomerRepositoryImpl implements CustomerRepository {
@@ -83,5 +82,19 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
         isDeleted = true;
         return isDeleted;
+    }
+
+    @Override
+    public List<Customer> getAllCustomers() {
+        String query = "SELECT c FROM Customer c";
+        EntityManager em = EntityManagerProvider.getEntityManager();
+
+        em.getTransaction().begin();
+        TypedQuery<Customer> typedQuery = em.createQuery(query, Customer.class);
+        List<Customer> customers = typedQuery.getResultList();
+
+        em.getTransaction().commit();
+        em.close();
+        return customers;
     }
 }
