@@ -6,14 +6,13 @@ import service.CustomerService;
 import service.OrderService;
 import utils.RepositoryBeanFactory;
 import utils.ServiceBeanFactory;
-
+import java.util.List;
 import java.util.Random;
 
 public class CustomerServiceImpl implements CustomerService {
 
     private CustomerRepository customerRepository = RepositoryBeanFactory.getCustomerRepository();
     private OrderService orderService = ServiceBeanFactory.getOrderService();
-
 
     @Override
     public Customer createCustomer(Customer customer) {
@@ -34,6 +33,11 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public boolean deleteCustomer(int customerNumber) {
         return customerRepository.deleteCustomer(customerNumber);
+    }
+
+    @Override
+    public List<Customer> getAllCustomers() {
+        return customerRepository.getAllCustomers();
     }
 
     private int generateUniqueID() {

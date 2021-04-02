@@ -9,20 +9,25 @@ import service.impl.EmployeeServiceImpl;
 import utils.ServiceBeanFactory;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class App {
 
     public static void main(String[] args) {
 
-        Customer customer = ServiceBeanFactory.getCustomerService().readCustomer(103);
+        List<Customer> allCustomers= ServiceBeanFactory.getCustomerService().getAllCustomers();
+
+        allCustomers.forEach(customer -> System.out.println(customer));
+
+        /*Customer customer = ServiceBeanFactory.getCustomerService().readCustomer(103);
         PaymentId paymentId = new PaymentId("OM314933",customer);
-      //  ServiceBeanFactory.getOrderService().deleteOrder(10100);
-      //  ServiceBeanFactory.getCustomerService().deleteCustomer(128);
+        ServiceBeanFactory.getOrderService().deleteOrder(10100);
+        ServiceBeanFactory.getCustomerService().deleteCustomer(128);
         Payment payment = ServiceBeanFactory.getPaymentService().readPayment(paymentId);
-      //  payment.setAmount(new BigDecimal(999999.45));
-      //  System.out.println(ServiceBeanFactory.getPaymentService().updatePayment(payment));
+        payment.setAmount(new BigDecimal(999999.45));
+        System.out.println(ServiceBeanFactory.getPaymentService().updatePayment(payment));
         payment.setPaymentId(new PaymentId("14082001",customer));
-        System.out.println(ServiceBeanFactory.getPaymentService().createPayment(payment));
+        System.out.println(ServiceBeanFactory.getPaymentService().createPayment(payment));*/
 
         /*EmployeeService employeeService = new EmployeeServiceImpl();
 
