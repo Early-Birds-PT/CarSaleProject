@@ -2,6 +2,7 @@ package repository.repository_impl;
 
 
 import data.EntityManagerProvider;
+import data.model.entity.Employee;
 import repository.EmployeeRepository;
 import data.model.entity.Employee;
 
@@ -97,6 +98,20 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
         em.getTransaction().commit();
 
+        em.close();
+        return employees;
+    }
+
+    @Override
+    public List<Employee> getAllEmployees() {
+        String query = "SELECT e FROM Employee e";
+        EntityManager em = EntityManagerProvider.getEntityManager();
+
+        em.getTransaction().begin();
+        TypedQuery<Employee> typedQuery = em.createQuery(query, Employee.class);
+        List<Employee> employees = typedQuery.getResultList();
+
+        em.getTransaction().commit();
         em.close();
         return employees;
     }

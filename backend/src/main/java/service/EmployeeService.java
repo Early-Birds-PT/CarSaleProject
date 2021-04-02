@@ -1,6 +1,7 @@
 package service;
 
 
+import data.model.entity.Customer;
 import data.model.entity.Employee;
 import data.model.entity.Office;
 
@@ -14,5 +15,6 @@ public interface EmployeeService {
     boolean deleteEmployee(int employeeNumber);
     List<Employee> findAllEmployeesByRefersTo(Employee employee);
     Employee transferEmployee(Employee employee, Office office);
+    List<Employee> getAllEmployees();
 
 }
