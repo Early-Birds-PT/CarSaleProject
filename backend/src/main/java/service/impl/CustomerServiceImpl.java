@@ -47,6 +47,4 @@ public class CustomerServiceImpl implements CustomerService {
         } while(customerRepository.readCustomer(number) != null);
         return number;
     }
-
-    // TODO : findAllCustomersByEmployee or define Customer list in Employee entity
 }

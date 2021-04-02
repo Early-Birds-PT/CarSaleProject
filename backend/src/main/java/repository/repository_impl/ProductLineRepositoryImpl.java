@@ -6,7 +6,6 @@ import data.model.entity.ProductLine;
 import repository.ProductLineRepository;
 import repository.ProductRepository;
 import utils.RepositoryBeanFactory;
-
 import javax.persistence.EntityManager;
 import java.util.List;
 
@@ -16,6 +15,7 @@ public class ProductLineRepositoryImpl implements ProductLineRepository {
 
     @Override
     public ProductLine createProductLine(ProductLine productLine) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         entityManager.getTransaction().begin();
         productLine = entityManager.merge(productLine);
@@ -26,6 +26,7 @@ public class ProductLineRepositoryImpl implements ProductLineRepository {
 
     @Override
     public ProductLine readProductLine(String productLine) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         entityManager.getTransaction().begin();
         ProductLine productLine1 = entityManager.find(ProductLine.class, productLine);
@@ -36,6 +37,7 @@ public class ProductLineRepositoryImpl implements ProductLineRepository {
 
     @Override
     public ProductLine updateProductLine(ProductLine pruductLine) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         entityManager.getTransaction().begin();
 
@@ -49,6 +51,7 @@ public class ProductLineRepositoryImpl implements ProductLineRepository {
 
     @Override
     public boolean deleteProductLine(String productLine) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         boolean isDeleted;
 

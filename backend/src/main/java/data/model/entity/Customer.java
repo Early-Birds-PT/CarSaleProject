@@ -30,5 +30,4 @@ public class Customer {
     @ManyToOne
     @JoinColumn(name = "salesRepEmployeeNumber", insertable = false, updatable = false)
     private Employee employee;
-
 }

@@ -3,11 +3,8 @@ package repository.repository_impl;
 import data.EntityManagerProvider;
 import data.model.embeddable.PaymentId;
 import data.model.entity.Customer;
-import data.model.entity.Employee;
-import data.model.entity.Order;
 import data.model.entity.Payment;
 import repository.PaymentRepository;
-
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
@@ -16,6 +13,7 @@ public class PaymentRepositoryImpl implements PaymentRepository {
 
     @Override
     public Payment createPayment(Payment payment) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         entityManager.getTransaction().begin();
 
@@ -30,6 +28,7 @@ public class PaymentRepositoryImpl implements PaymentRepository {
 
     @Override
     public Payment readPayment(PaymentId paymentId) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         entityManager.getTransaction().begin();
         Payment payment = entityManager.find(Payment.class,paymentId);
@@ -40,6 +39,7 @@ public class PaymentRepositoryImpl implements PaymentRepository {
 
     @Override
     public Payment updatePayment(Payment payment) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         entityManager.getTransaction().begin();
 
@@ -54,6 +54,7 @@ public class PaymentRepositoryImpl implements PaymentRepository {
 
     @Override
     public List<Payment> findAllPaymentsByCustomer(Customer customer) {
+
         String query = "SELECT p FROM Payment p WHERE p.customer = :customer";
         EntityManager em = EntityManagerProvider.getEntityManager();
 
@@ -69,12 +70,12 @@ public class PaymentRepositoryImpl implements PaymentRepository {
 
     @Override
     public boolean deletePayment(PaymentId paymentId) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         boolean isDeleted;
 
         entityManager.getTransaction().begin();
         Payment payment = entityManager.find(Payment.class, paymentId);
-
 
         if(payment == null){
             entityManager.getTransaction().rollback();

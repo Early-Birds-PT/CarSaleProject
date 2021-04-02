@@ -1,10 +1,13 @@
 package service.impl;
 
 import data.model.embeddable.PaymentId;
+import data.model.entity.Customer;
 import data.model.entity.Payment;
 import repository.PaymentRepository;
 import service.PaymentService;
 import utils.RepositoryBeanFactory;
+
+import java.util.List;
 
 public class PaymentServiceImpl implements PaymentService {
 
@@ -30,5 +33,8 @@ public class PaymentServiceImpl implements PaymentService {
         return paymentRepository.deletePayment(paymentId);
     }
 
-
+    @Override
+    public List<Payment> findAllPaymentsByCustomer(Customer customer) {
+        return paymentRepository.findAllPaymentsByCustomer(customer);
+    }
 }

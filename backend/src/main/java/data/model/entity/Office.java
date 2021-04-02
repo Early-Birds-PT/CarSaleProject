@@ -1,7 +1,6 @@
 package data.model.entity;
 
 import lombok.*;
-
 import javax.persistence.*;
 
 @Data
@@ -20,6 +19,4 @@ public class Office {
     private String postalCode;
     private String country;
     private String territory;
-
-
 }

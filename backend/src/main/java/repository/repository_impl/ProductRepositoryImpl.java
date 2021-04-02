@@ -1,14 +1,12 @@
 package repository.repository_impl;
 
 import data.EntityManagerProvider;
-import data.model.entity.Customer;
 import data.model.entity.OrderDetail;
 import data.model.entity.Product;
 import data.model.entity.ProductLine;
 import repository.OrderDetailRepository;
 import repository.ProductRepository;
 import utils.RepositoryBeanFactory;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
@@ -20,6 +18,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public Product createProduct(Product product) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         entityManager.getTransaction().begin();
         product = entityManager.merge(product);
@@ -30,6 +29,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public Product readProduct(String productCode) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
@@ -41,6 +41,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public Product updateProduct(Product product) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         entityManager.getTransaction().begin();
 
@@ -54,6 +55,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public boolean deleteProduct(String productCode) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         boolean isDeleted;
 
@@ -82,6 +84,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public List<Product> findAllProductsByProductLine(ProductLine productLine) {
+
         String query = "SELECT p FROM Product p WHERE p.productLine = :productLine";
         EntityManager em = EntityManagerProvider.getEntityManager();
 
@@ -97,6 +100,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public List<Product> getAllProducts() {
+
         String query = "SELECT p FROM Product p";
         EntityManager em = EntityManagerProvider.getEntityManager();
 

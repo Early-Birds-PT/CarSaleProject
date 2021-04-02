@@ -4,8 +4,6 @@ package repository.repository_impl;
 import data.EntityManagerProvider;
 import data.model.entity.Employee;
 import repository.EmployeeRepository;
-import data.model.entity.Employee;
-
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
@@ -25,7 +23,6 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         System.out.println("Employee is created");
 
         return employee;
-
     }
 
     @Override
@@ -44,6 +41,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     @Override
     public Employee updateEmployee(Employee employee) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         entityManager.getTransaction().begin();
 
@@ -57,6 +55,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     @Override
     public boolean deleteEmployee(int employeeNumber) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         boolean isDeleted;
 
@@ -88,6 +87,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     @Override
     public List<Employee> findAllEmployeesByRefersTo(Employee employee) {
+
         String query = "SELECT e FROM Employee e WHERE e.employee = :employee";
         EntityManager em = EntityManagerProvider.getEntityManager();
 

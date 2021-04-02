@@ -1,12 +1,11 @@
 package repository.repository_impl;
 
 import data.EntityManagerProvider;
-import data.model.embeddable.OrderProductPK;
+import data.model.embeddable.OrderDetailId;
 import data.model.entity.Order;
 import data.model.entity.OrderDetail;
 import data.model.entity.Product;
 import repository.OrderDetailRepository;
-
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
@@ -14,7 +13,8 @@ import java.util.List;
 public class OrderDetailRepositoryImpl implements OrderDetailRepository {
 
     @Override
-    public OrderDetail readOrderDetail(OrderProductPK id) {
+    public OrderDetail readOrderDetail(OrderDetailId id) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         entityManager.getTransaction().begin();
 
@@ -26,6 +26,7 @@ public class OrderDetailRepositoryImpl implements OrderDetailRepository {
 
     @Override
     public OrderDetail createOrderDetail(OrderDetail orderDetail) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         entityManager.getTransaction().begin();
 
@@ -39,6 +40,7 @@ public class OrderDetailRepositoryImpl implements OrderDetailRepository {
 
     @Override
     public OrderDetail updateOrderDetail(OrderDetail orderDetail) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         entityManager.getTransaction().begin();
 
@@ -51,13 +53,13 @@ public class OrderDetailRepositoryImpl implements OrderDetailRepository {
     }
 
     @Override
-    public boolean deleteOrderDetail(OrderProductPK id) {
+    public boolean deleteOrderDetail(OrderDetailId id) {
+
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         boolean isDeleted;
 
         entityManager.getTransaction().begin();
         OrderDetail orderDetail = entityManager.find(OrderDetail.class, id);
-
 
         if(orderDetail == null){
             entityManager.getTransaction().rollback();
@@ -84,7 +86,6 @@ public class OrderDetailRepositoryImpl implements OrderDetailRepository {
         TypedQuery<OrderDetail> typedQuery = em.createQuery(query, OrderDetail.class);
         typedQuery.setParameter("product", product);
         List<OrderDetail> orderDetailListList = typedQuery.getResultList();
-        //orderList.forEach(order -> order.setCustomer(null));
         em.getTransaction().commit();
 
         em.close();
@@ -93,6 +94,7 @@ public class OrderDetailRepositoryImpl implements OrderDetailRepository {
 
     @Override
     public List<OrderDetail> findAllOrderDetailsByOrder(Order order) {
+
         String query = "SELECT o FROM OrderDetail o WHERE o.id.order = :order";
         EntityManager em = EntityManagerProvider.getEntityManager();
 
@@ -100,7 +102,6 @@ public class OrderDetailRepositoryImpl implements OrderDetailRepository {
         TypedQuery<OrderDetail> typedQuery = em.createQuery(query, OrderDetail.class);
         typedQuery.setParameter("order", order);
         List<OrderDetail> orderDetailListList = typedQuery.getResultList();
-        //orderList.forEach(order -> order.setCustomer(null));
         em.getTransaction().commit();
 
         em.close();

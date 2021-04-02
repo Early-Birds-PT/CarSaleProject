@@ -5,7 +5,6 @@ import data.model.entity.ProductLine;
 import repository.ProductRepository;
 import service.ProductService;
 import utils.RepositoryBeanFactory;
-
 import java.util.List;
 import java.util.Random;
 
@@ -51,5 +50,4 @@ public class ProductServiceImpl implements ProductService {
         } while(productRepository.readProduct(String.valueOf(number)) != null);
         return number;
     }
-
 }

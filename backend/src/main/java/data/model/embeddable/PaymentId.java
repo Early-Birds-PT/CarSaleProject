@@ -1,13 +1,8 @@
 package data.model.embeddable;
 
 import data.model.entity.Customer;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-
-import javax.persistence.Embeddable;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import lombok.*;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Embeddable

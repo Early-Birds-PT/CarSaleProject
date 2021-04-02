@@ -10,7 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Embeddable
 public class Person {
-    private String lasName;
+
+    private String lastName;
     private String firstName;
     private String email;
 }

@@ -3,10 +3,8 @@ package service.impl;
 import data.model.entity.Customer;
 import data.model.entity.Order;
 import repository.OrderRepository;
-import repository.repository_impl.OrderRepositoryImpl;
 import service.OrderService;
 import utils.RepositoryBeanFactory;
-
 import java.util.List;
 import java.util.Random;
 
@@ -47,6 +45,4 @@ public class OrderServiceImpl implements OrderService {
         } while(orderRepository.readOrder(number) != null);
         return number;
     }
-
-
 }
