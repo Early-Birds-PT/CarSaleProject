@@ -1,5 +1,6 @@
 package service;
 
+import data.model.entity.Customer;
 import data.model.entity.Product;
 import data.model.entity.ProductLine;
 
@@ -11,6 +12,7 @@ public interface ProductService {
     Product updateProduct(Product pruduct);
     boolean deleteProduct(String productCode);
     List<Product> findAllProductsByProductLine(ProductLine productLine);
+    List<Product> getAllProducts();
 
 
 }

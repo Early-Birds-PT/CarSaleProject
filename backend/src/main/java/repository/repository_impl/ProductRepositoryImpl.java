@@ -1,6 +1,7 @@
 package repository.repository_impl;
 
 import data.EntityManagerProvider;
+import data.model.entity.Customer;
 import data.model.entity.OrderDetail;
 import data.model.entity.Product;
 import data.model.entity.ProductLine;
@@ -90,6 +91,20 @@ public class ProductRepositoryImpl implements ProductRepository {
         List<Product> products = typedQuery.getResultList();
         em.getTransaction().commit();
 
+        em.close();
+        return products;
+    }
+
+    @Override
+    public List<Product> getAllProducts() {
+        String query = "SELECT p FROM Product p";
+        EntityManager em = EntityManagerProvider.getEntityManager();
+
+        em.getTransaction().begin();
+        TypedQuery<Product> typedQuery = em.createQuery(query, Product.class);
+        List<Product> products = typedQuery.getResultList();
+
+        em.getTransaction().commit();
         em.close();
         return products;
     }

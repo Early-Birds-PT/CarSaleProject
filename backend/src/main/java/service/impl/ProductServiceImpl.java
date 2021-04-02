@@ -39,6 +39,11 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAllProductsByProductLine(productLine);
     }
 
+    @Override
+    public List<Product> getAllProducts() {
+        return productRepository.getAllProducts();
+    }
+
     private int generateUniqueID() {
         int number = 0;
         do{
