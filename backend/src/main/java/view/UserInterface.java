@@ -36,16 +36,11 @@ public class UserInterface {
                 new ReadItem_UI().handlePrintItemCommands(scanner);
                 break;
             case "3":
-
+                System.out.println("Not implemented yet, try later");
                 break;
             case "4":
-
+                System.out.println("Not implemented yet, try later");
                 break;
-
         }
     }
-
-
-
-
 }
