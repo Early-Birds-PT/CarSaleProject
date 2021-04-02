@@ -16,7 +16,7 @@ public class UserInterface {
             System.out.println("2 - read item");
             System.out.println("3 - update item");
             System.out.println("4 - delete item");
-            System.out.println("X - stop");
+            System.out.println("X - exit program");
             String command = scanner.nextLine();
 
             if(command.equalsIgnoreCase("X")){
@@ -30,10 +30,10 @@ public class UserInterface {
     private void manageCommand(String command){
         switch(command){
             case "1":
-                new UserInterfaceReadAll().handlePrintAllCommands(scanner);
+                new ReadAll_UI().handlePrintAllCommands(scanner);
                 break;
             case "2":
-
+                new ReadItem_UI().handlePrintItemCommands(scanner);
                 break;
             case "3":
 

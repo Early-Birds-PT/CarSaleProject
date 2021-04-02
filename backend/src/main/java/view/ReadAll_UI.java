@@ -4,7 +4,7 @@ import utils.ServiceBeanFactory;
 
 import java.util.Scanner;
 
-public class UserInterfaceReadAll {
+public class ReadAll_UI {
     void handlePrintAllCommands(Scanner scanner) {
         while(true){
             System.out.println("Commands:");
