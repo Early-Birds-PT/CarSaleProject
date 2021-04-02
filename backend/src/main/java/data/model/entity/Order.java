@@ -13,6 +13,7 @@ import java.sql.Date;
 @Table(name = "orders")
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class Order {
