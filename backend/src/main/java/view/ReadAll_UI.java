@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ReadAll_UI {
-    void handlePrintAllCommands(Scanner scanner) {
+    void managePrintAllCommand(Scanner scanner) {
         while(true){
             System.out.println("Commands:");
             System.out.println("1 - print all customers");

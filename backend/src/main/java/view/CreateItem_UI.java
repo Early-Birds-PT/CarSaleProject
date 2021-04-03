@@ -7,18 +7,18 @@ import utils.ServiceBeanFactory;
 
 import java.util.Scanner;
 
-public class ReadItem_UI {
-    void managePrintItemCommand(Scanner scanner) {
+public class CreateItem_UI {
+    void manageCreateItemCommand(Scanner scanner) {
         while(true){
             System.out.println("Commands:");
-            System.out.println("1 - read office");
-            System.out.println("2 - read employee");
-            System.out.println("3 - read customer");
-            System.out.println("4 - read payment");
-            System.out.println("5 - read order");
-            System.out.println("6 - read order detail");
-            System.out.println("7 - read product");
-            System.out.println("8 - read product line");
+            System.out.println("1 - create office");
+            System.out.println("2 - create employee");
+            System.out.println("3 - create customer");
+            System.out.println("4 - create payment");
+            System.out.println("5 - create order");
+            System.out.println("6 - create order detail");
+            System.out.println("7 - create product");
+            System.out.println("8 - create product line");
             System.out.println("X - return to main menu");
             String command = scanner.nextLine();
 
@@ -33,14 +33,12 @@ public class ReadItem_UI {
     private void manageCommand(String command, Scanner scanner) {
         switch(command){
             case "1":
-                System.out.println("Enter office code");
-                String input = scanner.nextLine();
-                Office office = ServiceBeanFactory.getOfficeService().readOffice(input);
-                System.out.println(office);
+                Office office = createOffice(scanner);
+                ServiceBeanFactory.getOfficeService().createOffice(office);
                 break;
             case "2":
                 System.out.println("Enter employee number");
-                input = scanner.nextLine();
+                String input = scanner.nextLine();
                 Employee employee = ServiceBeanFactory.getEmployeeService().readEmployee(Integer.valueOf(input));
                 System.out.println(employee);
                 break;
@@ -93,5 +91,29 @@ public class ReadItem_UI {
                 System.out.println(productLine);
                 break;
         }
+    }
+
+    private Office createOffice(Scanner scanner) {
+        /*System.out.println("Enter office code");
+        String officeCode = scanner.nextLine();*/
+        System.out.println("Enter city");
+        String city = scanner.nextLine();
+        System.out.println("Enter phone");
+        String phone = scanner.nextLine();
+        System.out.println("Enter address line 1");
+        String addressLine1 = scanner.nextLine();
+        System.out.println("Enter address line 2");
+        String addressLine2 = scanner.nextLine();
+        System.out.println("Enter state");
+        String state = scanner.nextLine();
+        System.out.println("Enter postal code");
+        String postalCode = scanner.nextLine();
+        System.out.println("Enter country");
+        String country = scanner.nextLine();
+        System.out.println("Enter territory");
+        String territory = scanner.nextLine();
+
+        Office office = new Office(null, city, phone, addressLine1, addressLine2, state, postalCode, country, territory);
+        return office;
     }
 }

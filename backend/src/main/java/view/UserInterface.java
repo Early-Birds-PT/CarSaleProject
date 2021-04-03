@@ -14,8 +14,9 @@ public class UserInterface {
             System.out.println("Commands:");
             System.out.println("1 - read all");
             System.out.println("2 - read item");
-            System.out.println("3 - update item");
-            System.out.println("4 - delete item");
+            System.out.println("3 - create item");
+            System.out.println("4 - update item");
+            System.out.println("5 - delete item");
             System.out.println("X - exit program");
             String command = scanner.nextLine();
 
@@ -30,15 +31,18 @@ public class UserInterface {
     private void manageCommand(String command){
         switch(command){
             case "1":
-                new ReadAll_UI().handlePrintAllCommands(scanner);
+                new ReadAll_UI().managePrintAllCommand(scanner);
                 break;
             case "2":
-                new ReadItem_UI().handlePrintItemCommands(scanner);
+                new ReadItem_UI().managePrintItemCommand(scanner);
                 break;
             case "3":
-                System.out.println("Not implemented yet, try later");
+                new CreateItem_UI().manageCreateItemCommand(scanner);
                 break;
             case "4":
+                System.out.println("Not implemented yet, try later");
+                break;
+            case "5":
                 System.out.println("Not implemented yet, try later");
                 break;
         }
