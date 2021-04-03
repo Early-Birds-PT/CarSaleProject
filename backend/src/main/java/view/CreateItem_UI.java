@@ -1,10 +1,7 @@
 package view;
 
-import data.model.embeddable.OrderDetailId;
-import data.model.embeddable.PaymentId;
 import data.model.entity.*;
 import utils.ServiceBeanFactory;
-
 import java.util.Scanner;
 
 public class CreateItem_UI {
@@ -41,52 +38,22 @@ public class CreateItem_UI {
                 ServiceBeanFactory.getEmployeeService().createEmployee(employee);
                 break;
             case "3":
-                System.out.println("Enter customer number");
-                String input = scanner.nextLine();
-                Customer customer = ServiceBeanFactory.getCustomerService().readCustomer(Integer.valueOf(input));
-                System.out.println(customer);
+
                 break;
             case "4":
-                System.out.println("Enter check number");
-                String checkNumber = scanner.nextLine();
 
-                System.out.println("Enter customer number");
-                String customerNumber = scanner.nextLine();
-
-                customer = ServiceBeanFactory.getCustomerService().readCustomer(Integer.valueOf(customerNumber));
-                Payment payment = ServiceBeanFactory.getPaymentService().readPayment(new PaymentId(checkNumber, customer));
-                System.out.println(payment);
                 break;
             case "5":
-                System.out.println("Enter order number");
-                input = scanner.nextLine();
-                Order order = ServiceBeanFactory.getOrderService().readOrder(Integer.valueOf(input));
-                System.out.println(order);
+
                 break;
             case "6":
-                System.out.println("Enter order number");
-                String orderNumber = scanner.nextLine();
 
-                System.out.println("Enter product code");
-                String productCode = scanner.nextLine();
-
-                order = ServiceBeanFactory.getOrderService().readOrder(Integer.valueOf(orderNumber));
-                Product product = ServiceBeanFactory.getProductService().readProduct(productCode);
-
-                OrderDetail orderDetail = ServiceBeanFactory.getOrderDetailService().readOrderDetail(new OrderDetailId(order, product));
-                System.out.println(orderDetail);
                 break;
             case "7":
-                System.out.println("Enter product code");
-                input = scanner.nextLine();
-                product = ServiceBeanFactory.getProductService().readProduct(input);
-                System.out.println(product);
+
                 break;
             case "8":
-                System.out.println("Enter product line");
-                input = scanner.nextLine();
-                ProductLine productLine = ServiceBeanFactory.getProductLineService().readProductLine(input);
-                System.out.println(productLine);
+
                 break;
         }
     }
