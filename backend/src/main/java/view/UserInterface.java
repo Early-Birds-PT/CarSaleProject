@@ -40,10 +40,10 @@ public class UserInterface {
                 new CreateItem_UI().manageCreateItemCommand(scanner);
                 break;
             case "4":
-                System.out.println("Not implemented yet, try later");
+                System.out.println("Not implemented yet, try again later");
                 break;
             case "5":
-                System.out.println("Not implemented yet, try later");
+                System.out.println("Not implemented yet, try again later");
                 break;
         }
     }

@@ -37,14 +37,12 @@ public class CreateItem_UI {
                 ServiceBeanFactory.getOfficeService().createOffice(office);
                 break;
             case "2":
-                System.out.println("Enter employee number");
-                String input = scanner.nextLine();
-                Employee employee = ServiceBeanFactory.getEmployeeService().readEmployee(Integer.valueOf(input));
-                System.out.println(employee);
+                Employee employee = createEmployee(scanner);
+                ServiceBeanFactory.getEmployeeService().createEmployee(employee);
                 break;
             case "3":
                 System.out.println("Enter customer number");
-                input = scanner.nextLine();
+                String input = scanner.nextLine();
                 Customer customer = ServiceBeanFactory.getCustomerService().readCustomer(Integer.valueOf(input));
                 System.out.println(customer);
                 break;
@@ -93,9 +91,26 @@ public class CreateItem_UI {
         }
     }
 
+    private Employee createEmployee(Scanner scanner) {
+        System.out.println("Enter last name");
+        String lastName = scanner.nextLine();
+        System.out.println("Enter first name");
+        String firstName = scanner.nextLine();
+        System.out.println("Enter extension");
+        String extension = scanner.nextLine();
+        System.out.println("Enter email");
+        String email = scanner.nextLine();
+        System.out.println("Enter job title");
+        String jobTitle = scanner.nextLine();
+
+        System.out.println("Enter office code");
+        String officeCode = scanner.nextLine();
+        Office office = ServiceBeanFactory.getOfficeService().readOffice(officeCode);
+
+        return new Employee(null, lastName, firstName, extension, email, jobTitle, null, office);
+    }
+
     private Office createOffice(Scanner scanner) {
-        /*System.out.println("Enter office code");
-        String officeCode = scanner.nextLine();*/
         System.out.println("Enter city");
         String city = scanner.nextLine();
         System.out.println("Enter phone");

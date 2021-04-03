@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class Employee {
 
     @Id
-    private int employeeNumber;
+    private Integer employeeNumber;
     private String lastName;
     private String firstName;
     private String extension;
