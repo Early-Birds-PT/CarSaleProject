@@ -1,7 +1,13 @@
 package view;
 
+import data.model.embeddable.PaymentId;
 import data.model.entity.*;
 import utils.ServiceBeanFactory;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Scanner;
 
 public class CreateItem_UI {
@@ -38,24 +44,49 @@ public class CreateItem_UI {
                 ServiceBeanFactory.getEmployeeService().createEmployee(employee);
                 break;
             case "3":
-
+                System.out.println("Not implemented yet. Try again later.");
                 break;
             case "4":
-
+                Payment payment = createPayment(scanner);
+                ServiceBeanFactory.getPaymentService().createPayment(payment);
                 break;
             case "5":
-
+                System.out.println("Not implemented yet. Try again later.");
                 break;
             case "6":
-
+                System.out.println("Not implemented yet. Try again later.");
                 break;
             case "7":
-
+                System.out.println("Not implemented yet. Try again later.");
                 break;
             case "8":
-
+                System.out.println("Not implemented yet. Try again later.");
                 break;
         }
+    }
+
+    private Payment createPayment(Scanner scanner) {
+        System.out.println("Enter customer number");
+
+        int customerNumber = Integer.valueOf(scanner.nextLine());
+        Customer customer = ServiceBeanFactory.getCustomerService().readCustomer(customerNumber);
+
+        System.out.println("Enter check number");
+        String checkNumber = scanner.nextLine();
+
+        PaymentId paymentId = new PaymentId(checkNumber, customer);
+
+        System.out.println("Enter payment date - dd/MM/yyyy");
+        String dateInput = scanner.nextLine();
+
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate localDate = LocalDate.parse(dateInput, f);
+        Date date = java.sql.Date.valueOf(localDate);
+
+        System.out.println("Enter amount");
+        BigDecimal amount = BigDecimal.valueOf(Long.parseLong(scanner.nextLine()));
+
+        return new Payment(paymentId, customer, date, amount);
     }
 
     private Employee createEmployee(Scanner scanner) {
