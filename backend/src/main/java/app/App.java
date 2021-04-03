@@ -1,14 +1,19 @@
 package app;
 
+import view.CLI;
 import view.UserInterface;
-import java.util.Scanner;
 
 public class App {
+
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-        UserInterface userInterface = new UserInterface(scanner);
-        userInterface.start();
+        if (args.length == 0) {
+           UserInterface.start();
+        }
+        else{
+            CLI.commandFromCLI(args[0]);
+        }
+
 
 //        List<Customer> allCustomers= ServiceBeanFactory.getCustomerService().getAllCustomers();
 //        allCustomers.forEach(customer -> System.out.println(customer));
