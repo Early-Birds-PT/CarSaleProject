@@ -1,4 +1,4 @@
-package data;
+package repository.entity_manager;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

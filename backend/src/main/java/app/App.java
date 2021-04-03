@@ -1,19 +1,19 @@
 package app;
 
-
-import data.model.embeddable.PaymentId;
-import data.model.entity.*;
-import service.EmployeeService;
-import service.ProductService;
-import service.impl.EmployeeServiceImpl;
-import utils.ServiceBeanFactory;
-
-import java.math.BigDecimal;
-import java.util.List;
+import view.CLI;
+import view.UserInterface;
 
 public class App {
 
     public static void main(String[] args) {
+
+        if (args.length == 0) {
+           UserInterface.start();
+        }
+        else{
+            CLI.commandFromCLI(args[0]);
+        }
+
 
 //        List<Customer> allCustomers= ServiceBeanFactory.getCustomerService().getAllCustomers();
 //        allCustomers.forEach(customer -> System.out.println(customer));
@@ -25,12 +25,12 @@ public class App {
         allProducts.forEach(product -> System.out.println(product));*/
 
 
-        Customer customer = ServiceBeanFactory.getCustomerService().readCustomer(181);
+        /*Customer customer = ServiceBeanFactory.getCustomerService().readCustomer(181);
         List<Order> orderList = ServiceBeanFactory.getOrderService().findAllOrdersByCustomer(customer);
         orderList.forEach(order -> System.out.println(order));
 
         List<Payment> paymentList = ServiceBeanFactory.getPaymentService().findAllPaymentsByCustomer(customer);
-        paymentList.forEach(payment -> System.out.println(payment));
+        paymentList.forEach(payment -> System.out.println(payment));*/
 
         /*Customer customer = ServiceBeanFactory.getCustomerService().readCustomer(103);
         PaymentId paymentId = new PaymentId("OM314933",customer);
@@ -112,8 +112,5 @@ public class App {
 
         // officeService.updateOffice(office1);
 
-
     }
-
-
 }

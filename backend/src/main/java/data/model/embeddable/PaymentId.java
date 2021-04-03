@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Embeddable
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode

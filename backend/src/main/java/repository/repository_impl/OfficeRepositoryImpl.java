@@ -1,6 +1,6 @@
 package repository.repository_impl;
 
-import data.EntityManagerProvider;
+import repository.entity_manager.EntityManagerProvider;
 import data.model.entity.Office;
 import repository.OfficeRepository;
 import javax.persistence.EntityManager;
