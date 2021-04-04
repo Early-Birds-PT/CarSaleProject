@@ -19,7 +19,7 @@ public class DeleteItem_UI {
             System.out.println("6 - delete order detail");
             System.out.println("7 - delete product");
             System.out.println("8 - delete product line");
-            System.out.println("X - delete to main menu");
+            System.out.println("X - back to main menu");
             String command = scanner.nextLine();
 
             if(command.equalsIgnoreCase("X")){
