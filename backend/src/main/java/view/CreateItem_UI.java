@@ -61,12 +61,44 @@ public class CreateItem_UI {
                 ServiceBeanFactory.getOrderDetailService().createOrderDetail(orderDetail);
                 break;
             case "7":
-                System.out.println("Not implemented yet. Try again later.");
+                Product product = createProduct(scanner);
+                ServiceBeanFactory.getProductService().createProduct(product);
                 break;
             case "8":
                 System.out.println("Not implemented yet. Try again later.");
                 break;
         }
+    }
+
+    private Product createProduct(Scanner scanner) {
+        System.out.println("Enter product name");
+        String productName = scanner.nextLine();
+
+        System.out.println("Enter product line - (Classic Cars, Motorcycles, Planes, Ships, Trains, Trucks and Buses, Vintage Cars)");
+        String productLineCode = scanner.nextLine();
+
+        System.out.println("Enter product scale");
+        String productScale = scanner.nextLine();
+
+        System.out.println("Enter product vendor");
+        String productVendor = scanner.nextLine();
+
+        System.out.println("Enter product description");
+        String productDescription = scanner.nextLine();
+
+        System.out.println("Enter quantity in stock");
+        Short quantityInStock = Short.valueOf(scanner.nextLine());
+
+        System.out.println("Enter buy price");
+        BigDecimal buyPrice = BigDecimal.valueOf(Long.parseLong(scanner.nextLine()));
+
+        System.out.println("Enter MSRP");
+        BigDecimal msrp = BigDecimal.valueOf(Long.parseLong(scanner.nextLine()));
+
+        ProductLine productLine = ServiceBeanFactory.getProductLineService().readProductLine(productLineCode);
+
+        return new Product(null, productName, productLine, productScale, productVendor,
+                productDescription, quantityInStock, buyPrice, msrp);
     }
 
     private OrderDetail createOrderDetail(Scanner scanner) {
