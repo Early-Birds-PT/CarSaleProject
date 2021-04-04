@@ -35,34 +35,8 @@ public class UpdateItem_UI {
     private void manageCommand(String command, Scanner scanner) {
         switch(command){
             case "1":
-                System.out.println("Enter code of the office you want to update");
-                String input = scanner.nextLine();
-                System.out.println("Enter new City");
-                String updatedCity = scanner.nextLine();
-                System.out.println("Enter new Phone Number");
-                String updatedPhone = scanner.nextLine();
-                System.out.println("Enter new Adressline");
-                String updatedAdress = scanner.nextLine();
-                System.out.println("Enter new State");
-                String updatedState= scanner.nextLine();
-                System.out.println("Enter new Country");
-                String updatedCountry = scanner.nextLine();
-                System.out.println("Enter new PostalCode");
-                String updatedZipCode = scanner.nextLine();
-                System.out.println("Enter new Territory");
-                String updatedTerr = scanner.nextLine();
-
-                Office office = ServiceBeanFactory.getOfficeService().readOffice(input);
-                office.setCity(updatedCity);
-                office.setPhone(updatedPhone);
-                office.setAddressLine1(updatedAdress);
-                office.setState(updatedState);
-                office.setCountry(updatedCountry);
-                office.setPostalCode(updatedZipCode);
-                office.setTerritory(updatedTerr);
-
-                Office updatedOffice = ServiceBeanFactory.getOfficeService().updateOffice(office);
-                System.out.println("Office updated: " + updatedOffice);
+                updateUI_product(scanner);
+                String input;
                 break;
             case "2":
                 System.out.println("Enter unique employee number to update its information");
@@ -130,47 +104,121 @@ public class UpdateItem_UI {
                 System.out.println("Customer updated: " + customer);
                 break;
             case "4":
-                System.out.println("Enter check number");
-                String checkNumber = scanner.nextLine();
-
-                System.out.println("Enter customer number");
-                String customerNumber = scanner.nextLine();
-
-                customer = ServiceBeanFactory.getCustomerService().readCustomer(Integer.valueOf(customerNumber));
-                Payment payment = ServiceBeanFactory.getPaymentService().readPayment(new PaymentId(checkNumber, customer));
-                System.out.println(payment);
+                System.out.println("ACCES DENIED: Changes to your payments can not be made.\n " +
+                        "Please contact our customer service at +1800 00 88 if you have any questions about your payments. \n ");
                 break;
             case "5":
-                System.out.println("Enter order number");
+                System.out.println("Enter order number to check status or add a comment");
                 input = scanner.nextLine();
+                System.out.println("Enter new comment");
+                String upComment = scanner.nextLine();
                 Order order = ServiceBeanFactory.getOrderService().readOrder(Integer.valueOf(input));
-                System.out.println(order);
+                order.setComments(upComment);
+                System.out.println("Order updated: " + order);
                 break;
             case "6":
-                System.out.println("Enter order number");
+                System.out.println("To see your order details:\nPlease enter your order number");
                 String orderNumber = scanner.nextLine();
-
-                System.out.println("Enter product code");
+                System.out.println("Please enter your product code");
                 String productCode = scanner.nextLine();
+                System.out.println("Enter quantity ordered");
+                int quanOrd = scanner.nextInt();
+                System.out.println("Enter individual price");
+                BigDecimal invdPrice = scanner.nextBigDecimal();
+                System.out.println("Enter order linenumber");
+                Short linNumb = scanner.nextShort();
 
                 order = ServiceBeanFactory.getOrderService().readOrder(Integer.valueOf(orderNumber));
                 Product product = ServiceBeanFactory.getProductService().readProduct(productCode);
+                OrderDetail orderDetail = new OrderDetail(new OrderDetailId(order, product), quanOrd, invdPrice, linNumb);
 
-                OrderDetail orderDetail = ServiceBeanFactory.getOrderDetailService().readOrderDetail(new OrderDetailId(order, product));
+                ServiceBeanFactory.getOrderDetailService().updateOrderDetail(orderDetail);
+
                 System.out.println(orderDetail);
                 break;
             case "7":
                 System.out.println("Enter product code");
-                input = scanner.nextLine();
-                product = ServiceBeanFactory.getProductService().readProduct(input);
-                System.out.println(product);
+                String productCode7 = scanner.nextLine();
+                System.out.println("Enter new product name");
+                String productName = scanner.nextLine();
+                System.out.println("Enter new product line - (Classic Cars, Motorcycles, Planes, Ships, Trains, Trucks and Buses, Vintage Cars)");
+                String productLineCode = scanner.nextLine();
+                System.out.println("Enter new product scale");
+                String productScale = scanner.nextLine();
+                System.out.println("Enter new product vendor");
+                String productVendor = scanner.nextLine();
+                System.out.println("Enter new product description");
+                String productDescription = scanner.nextLine();
+                System.out.println("Enter new quantity in stock");
+                Short quantityInStock = Short.valueOf(scanner.nextLine());
+                System.out.println("Enter new buy price");
+                BigDecimal buyPrice = BigDecimal.valueOf(Long.parseLong(scanner.nextLine()));
+                System.out.println("Enter new MSRP");
+                BigDecimal msrp = BigDecimal.valueOf(Long.parseLong(scanner.nextLine()));
+
+                ProductLine productLine = ServiceBeanFactory.getProductLineService().readProductLine(productLineCode);
+                Product product1 = ServiceBeanFactory.getProductService().readProduct(productCode7);
+
+                product1.setProductName(productName);
+                product1.setProductLine(productLine);
+                product1.setProductScale(productScale);
+                product1.setProductVendor(productVendor);
+                product1.setProductDescription(productDescription);
+                product1.setQuantityInStock(quantityInStock);
+                product1.setBuyPrice(buyPrice);
+                product1.setMsrp(msrp);
+
+                product1 = ServiceBeanFactory.getProductService().updateProduct(product1);
+                System.out.println(product1);
                 break;
             case "8":
                 System.out.println("Enter product line");
-                input = scanner.nextLine();
-                ProductLine productLine = ServiceBeanFactory.getProductLineService().readProductLine(input);
-                System.out.println(productLine);
+                String productLine8 = scanner.nextLine();
+
+                System.out.println("Enter new text description");
+                String textDescription = scanner.nextLine();
+
+                System.out.println("Enter new html description");
+                String htmlDescription = scanner.nextLine();
+
+                ProductLine productLine81 = ServiceBeanFactory.getProductLineService().readProductLine(productLine8);
+                productLine81.setTextDescription(textDescription);
+                productLine81.setHtmlDescription(htmlDescription);
+
+                ServiceBeanFactory.getProductLineService().updateProductLine(productLine81);
+                System.out.println(productLine81);
                 break;
         }
+    }
+
+    private void updateUI_product(Scanner scanner) {
+        System.out.println("Enter code of the office you want to update");
+        String input = scanner.nextLine();
+        System.out.println("Enter new City");
+        String updatedCity = scanner.nextLine();
+        System.out.println("Enter new Phone Number");
+        String updatedPhone = scanner.nextLine();
+        System.out.println("Enter new Adressline");
+        String updatedAdress = scanner.nextLine();
+        System.out.println("Enter new State");
+        String updatedState= scanner.nextLine();
+        System.out.println("Enter new Country");
+        String updatedCountry = scanner.nextLine();
+        System.out.println("Enter new PostalCode");
+        String updatedZipCode = scanner.nextLine();
+        System.out.println("Enter new Territory");
+        String updatedTerr = scanner.nextLine();
+
+        Office office = ServiceBeanFactory.getOfficeService().readOffice(input);
+        office.setCity(updatedCity);
+        office.setPhone(updatedPhone);
+        office.setAddressLine1(updatedAdress);
+        office.setState(updatedState);
+        office.setCountry(updatedCountry);
+        office.setPostalCode(updatedZipCode);
+        office.setTerritory(updatedTerr);
+
+        Office updatedOffice = ServiceBeanFactory.getOfficeService().updateOffice(office);
+        System.out.println("Office updated: " + updatedOffice);
     }
 }
