@@ -74,8 +74,12 @@ public class UpdateItem_UI {
         String htmlDescription = scanner.nextLine();
 
         ProductLine productLine = ServiceBeanFactory.getProductLineService().readProductLine(productLineCode);
-        productLine.setTextDescription(textDescription);
-        productLine.setHtmlDescription(htmlDescription);
+        if (!textDescription.isEmpty()) {
+            productLine.setTextDescription(textDescription);
+        }
+        if (!htmlDescription.isEmpty()) {
+            productLine.setHtmlDescription(htmlDescription);
+        }
 
         ServiceBeanFactory.getProductLineService().updateProductLine(productLine);
         System.out.println(productLine);
@@ -102,25 +106,42 @@ public class UpdateItem_UI {
         String productDescription = scanner.nextLine();
 
         System.out.println("Enter new quantity in stock");
-        Short quantityInStock = Short.valueOf(scanner.nextLine());
+        String quantityInStock = scanner.nextLine();
 
         System.out.println("Enter new buy price");
-        BigDecimal buyPrice = BigDecimal.valueOf(Long.parseLong(scanner.nextLine()));
+        String buyPrice = scanner.nextLine();
 
         System.out.println("Enter new MSRP");
-        BigDecimal msrp = BigDecimal.valueOf(Long.parseLong(scanner.nextLine()));
+        String msrp = scanner.nextLine();
 
-        ProductLine productLine = ServiceBeanFactory.getProductLineService().readProductLine(productLineCode);
+
         Product product = ServiceBeanFactory.getProductService().readProduct(productCode);
 
-        product.setProductName(productName);
-        product.setProductLine(productLine);
-        product.setProductScale(productScale);
-        product.setProductVendor(productVendor);
-        product.setProductDescription(productDescription);
-        product.setQuantityInStock(quantityInStock);
-        product.setBuyPrice(buyPrice);
-        product.setMsrp(msrp);
+        if (!productName.isEmpty()) {
+            product.setProductName(productName);
+        }
+        if (!productLineCode.isEmpty()) {
+            ProductLine productLine = ServiceBeanFactory.getProductLineService().readProductLine(productLineCode);
+            product.setProductLine(productLine);
+        }
+        if (!productScale.isEmpty()) {
+            product.setProductScale(productScale);
+        }
+        if (!productVendor.isEmpty()) {
+            product.setProductVendor(productVendor);
+        }
+        if (!productDescription.isEmpty()) {
+            product.setProductDescription(productDescription);
+        }
+        if (!quantityInStock.isEmpty()) {
+            product.setQuantityInStock(Short.valueOf(quantityInStock));
+        }
+        if (!buyPrice.isEmpty()) {
+            product.setBuyPrice(BigDecimal.valueOf(Long.parseLong(buyPrice)));
+        }
+        if (!msrp.isEmpty()) {
+            product.setMsrp(BigDecimal.valueOf(Long.parseLong(msrp)));
+        }
 
         product = ServiceBeanFactory.getProductService().updateProduct(product);
         System.out.println(product);
@@ -135,20 +156,30 @@ public class UpdateItem_UI {
         String productCode = scanner.nextLine();
 
         System.out.println("Enter quantity ordered");
-        int quanOrd = scanner.nextInt();
+        String quanOrd = scanner.nextLine();
 
         System.out.println("Enter individual price");
-        BigDecimal invdPrice = scanner.nextBigDecimal();
+        String invdPrice = scanner.nextLine();
 
         System.out.println("Enter order linenumber");
-        Short linNumb = scanner.nextShort();
+        String linNumb = scanner.nextLine();
 
         Order order = ServiceBeanFactory.getOrderService().readOrder(Integer.valueOf(orderNumber));
         Product product = ServiceBeanFactory.getProductService().readProduct(productCode);
-        OrderDetail orderDetail = new OrderDetail(new OrderDetailId(order, product), quanOrd, invdPrice, linNumb);
+        OrderDetail orderDetail = ServiceBeanFactory.getOrderDetailService()
+                .readOrderDetail(new OrderDetailId(order, product));
+
+        if (!quanOrd.isEmpty()) {
+            orderDetail.setQuantityOrdered(Integer.valueOf(quanOrd));
+        }
+        if (!invdPrice.isEmpty()) {
+            orderDetail.setPriceEach(BigDecimal.valueOf(Long.parseLong(invdPrice)));
+        }
+        if (!linNumb.isEmpty()) {
+            Short.valueOf(linNumb);
+        }
 
         ServiceBeanFactory.getOrderDetailService().updateOrderDetail(orderDetail);
-
         System.out.println(orderDetail);
     }
 
@@ -161,7 +192,9 @@ public class UpdateItem_UI {
         String upComment = scanner.nextLine();
 
         Order order = ServiceBeanFactory.getOrderService().readOrder(Integer.valueOf(orderNumber));
-        order.setComments(upComment);
+        if (!upComment.isEmpty()) {
+            order.setComments(upComment);
+        }
 
         System.out.println("Order updated: " + order);
     }
@@ -199,19 +232,41 @@ public class UpdateItem_UI {
         String upState = scanner.nextLine();
 
         System.out.println("Enter new CreditLimit [minimum 45000.00]");
-        BigDecimal upCredit = scanner.nextBigDecimal();
+        String upCredit = scanner.nextLine();
 
         Customer customer = ServiceBeanFactory.getCustomerService().readCustomer(Integer.valueOf(customerNumber));
-        customer.setCustomerName(upName);
-        customer.setContactFirstName(upFirst);
-        customer.setContactLastName(upLast);
-        customer.setPhone(upPhone);
-        customer.setAddressLine1(upAdress);
-        customer.setCity(upCity);
-        customer.setCountry(upCountry);
-        customer.setPostalCode(upZip);
-        customer.setState(upState);
-        customer.setCreditLimit(upCredit);
+
+        if (!upName.isEmpty()) {
+            customer.setCustomerName(upName);
+        }
+        if (!upFirst.isEmpty()) {
+            customer.setContactFirstName(upFirst);
+        }
+        if (!upLast.isEmpty()) {
+            customer.setContactLastName(upLast);
+        }
+        if (!upPhone.isEmpty()) {
+            customer.setPhone(upPhone);
+        }
+        if (!upAdress.isEmpty()) {
+            customer.setAddressLine1(upAdress);
+        }
+        if (!upCity.isEmpty()) {
+            customer.setCity(upCity);
+        }
+        if (!upCountry.isEmpty()) {
+            customer.setCountry(upCountry);
+        }
+        if (!upZip.isEmpty()) {
+            customer.setPostalCode(upZip);
+        }
+        if (!upState.isEmpty()) {
+            customer.setState(upState);
+        }
+        if (!upCredit.isEmpty()) {
+            customer.setCreditLimit(BigDecimal.valueOf(Long.parseLong(upCredit)));
+        }
+        ServiceBeanFactory.getCustomerService().updateCustomer(customer);
         System.out.println("Customer updated: " + customer);
     }
 
@@ -236,11 +291,21 @@ public class UpdateItem_UI {
         String updatedJobTitle = scanner.nextLine();
 
         Employee employee = ServiceBeanFactory.getEmployeeService().readEmployee(Integer.valueOf(employeeNumber));
-        employee.setLastName(updatedLastName);
-        employee.setFirstName(updatedFirstName);
-        employee.setExtension(updatedExtension);
-        employee.setEmail(updatedMail);
-        employee.setJobTitle(updatedJobTitle);
+        if (!updatedLastName.isEmpty()) {
+            employee.setLastName(updatedLastName);
+        }
+        if (!updatedFirstName.isEmpty()) {
+            employee.setFirstName(updatedFirstName);
+        }
+        if (!updatedExtension.isEmpty()) {
+            employee.setExtension(updatedExtension);
+        }
+        if (!updatedMail.isEmpty()) {
+            employee.setEmail(updatedMail);
+        }
+        if (!updatedJobTitle.isEmpty()) {
+            employee.setJobTitle(updatedJobTitle);
+        }
 
         Employee updatedEmployee = ServiceBeanFactory.getEmployeeService().updateEmployee(employee);
         System.out.println("Employee updated: " + updatedEmployee);
