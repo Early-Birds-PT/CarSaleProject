@@ -22,14 +22,9 @@ public class DeleteItem_UI {
             System.out.println("8 - delete product line");
             System.out.println("X - return to main menu");
             String command = scanner.nextLine();
-
-
-
                 if (command.equalsIgnoreCase("X")) {
                     break;
                 }
-
-
                 this.manageCommand(command, scanner);
         }
     }
