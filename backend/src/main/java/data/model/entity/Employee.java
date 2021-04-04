@@ -21,11 +21,18 @@ public class Employee {
     private String jobTitle;
 
     @ManyToOne
-    @JoinColumn(name = "reportsTo" )
+    @JoinColumn(name = "reportsTo")
     private Employee employee;
 
     @ManyToOne
     @JoinColumn(name = "officeCode")
     private Office office;
+
+   @Override
+    public String toString() {
+
+        return String.format("| %-14s |  %-13s |  %-13s |  %-13s |  %-35s |  %-20s  |  %-10s  |  %-10s |", employeeNumber, lastName, firstName,
+                extension, email, jobTitle, ((employee != null ) ? employee.getEmployeeNumber() : null), ((office != null ) ? office.getOfficeCode() : null));
+    }
 }
 

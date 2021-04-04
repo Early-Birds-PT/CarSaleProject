@@ -13,6 +13,7 @@ public interface EmployeeService {
     Employee updateEmployee(Employee employee);
     boolean deleteEmployee(int employeeNumber);
     List<Employee> findAllEmployeesByRefersTo(Employee employee);
+    List<Employee> findAllEmployeesByOffice(Office office);
     Employee transferEmployee(Employee employee, Office office);
     List<Employee> getAllEmployees();
 }

@@ -15,7 +15,7 @@ import java.sql.Date;
 public class Order {
 
     @Id
-    private int orderNumber;
+    private Integer orderNumber;
     private Date orderDate;
     private Date requiredDate;
     private Date shippedDate;

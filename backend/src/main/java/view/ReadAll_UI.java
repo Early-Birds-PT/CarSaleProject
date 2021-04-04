@@ -29,17 +29,41 @@ public class ReadAll_UI {
     private void manageCommand(String command) {
         switch(command){
             case "1":
-                List<Customer> customers = ServiceBeanFactory.getCustomerService().getAllCustomers();
-                customers.forEach(customer -> System.out.println(customer));
+                showAllCustomersAsATable();
                 break;
             case "2":
-                List<Employee> employees = ServiceBeanFactory.getEmployeeService().getAllEmployees();
-                employees.forEach(employee -> System.out.println(employee));
+                showAllEmployeesAsATable();
                 break;
             case "3":
-                List<Product> products = ServiceBeanFactory.getProductService().getAllProducts();
-                products.forEach(product -> System.out.println(product));
+                showAllProductsAsATable();
                 break;
         }
+    }
+
+    private void showAllProductsAsATable() {
+        List<Product> products = ServiceBeanFactory.getProductService().getAllProducts();
+        System.out.println(Header.PRODUCT_LINE);
+        System.out.println(Header.PRODUCT);
+        System.out.println(Header.PRODUCT_LINE);
+        products.forEach(product -> System.out.println(product));
+        System.out.println(Header.PRODUCT_LINE);
+    }
+
+    private void showAllEmployeesAsATable() {
+        List<Employee> employees = ServiceBeanFactory.getEmployeeService().getAllEmployees();
+        System.out.println(Header.EMPLOYEE_LINE);
+        System.out.println(Header.EMPLOYEE);
+        System.out.println(Header.EMPLOYEE_LINE);
+        employees.forEach(employee -> System.out.println(employee));
+        System.out.println(Header.EMPLOYEE_LINE);
+    }
+
+    private void showAllCustomersAsATable() {
+        List<Customer> customers = ServiceBeanFactory.getCustomerService().getAllCustomers();
+        System.out.println(Header.CUSTOMER_LINE);
+        System.out.println(Header.CUSTOMER);
+        System.out.println(Header.CUSTOMER_LINE);
+        customers.forEach(customer -> System.out.println(customer));
+        System.out.println(Header.CUSTOMER_LINE);
     }
 }

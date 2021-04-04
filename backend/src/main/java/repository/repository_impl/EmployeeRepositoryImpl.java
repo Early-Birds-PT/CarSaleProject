@@ -1,14 +1,19 @@
 package repository.repository_impl;
 
-
 import repository.entity_manager.EntityManagerProvider;
 import data.model.entity.Employee;
+import data.model.entity.Office;
 import repository.EmployeeRepository;
+import repository.OfficeRepository;
+import repository.entity_manager.EntityManagerProvider;
+import utils.RepositoryBeanFactory;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class EmployeeRepositoryImpl implements EmployeeRepository {
+
+    OfficeRepository officeRepository = RepositoryBeanFactory.getOfficeRepository();
 
     @Override
     public Employee createEmployee(Employee employee) {
@@ -70,7 +75,15 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
             isDeleted = false;
             return isDeleted;
         }
-        List<Employee> employees =findAllEmployeesByRefersTo(employee);
+
+        List<Customer> customers = RepositoryBeanFactory.getCustomerRepository().findAllCustomersByEmployee(employee);
+
+        customers.forEach(c -> {
+            c.setEmployee(null);
+            RepositoryBeanFactory.getCustomerRepository().updateCustomer(c);
+        });
+
+        List<Employee> employees = findAllEmployeesByRefersTo(employee);
 
         employees.forEach(e -> {
             e.setEmployee(null);
@@ -94,6 +107,23 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         em.getTransaction().begin();
         TypedQuery<Employee> typedQuery = em.createQuery(query, Employee.class);
         typedQuery.setParameter("employee", employee);
+        List<Employee> employees = typedQuery.getResultList();
+
+        em.getTransaction().commit();
+
+        em.close();
+        return employees;
+    }
+
+    @Override
+    public List<Employee> findAllEmployeesByOffice(Office office) {
+
+        String query = "SELECT e FROM Employee e WHERE e.office = :office";
+        EntityManager em = EntityManagerProvider.getEntityManager();
+
+        em.getTransaction().begin();
+        TypedQuery<Employee> typedQuery = em.createQuery(query, Employee.class);
+        typedQuery.setParameter("office", office);
         List<Employee> employees = typedQuery.getResultList();
 
         em.getTransaction().commit();

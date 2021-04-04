@@ -1,6 +1,5 @@
 package service.impl;
 
-
 import data.model.entity.Employee;
 import data.model.entity.Office;
 import repository.EmployeeRepository;
@@ -37,6 +36,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public List<Employee> findAllEmployeesByRefersTo(Employee employee) {
         return employeeRepository.findAllEmployeesByRefersTo(employee);
+    }
+
+
+    @Override
+    public List<Employee> findAllEmployeesByOffice(Office office) { return employeeRepository.findAllEmployeesByOffice(office);
     }
 
     @Override

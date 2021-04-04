@@ -8,8 +8,9 @@ import utils.ServiceBeanFactory;
 import java.util.Scanner;
 
 public class DeleteItem_UI {
-    void manageDeleteItemCommand(Scanner scanner) {
-        while(true){
+
+    public void manageDeleteItemCommand(Scanner scanner) {
+        while (true) {
             System.out.println("Commands:");
             System.out.println("1 - delete office");
             System.out.println("2 - delete employee");
@@ -21,17 +22,15 @@ public class DeleteItem_UI {
             System.out.println("8 - delete product line");
             System.out.println("X - return to main menu");
             String command = scanner.nextLine();
-
-            if(command.equalsIgnoreCase("X")){
-                break;
-            }
-
-            this.manageCommand(command, scanner);
+                if (command.equalsIgnoreCase("X")) {
+                    break;
+                }
+                this.manageCommand(command, scanner);
         }
     }
 
     private void manageCommand(String command, Scanner scanner) {
-        switch(command){
+        switch (command) {
             case "1":
                 System.out.println("Enter office code");
                 String input = scanner.nextLine();

@@ -3,8 +3,9 @@ package view;
 import data.model.embeddable.OrderDetailId;
 import data.model.embeddable.PaymentId;
 import data.model.entity.*;
+import service.PaymentService;
+import service.impl.PaymentServiceImpl;
 import utils.ServiceBeanFactory;
-
 import javax.persistence.EmbeddedId;
 import java.math.BigDecimal;
 import java.util.Scanner;
@@ -44,7 +45,7 @@ public class UpdateItem_UI {
                 updateCustomer(scanner);
                 break;
             case "4":
-                System.out.println("ACCESS DENIED: Changes to your payments can not be made.\n " +
+                System.out.println("ACCESS DENIED: Changes to your payments can not be made.\n" +
                         "Please contact our customer service at +1800 00 88 if you have any questions about your payments. \n ");
                 break;
             case "5":
