@@ -3,6 +3,8 @@ package view;
 import data.model.embeddable.OrderDetailId;
 import data.model.embeddable.PaymentId;
 import data.model.entity.*;
+import service.PaymentService;
+import service.impl.PaymentServiceImpl;
 import utils.ServiceBeanFactory;
 
 import javax.persistence.EmbeddedId;
@@ -130,14 +132,18 @@ public class UpdateItem_UI {
                 System.out.println("Customer updated: " + customer);
                 break;
             case "4":
-                System.out.println("Enter check number");
+                System.out.println("To update payments");
+                System.out.println("-> enter check number");
                 String checkNumber = scanner.nextLine();
 
-                System.out.println("Enter customer number");
+                System.out.println("-> enter customer number");
                 String customerNumber = scanner.nextLine();
 
                 customer = ServiceBeanFactory.getCustomerService().readCustomer(Integer.valueOf(customerNumber));
-                Payment payment = ServiceBeanFactory.getPaymentService().readPayment(new PaymentId(checkNumber, customer));
+                PaymentId paymentId = new PaymentId(checkNumber,customer);
+                Payment payment = ServiceBeanFactory.getPaymentService().readPayment(paymentId);
+                //change amount?
+                ServiceBeanFactory.getPaymentService().updatePayment(payment);
                 System.out.println(payment);
                 break;
             case "5":

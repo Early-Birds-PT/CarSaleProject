@@ -1,10 +1,19 @@
 package repository.repository_impl;
 
 import data.EntityManagerProvider;
+import data.model.entity.Customer;
+import data.model.entity.Employee;
 import data.model.entity.Office;
+import repository.EmployeeRepository;
 import repository.OfficeRepository;
+import service.EmployeeService;
+import utils.RepositoryBeanFactory;
+import utils.ServiceBeanFactory;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class OfficeRepositoryImpl implements OfficeRepository {
 
@@ -60,13 +69,20 @@ public class OfficeRepositoryImpl implements OfficeRepository {
         Office office = entityManager.find(Office.class, officeCode);
 
 
-        if(office == null){
+        if (office == null) {
             entityManager.getTransaction().rollback();
             entityManager.close();
 
             isDeleted = false;
             return isDeleted;
         }
+
+        List<Employee> employees = RepositoryBeanFactory.getEmployeeRepository().findAllEmployeesByOffice(office);
+
+        employees.forEach(e ->
+            RepositoryBeanFactory.getEmployeeRepository().deleteEmployee(e.getEmployeeNumber())
+        );
+
 
         entityManager.remove(office);
         entityManager.getTransaction().commit();
@@ -77,3 +93,4 @@ public class OfficeRepositoryImpl implements OfficeRepository {
 
     }
 }
+

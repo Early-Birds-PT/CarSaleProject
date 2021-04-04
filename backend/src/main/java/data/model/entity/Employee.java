@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "employees")
@@ -21,11 +22,12 @@ public class Employee {
     private String jobTitle;
 
     @ManyToOne
-    @JoinColumn(name = "reportsTo" )
+    @JoinColumn(name = "reportsTo")
     private Employee employee;
 
     @ManyToOne
     @JoinColumn(name = "officeCode")
     private Office office;
+
 }
 

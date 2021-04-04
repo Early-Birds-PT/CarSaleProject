@@ -1,6 +1,7 @@
 package service.impl;
 
 import data.model.entity.Customer;
+import data.model.entity.Employee;
 import repository.CustomerRepository;
 import service.CustomerService;
 import service.OrderService;
@@ -38,6 +39,11 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List<Customer> getAllCustomers() {
         return customerRepository.getAllCustomers();
+    }
+
+    @Override
+    public List<Customer> findAllCustomersByEmployee(Employee employee) {
+        return customerRepository.findAllCustomersByEmployee(employee);
     }
 
     private int generateUniqueID() {

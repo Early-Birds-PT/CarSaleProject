@@ -1,7 +1,10 @@
 package repository;
 
 
+import data.model.entity.Employee;
 import data.model.entity.Office;
+
+import java.util.List;
 
 public interface OfficeRepository {
 
