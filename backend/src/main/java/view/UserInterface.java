@@ -43,7 +43,7 @@ public class UserInterface {
                 System.out.println("Not implemented yet, try again later");
                 break;
             case "5":
-                System.out.println("Not implemented yet, try again later");
+                new DeleteItem_UI().manageDeleteItemCommand(scanner);
                 break;
         }
     }
