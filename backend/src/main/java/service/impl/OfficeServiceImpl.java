@@ -29,7 +29,6 @@ public class OfficeServiceImpl implements OfficeService {
 
     @Override
     public boolean deleteOffice(String officeCode) {
-        // TODO : findAllEmployeesByOffice and then delete the office
         return officeRepository.deleteOffice(officeCode);
     }
 

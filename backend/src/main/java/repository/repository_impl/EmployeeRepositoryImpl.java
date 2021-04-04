@@ -1,14 +1,12 @@
 package repository.repository_impl;
 
-
-import data.model.entity.Customer;
+import repository.entity_manager.EntityManagerProvider;
 import data.model.entity.Employee;
 import data.model.entity.Office;
 import repository.EmployeeRepository;
 import repository.OfficeRepository;
 import repository.entity_manager.EntityManagerProvider;
 import utils.RepositoryBeanFactory;
-
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
@@ -16,7 +14,6 @@ import java.util.List;
 public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     OfficeRepository officeRepository = RepositoryBeanFactory.getOfficeRepository();
-
 
     @Override
     public Employee createEmployee(Employee employee) {
