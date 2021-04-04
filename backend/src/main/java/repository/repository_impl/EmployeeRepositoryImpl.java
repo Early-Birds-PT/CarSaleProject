@@ -91,7 +91,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
         employees.forEach(e -> {
             e.setEmployee(null);
-            updateEmployee(employee);
+            updateEmployee(e);
         });
 
         entityManager.remove(employee);
