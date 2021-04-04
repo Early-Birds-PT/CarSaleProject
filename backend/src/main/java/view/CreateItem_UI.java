@@ -240,8 +240,10 @@ public class CreateItem_UI {
         System.out.println("Enter job title");
         String jobTitle = scanner.nextLine();
 
-        System.out.println("Enter office code");
+        System.out.println("Enter office code - required!");
+
         String officeCode = scanner.nextLine();
+
         Office office = ServiceBeanFactory.getOfficeService().readOffice(officeCode);
 
         return new Employee(null, lastName, firstName, extension, email, jobTitle, null, office);

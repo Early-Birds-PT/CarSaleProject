@@ -16,12 +16,13 @@ public class UpdateItem_UI {
             System.out.println("Commands:");
             System.out.println("1 - update office");
             System.out.println("2 - update employee");
-            System.out.println("3 - update customer");
-            System.out.println("4 - update payment");
-            System.out.println("5 - update order");
-            System.out.println("6 - update order detail");
-            System.out.println("7 - update product");
-            System.out.println("8 - update product line");
+            System.out.println("3 - transfer employee");
+            System.out.println("4 - update customer");
+            System.out.println("5 - update payment");
+            System.out.println("6 - update order");
+            System.out.println("7 - update order detail");
+            System.out.println("8 - update product");
+            System.out.println("9 - update product line");
             System.out.println("X - return to main menu");
             String command = scanner.nextLine();
 
@@ -42,25 +43,41 @@ public class UpdateItem_UI {
                 updateEmployee(scanner);
                 break;
             case "3":
-                updateCustomer(scanner);
+                transferEmployee(scanner);
                 break;
             case "4":
+                updateCustomer(scanner);
+                break;
+            case "5":
                 System.out.println("ACCESS DENIED: Changes to your payments can not be made.\n" +
                         "Please contact our customer service at +1800 00 88 if you have any questions about your payments. \n ");
                 break;
-            case "5":
+            case "6":
                 updateOrder(scanner);
                 break;
-            case "6":
+            case "7":
                 updateOrderDetail(scanner);
                 break;
-            case "7":
+            case "8":
                 updateProduct(scanner);
                 break;
-            case "8":
+            case "9":
                 updateProductLine(scanner);
                 break;
         }
+    }
+
+    private void transferEmployee(Scanner scanner) {
+        System.out.println("Enter employee number");
+        String employeeNumber = scanner.nextLine();
+
+        System.out.println("Enter new office number");
+        String officeNumber = scanner.nextLine();
+
+        Office office = ServiceBeanFactory.getOfficeService().readOffice(officeNumber);
+        Employee employee = ServiceBeanFactory.getEmployeeService().readEmployee(Integer.valueOf(employeeNumber));
+
+        System.out.println(ServiceBeanFactory.getEmployeeService().transferEmployee(employee, office));
     }
 
     private void updateOffice(Scanner scanner) {
