@@ -36,7 +36,6 @@ public class UpdateItem_UI {
         switch(command){
             case "1":
                 updateProduct(scanner);
-                String input;
                 break;
             case "2":
                 updateOffice(scanner);
@@ -50,7 +49,6 @@ public class UpdateItem_UI {
                 break;
             case "5":
                 updateOrder(scanner);
-                Order order;
                 break;
             case "6":
                 updateOrderDetail(scanner);
