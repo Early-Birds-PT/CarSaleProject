@@ -5,6 +5,7 @@ import data.model.embeddable.PaymentId;
 import data.model.entity.*;
 import utils.ServiceBeanFactory;
 
+import javax.persistence.EmbeddedId;
 import java.util.Scanner;
 
 public class UpdateItem_UI {
@@ -63,10 +64,32 @@ public class UpdateItem_UI {
                 System.out.println("Office updated: " + updatedOffice);
                 break;
             case "2":
-                System.out.println("Enter employee number");
+                System.out.println("Enter unique employee number to update its information");
                 input = scanner.nextLine();
+                System.out.println("Enter new Last Name");
+                String updatedLastName = scanner.nextLine();
+                System.out.println("Enter new First Name");
+                String updatedFirstName = scanner.nextLine();
+                System.out.println("Enter new Extension");
+                String updatedExtension = scanner.nextLine();
+                System.out.println("Enter new E-mail");
+                String updatedMail = scanner.nextLine();
+                System.out.println("Got a promotion? Nice! Enter new Jobtitle, congrats dude.");
+                String updatedJobTitle = scanner.nextLine();
+                //transfer office?
+                //System.out.println("Enter new office code");
+                //String updatedOffice = scanner.nextLine();
+                //transfer reportsTo?
+
                 Employee employee = ServiceBeanFactory.getEmployeeService().readEmployee(Integer.valueOf(input));
-                System.out.println(employee);
+                employee.setLastName(updatedLastName);
+                employee.setFirstName(updatedFirstName);
+                employee.setExtension(updatedExtension);
+                employee.setEmail(updatedMail);
+                employee.setJobTitle(updatedJobTitle);
+                //employee.setOffice(updatedOffice);
+                Employee updatedEmployee = ServiceBeanFactory.getEmployeeService().updateEmployee(employee);
+                System.out.println("Employee updated: " + updatedEmployee);
                 break;
             case "3":
                 System.out.println("Enter customer number");
