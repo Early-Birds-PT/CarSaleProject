@@ -7,7 +7,7 @@ import utils.ServiceBeanFactory;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
+import java.sql.Date;
 import java.util.Scanner;
 
 public class CreateItem_UI {
@@ -52,7 +52,8 @@ public class CreateItem_UI {
                 ServiceBeanFactory.getPaymentService().createPayment(payment);
                 break;
             case "5":
-                System.out.println("Not implemented yet. Try again later.");
+                Order order = createOrder(scanner);
+                ServiceBeanFactory.getOrderService().createOrder(order);
                 break;
             case "6":
                 System.out.println("Not implemented yet. Try again later.");
@@ -64,6 +65,38 @@ public class CreateItem_UI {
                 System.out.println("Not implemented yet. Try again later.");
                 break;
         }
+    }
+
+    private Order createOrder(Scanner scanner) {
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        System.out.println("Enter order date - dd/MM/yyyy");
+        String orderDateInput = scanner.nextLine();
+        LocalDate localDate = LocalDate.parse(orderDateInput, f);
+        Date orderDate = Date.valueOf(localDate);
+
+        System.out.println("Enter required date - dd/MM/yyyy");
+        String requiredDateInput = scanner.nextLine();
+        localDate = LocalDate.parse(requiredDateInput, f);
+        Date requiredDate = Date.valueOf(localDate);
+
+        System.out.println("Enter shipped date - dd/MM/yyyy");
+        String shippedDateInput = scanner.nextLine();
+        localDate = LocalDate.parse(shippedDateInput, f);
+        Date shippedDate = Date.valueOf(localDate);
+
+        System.out.println("Enter status of the order - (On_Hold, Shipped" +
+                "Resolved, Disputed, In_Process, Cancelled)");
+        String status = scanner.nextLine();
+
+        System.out.println("Enter comments");
+        String comment = scanner.nextLine();
+
+        System.out.println("Enter customer number");
+        int customerNumber = Integer.valueOf(scanner.nextLine());
+        Customer customer = ServiceBeanFactory.getCustomerService().readCustomer(customerNumber);
+
+        return new Order(null, orderDate, requiredDate, shippedDate, status, comment, customer);
     }
 
     private Customer createCustomer(Scanner scanner) {
@@ -115,7 +148,7 @@ public class CreateItem_UI {
 
         DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate localDate = LocalDate.parse(dateInput, f);
-        Date date = java.sql.Date.valueOf(localDate);
+        Date date = Date.valueOf(localDate);
 
         System.out.println("Enter amount");
         BigDecimal amount = BigDecimal.valueOf(Long.parseLong(scanner.nextLine()));
