@@ -29,9 +29,7 @@ public class ReadAll_UI {
     private void manageCommand(String command) {
         switch(command){
             case "1":
-                List<Customer> customers = ServiceBeanFactory.getCustomerService().getAllCustomers();
-                System.out.println(Header.CUSTOMER);
-                customers.forEach(customer -> System.out.println(customer));
+                showAllCustomersAsATable();
                 break;
             case "2":
                 List<Employee> employees = ServiceBeanFactory.getEmployeeService().getAllEmployees();
@@ -42,5 +40,14 @@ public class ReadAll_UI {
                 products.forEach(product -> System.out.println(product));
                 break;
         }
+    }
+
+    private void showAllCustomersAsATable() {
+        List<Customer> customers = ServiceBeanFactory.getCustomerService().getAllCustomers();
+        System.out.println(Header.CUSTOMER_LINE);
+        System.out.println(Header.CUSTOMER);
+        System.out.println(Header.CUSTOMER_LINE);
+        customers.forEach(customer -> System.out.println(customer));
+        System.out.println(Header.CUSTOMER_LINE);
     }
 }
