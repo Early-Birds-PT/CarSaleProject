@@ -1,6 +1,6 @@
 package repository.repository_impl;
 
-import data.EntityManagerProvider;
+import repository.entity_manager.EntityManagerProvider;
 import data.model.entity.OrderDetail;
 import data.model.entity.Product;
 import data.model.entity.ProductLine;

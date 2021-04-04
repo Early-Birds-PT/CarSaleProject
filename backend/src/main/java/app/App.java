@@ -1,5 +1,6 @@
 package app;
 
+
 import data.model.embeddable.PaymentId;
 import data.model.entity.Customer;
 import data.model.entity.Office;
@@ -15,13 +16,20 @@ import view.UserInterface;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Scanner;
+import view.CLI;
+import view.UserInterface;
 
 public class App {
+
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-        UserInterface userInterface = new UserInterface(scanner);
-        userInterface.start();
+        if (args.length == 0) {
+           UserInterface.start();
+        }
+        else{
+            CLI.commandFromCLI(args[0]);
+        }
+
 
 //        List<Customer> allCustomers= ServiceBeanFactory.getCustomerService().getAllCustomers();
 //        allCustomers.forEach(customer -> System.out.println(customer));

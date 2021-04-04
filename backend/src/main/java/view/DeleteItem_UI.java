@@ -4,12 +4,11 @@ import data.model.embeddable.OrderDetailId;
 import data.model.embeddable.PaymentId;
 import data.model.entity.*;
 import utils.ServiceBeanFactory;
-
 import java.util.Scanner;
 
 public class DeleteItem_UI {
     void manageDeleteItemCommand(Scanner scanner) {
-        while(true){
+        while (true) {
             System.out.println("Commands:");
             System.out.println("1 - delete office");
             System.out.println("2 - delete employee");
@@ -23,6 +22,8 @@ public class DeleteItem_UI {
             String command = scanner.nextLine();
 
             if(command.equalsIgnoreCase("X")){
+
+            if (command.equalsIgnoreCase("X")) {
                 break;
             }
 
@@ -92,6 +93,6 @@ public class DeleteItem_UI {
                 Boolean isDeleted8 = ServiceBeanFactory.getProductLineService().deleteProductLine(input);
                 System.out.println("STATUS Deleted: " + isDeleted8);
                 break;
+                }
         }
     }
-}

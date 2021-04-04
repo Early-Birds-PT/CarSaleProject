@@ -3,13 +3,13 @@ package view;
 import java.util.Scanner;
 
 public class UserInterface {
-    private Scanner scanner;
+    private static Scanner scanner = new Scanner(System.in);
 
     public UserInterface(Scanner scanner) {
         this.scanner = scanner;
     }
 
-    public void start(){
+    public static void start(){
         while(true){
             System.out.println("Commands:");
             System.out.println("1 - read all");
@@ -18,17 +18,17 @@ public class UserInterface {
             System.out.println("4 - update item");
             System.out.println("5 - delete item");
             System.out.println("X - exit program");
-            String command = scanner.nextLine();
+            String  command = scanner.nextLine();
 
             if(command.equalsIgnoreCase("X")){
                 break;
             }
 
-            this.manageCommand(command);
+            manageCommand(command);
         }
     }
 
-    private void manageCommand(String command){
+    private static void manageCommand(String command){
         switch(command){
             case "1":
                 new ReadAll_UI().managePrintAllCommand(scanner);

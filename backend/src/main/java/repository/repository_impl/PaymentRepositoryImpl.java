@@ -1,6 +1,6 @@
 package repository.repository_impl;
 
-import data.EntityManagerProvider;
+import repository.entity_manager.EntityManagerProvider;
 import data.model.embeddable.PaymentId;
 import data.model.entity.Customer;
 import data.model.entity.Payment;
