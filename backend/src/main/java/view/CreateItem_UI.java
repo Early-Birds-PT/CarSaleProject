@@ -1,5 +1,6 @@
 package view;
 
+import data.model.embeddable.OrderDetailId;
 import data.model.embeddable.PaymentId;
 import data.model.entity.*;
 import utils.ServiceBeanFactory;
@@ -56,7 +57,8 @@ public class CreateItem_UI {
                 ServiceBeanFactory.getOrderService().createOrder(order);
                 break;
             case "6":
-                System.out.println("Not implemented yet. Try again later.");
+                OrderDetail orderDetail = createOrderDetail(scanner);
+                ServiceBeanFactory.getOrderDetailService().createOrderDetail(orderDetail);
                 break;
             case "7":
                 System.out.println("Not implemented yet. Try again later.");
@@ -65,6 +67,30 @@ public class CreateItem_UI {
                 System.out.println("Not implemented yet. Try again later.");
                 break;
         }
+    }
+
+    private OrderDetail createOrderDetail(Scanner scanner) {
+        System.out.println("Enter order number");
+        int orderNumber = Integer.valueOf(scanner.nextLine());
+
+        System.out.println("Enter product code");
+        String productCode = scanner.nextLine();
+
+        System.out.println("Enter the quantity of ordered items");
+        int quantityOrdered = Integer.valueOf(scanner.nextLine());
+
+        System.out.println("Enter price for each");
+        BigDecimal priceEach = BigDecimal.valueOf(Long.parseLong(scanner.nextLine()));
+
+        System.out.println("Enter order line number");
+        short orderLineNumber = Short.valueOf(scanner.nextLine());
+
+        Order order = ServiceBeanFactory.getOrderService().readOrder(orderNumber);
+        Product product = ServiceBeanFactory.getProductService().readProduct(productCode);
+        OrderDetailId orderDetailID = new OrderDetailId(order, product);
+
+        return new OrderDetail(orderDetailID, quantityOrdered, priceEach, orderLineNumber);
+
     }
 
     private Order createOrder(Scanner scanner) {
