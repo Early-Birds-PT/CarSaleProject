@@ -33,7 +33,4 @@ public class Office {
         this.country = country;
         this.territory = territory;
     }
-
-    @OneToMany(mappedBy = "office", cascade = CascadeType.REMOVE, orphanRemoval = true)
-    private List<Employee> employee;
 }

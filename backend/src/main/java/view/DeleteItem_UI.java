@@ -4,10 +4,12 @@ import data.model.embeddable.OrderDetailId;
 import data.model.embeddable.PaymentId;
 import data.model.entity.*;
 import utils.ServiceBeanFactory;
+
 import java.util.Scanner;
 
 public class DeleteItem_UI {
-    void manageDeleteItemCommand(Scanner scanner) {
+
+    public void manageDeleteItemCommand(Scanner scanner) {
         while (true) {
             System.out.println("Commands:");
             System.out.println("1 - delete office");
@@ -21,18 +23,19 @@ public class DeleteItem_UI {
             System.out.println("X - return to main menu");
             String command = scanner.nextLine();
 
-            if(command.equalsIgnoreCase("X")){
 
-            if (command.equalsIgnoreCase("X")) {
-                break;
-            }
 
-            this.manageCommand(command, scanner);
+                if (command.equalsIgnoreCase("X")) {
+                    break;
+                }
+
+
+                this.manageCommand(command, scanner);
         }
     }
 
     private void manageCommand(String command, Scanner scanner) {
-        switch(command){
+        switch (command) {
             case "1":
                 System.out.println("Enter office code");
                 String input = scanner.nextLine();
@@ -93,6 +96,6 @@ public class DeleteItem_UI {
                 Boolean isDeleted8 = ServiceBeanFactory.getProductLineService().deleteProductLine(input);
                 System.out.println("STATUS Deleted: " + isDeleted8);
                 break;
-                }
         }
     }
+}

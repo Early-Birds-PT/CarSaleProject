@@ -1,15 +1,10 @@
 package service.impl;
 
-
-import data.EntityManagerProvider;
 import data.model.entity.Employee;
 import data.model.entity.Office;
 import repository.EmployeeRepository;
 import service.EmployeeService;
 import utils.RepositoryBeanFactory;
-
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.Random;
 
