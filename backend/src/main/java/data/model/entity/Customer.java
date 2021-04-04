@@ -28,7 +28,7 @@ public class Customer {
     private BigDecimal creditLimit;
 
     @ManyToOne
-    @JoinColumn(name = "salesRepEmployeeNumber", insertable = false, updatable = false)
+    @JoinColumn(name = "salesRepEmployeeNumber", referencedColumnName = "employeeNumber")
     private Employee employee;
 
     @Override

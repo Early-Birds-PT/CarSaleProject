@@ -21,7 +21,7 @@ public class Employee {
     private String jobTitle;
 
     @ManyToOne
-    @JoinColumn(name = "reportsTo" )
+    @JoinColumn(name = "reportsTo")
     private Employee employee;
 
     @ManyToOne

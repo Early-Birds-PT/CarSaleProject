@@ -1,6 +1,8 @@
 package repository;
 
 import data.model.entity.Employee;
+import data.model.entity.Office;
+
 import java.util.List;
 
 public interface EmployeeRepository {
@@ -10,5 +12,6 @@ public interface EmployeeRepository {
     Employee updateEmployee(Employee employee);
     boolean deleteEmployee(int employeeNumber);
     List<Employee> findAllEmployeesByRefersTo(Employee employee);
+    List<Employee> findAllEmployeesByOffice(Office office);
     List<Employee> getAllEmployees();
 }

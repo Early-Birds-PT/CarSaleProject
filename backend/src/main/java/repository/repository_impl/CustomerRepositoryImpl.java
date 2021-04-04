@@ -2,6 +2,7 @@ package repository.repository_impl;
 
 import repository.entity_manager.EntityManagerProvider;
 import data.model.entity.Customer;
+import data.model.entity.Employee;
 import data.model.entity.Order;
 import data.model.entity.Payment;
 import repository.CustomerRepository;
@@ -100,4 +101,22 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         em.close();
         return customers;
     }
+
+    @Override
+    public List<Customer> findAllCustomersByEmployee(Employee employee) {
+        String query = "SELECT c FROM Customer c WHERE c.employee = :employee";
+        EntityManager em = EntityManagerProvider.getEntityManager();
+
+        em.getTransaction().begin();
+        TypedQuery<Customer> typedQuery = em.createQuery(query, Customer.class);
+        typedQuery.setParameter("employee", employee);
+        List<Customer> customers = typedQuery.getResultList();
+
+        em.getTransaction().commit();
+
+        em.close();
+        return customers;
+    }
+
+
 }

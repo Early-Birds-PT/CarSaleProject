@@ -1,11 +1,15 @@
 package service.impl;
 
 
+import data.EntityManagerProvider;
 import data.model.entity.Employee;
 import data.model.entity.Office;
 import repository.EmployeeRepository;
 import service.EmployeeService;
 import utils.RepositoryBeanFactory;
+
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.Random;
 
@@ -37,6 +41,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public List<Employee> findAllEmployeesByRefersTo(Employee employee) {
         return employeeRepository.findAllEmployeesByRefersTo(employee);
+    }
+
+
+    @Override
+    public List<Employee> findAllEmployeesByOffice(Office office) { return employeeRepository.findAllEmployeesByOffice(office);
     }
 
     @Override
