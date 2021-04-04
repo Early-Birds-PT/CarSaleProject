@@ -68,6 +68,7 @@ public class OfficeRepositoryImpl implements OfficeRepository {
             return isDeleted;
         }
 
+
         entityManager.remove(office);
         entityManager.getTransaction().commit();
         entityManager.close();

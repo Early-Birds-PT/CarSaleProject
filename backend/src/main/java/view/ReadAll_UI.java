@@ -30,6 +30,7 @@ public class ReadAll_UI {
         switch(command){
             case "1":
                 List<Customer> customers = ServiceBeanFactory.getCustomerService().getAllCustomers();
+                System.out.println(Header.CUSTOMER);
                 customers.forEach(customer -> System.out.println(customer));
                 break;
             case "2":
