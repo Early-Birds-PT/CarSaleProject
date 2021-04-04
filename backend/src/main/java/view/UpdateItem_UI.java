@@ -6,6 +6,7 @@ import data.model.entity.*;
 import utils.ServiceBeanFactory;
 
 import javax.persistence.EmbeddedId;
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class UpdateItem_UI {
@@ -92,10 +93,41 @@ public class UpdateItem_UI {
                 System.out.println("Employee updated: " + updatedEmployee);
                 break;
             case "3":
-                System.out.println("Enter customer number");
+                System.out.println("Enter unique customer number to update its information");
                 input = scanner.nextLine();
+                System.out.println("Enter new UserName");
+                String upName = scanner.nextLine();
+                System.out.println("Enter new contact Last Name");
+                String upLast = scanner.nextLine();
+                System.out.println("Enter new contact First Name");
+                String upFirst = scanner.nextLine();
+                System.out.println("Enter new Phone Number");
+                String upPhone= scanner.nextLine();
+                System.out.println("Enter new Adressline");
+                String upAdress = scanner.nextLine();
+                System.out.println("Enter new City");
+                String upCity = scanner.nextLine();
+                System.out.println("Enter new Country");
+                String upCountry = scanner.nextLine();
+                System.out.println("Enter new PostalCode");
+                String upZip = scanner.nextLine();
+                System.out.println("Enter new State");
+                String upState = scanner.nextLine();
+                System.out.println("Enter new CreditLimit [minimum 45000.00]");
+                BigDecimal upCredit = scanner.nextBigDecimal();
+
                 Customer customer = ServiceBeanFactory.getCustomerService().readCustomer(Integer.valueOf(input));
-                System.out.println(customer);
+                customer.setCustomerName(upName);
+                customer.setContactFirstName(upFirst);
+                customer.setContactLastName(upLast);
+                customer.setPhone(upPhone);
+                customer.setAddressLine1(upAdress);
+                customer.setCity(upCity);
+                customer.setCountry(upCountry);
+                customer.setPostalCode(upZip);
+                customer.setState(upState);
+                customer.setCreditLimit(upCredit);
+                System.out.println("Customer updated: " + customer);
                 break;
             case "4":
                 System.out.println("Enter check number");
