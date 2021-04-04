@@ -35,73 +35,14 @@ public class UpdateItem_UI {
     private void manageCommand(String command, Scanner scanner) {
         switch(command){
             case "1":
-                updateUI_product(scanner);
+                updateProduct(scanner);
                 String input;
                 break;
             case "2":
-                System.out.println("Enter unique employee number to update its information");
-                input = scanner.nextLine();
-                System.out.println("Enter new Last Name");
-                String updatedLastName = scanner.nextLine();
-                System.out.println("Enter new First Name");
-                String updatedFirstName = scanner.nextLine();
-                System.out.println("Enter new Extension");
-                String updatedExtension = scanner.nextLine();
-                System.out.println("Enter new E-mail");
-                String updatedMail = scanner.nextLine();
-                System.out.println("Got a promotion? Nice! Enter new Jobtitle, congrats dude.");
-                String updatedJobTitle = scanner.nextLine();
-                //transfer office?
-                //System.out.println("Enter new office code");
-                //String updatedOffice = scanner.nextLine();
-                //transfer reportsTo?
-
-                Employee employee = ServiceBeanFactory.getEmployeeService().readEmployee(Integer.valueOf(input));
-                employee.setLastName(updatedLastName);
-                employee.setFirstName(updatedFirstName);
-                employee.setExtension(updatedExtension);
-                employee.setEmail(updatedMail);
-                employee.setJobTitle(updatedJobTitle);
-                //employee.setOffice(updatedOffice);
-                Employee updatedEmployee = ServiceBeanFactory.getEmployeeService().updateEmployee(employee);
-                System.out.println("Employee updated: " + updatedEmployee);
+                updateOffice(scanner);
                 break;
             case "3":
-                System.out.println("Enter unique customer number to update its information");
-                input = scanner.nextLine();
-                System.out.println("Enter new UserName");
-                String upName = scanner.nextLine();
-                System.out.println("Enter new contact Last Name");
-                String upLast = scanner.nextLine();
-                System.out.println("Enter new contact First Name");
-                String upFirst = scanner.nextLine();
-                System.out.println("Enter new Phone Number");
-                String upPhone= scanner.nextLine();
-                System.out.println("Enter new Adressline");
-                String upAdress = scanner.nextLine();
-                System.out.println("Enter new City");
-                String upCity = scanner.nextLine();
-                System.out.println("Enter new Country");
-                String upCountry = scanner.nextLine();
-                System.out.println("Enter new PostalCode");
-                String upZip = scanner.nextLine();
-                System.out.println("Enter new State");
-                String upState = scanner.nextLine();
-                System.out.println("Enter new CreditLimit [minimum 45000.00]");
-                BigDecimal upCredit = scanner.nextBigDecimal();
-
-                Customer customer = ServiceBeanFactory.getCustomerService().readCustomer(Integer.valueOf(input));
-                customer.setCustomerName(upName);
-                customer.setContactFirstName(upFirst);
-                customer.setContactLastName(upLast);
-                customer.setPhone(upPhone);
-                customer.setAddressLine1(upAdress);
-                customer.setCity(upCity);
-                customer.setCountry(upCountry);
-                customer.setPostalCode(upZip);
-                customer.setState(upState);
-                customer.setCreditLimit(upCredit);
-                System.out.println("Customer updated: " + customer);
+                updateCustomer(scanner);
                 break;
             case "4":
                 System.out.println("ACCES DENIED: Changes to your payments can not be made.\n " +
@@ -191,7 +132,87 @@ public class UpdateItem_UI {
         }
     }
 
-    private void updateUI_product(Scanner scanner) {
+    private void updateCustomer(Scanner scanner) {
+
+        System.out.println("Enter unique customer number to update its information");
+        String customerNumber = scanner.nextLine();
+
+        System.out.println("Enter new UserName");
+        String upName = scanner.nextLine();
+
+        System.out.println("Enter new contact Last Name");
+        String upLast = scanner.nextLine();
+
+        System.out.println("Enter new contact First Name");
+        String upFirst = scanner.nextLine();
+
+        System.out.println("Enter new Phone Number");
+        String upPhone= scanner.nextLine();
+
+        System.out.println("Enter new Adressline");
+        String upAdress = scanner.nextLine();
+
+        System.out.println("Enter new City");
+        String upCity = scanner.nextLine();
+
+        System.out.println("Enter new Country");
+        String upCountry = scanner.nextLine();
+
+        System.out.println("Enter new PostalCode");
+        String upZip = scanner.nextLine();
+
+        System.out.println("Enter new State");
+        String upState = scanner.nextLine();
+
+        System.out.println("Enter new CreditLimit [minimum 45000.00]");
+        BigDecimal upCredit = scanner.nextBigDecimal();
+
+        Customer customer = ServiceBeanFactory.getCustomerService().readCustomer(Integer.valueOf(customerNumber));
+        customer.setCustomerName(upName);
+        customer.setContactFirstName(upFirst);
+        customer.setContactLastName(upLast);
+        customer.setPhone(upPhone);
+        customer.setAddressLine1(upAdress);
+        customer.setCity(upCity);
+        customer.setCountry(upCountry);
+        customer.setPostalCode(upZip);
+        customer.setState(upState);
+        customer.setCreditLimit(upCredit);
+        System.out.println("Customer updated: " + customer);
+    }
+
+    private void updateOffice(Scanner scanner) {
+
+        System.out.println("Enter unique employee number to update its information");
+        String employeeNumber = scanner.nextLine();
+
+        System.out.println("Enter new Last Name");
+        String updatedLastName = scanner.nextLine();
+
+        System.out.println("Enter new First Name");
+        String updatedFirstName = scanner.nextLine();
+
+        System.out.println("Enter new Extension");
+        String updatedExtension = scanner.nextLine();
+
+        System.out.println("Enter new E-mail");
+        String updatedMail = scanner.nextLine();
+
+        System.out.println("Got a promotion? Nice! Enter new Jobtitle, congrats dude.");
+        String updatedJobTitle = scanner.nextLine();
+
+        Employee employee = ServiceBeanFactory.getEmployeeService().readEmployee(Integer.valueOf(employeeNumber));
+        employee.setLastName(updatedLastName);
+        employee.setFirstName(updatedFirstName);
+        employee.setExtension(updatedExtension);
+        employee.setEmail(updatedMail);
+        employee.setJobTitle(updatedJobTitle);
+
+        Employee updatedEmployee = ServiceBeanFactory.getEmployeeService().updateEmployee(employee);
+        System.out.println("Employee updated: " + updatedEmployee);
+    }
+
+    private void updateProduct(Scanner scanner) {
         System.out.println("Enter code of the office you want to update");
         String input = scanner.nextLine();
         System.out.println("Enter new City");
