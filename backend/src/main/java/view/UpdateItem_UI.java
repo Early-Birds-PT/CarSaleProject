@@ -35,10 +35,10 @@ public class UpdateItem_UI {
     private void manageCommand(String command, Scanner scanner) {
         switch(command){
             case "1":
-                updateProduct(scanner);
+                updateOffice(scanner);
                 break;
             case "2":
-                updateOffice(scanner);
+                updateEmployee(scanner);
                 break;
             case "3":
                 updateCustomer(scanner);
@@ -60,6 +60,59 @@ public class UpdateItem_UI {
                 updateProductLine(scanner);
                 break;
         }
+    }
+
+    private void updateOffice(Scanner scanner) {
+        System.out.println("Enter code of the office you want to update");
+        String input = scanner.nextLine();
+
+        System.out.println("Enter new City");
+        String updatedCity = scanner.nextLine();
+
+        System.out.println("Enter new Phone Number");
+        String updatedPhone = scanner.nextLine();
+
+        System.out.println("Enter new Adressline");
+        String updatedAdress = scanner.nextLine();
+
+        System.out.println("Enter new State");
+        String updatedState= scanner.nextLine();
+
+        System.out.println("Enter new Country");
+        String updatedCountry = scanner.nextLine();
+
+        System.out.println("Enter new PostalCode");
+        String updatedZipCode = scanner.nextLine();
+
+        System.out.println("Enter new Territory");
+        String updatedTerr = scanner.nextLine();
+
+        Office office = ServiceBeanFactory.getOfficeService().readOffice(input);
+
+        if (!updatedCity.isEmpty()) {
+            office.setCity(updatedCity);
+        }
+        if (!updatedPhone.isEmpty()) {
+            office.setPhone(updatedPhone);
+        }
+        if (!updatedAdress.isEmpty()) {
+            office.setAddressLine1(updatedAdress);
+        }
+        if (!updatedState.isEmpty()) {
+            office.setState(updatedState);
+        }
+        if (!updatedCountry.isEmpty()) {
+            office.setCountry(updatedCountry);
+        }
+        if (!updatedZipCode.isEmpty()) {
+            office.setPostalCode(updatedZipCode);
+        }
+        if (!updatedTerr.isEmpty()) {
+            office.setTerritory(updatedTerr);
+        }
+
+        Office updatedOffice = ServiceBeanFactory.getOfficeService().updateOffice(office);
+        System.out.println("Office updated: " + updatedOffice);
     }
 
     private void updateProductLine(Scanner scanner) {
@@ -270,7 +323,7 @@ public class UpdateItem_UI {
         System.out.println("Customer updated: " + customer);
     }
 
-    private void updateOffice(Scanner scanner) {
+    private void updateEmployee(Scanner scanner) {
 
         System.out.println("Enter unique employee number to update its information");
         String employeeNumber = scanner.nextLine();
