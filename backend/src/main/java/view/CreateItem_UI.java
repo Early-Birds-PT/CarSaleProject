@@ -65,9 +65,23 @@ public class CreateItem_UI {
                 ServiceBeanFactory.getProductService().createProduct(product);
                 break;
             case "8":
-                System.out.println("Not implemented yet. Try again later.");
+                ProductLine productLine = createProductLine(scanner);
+                ServiceBeanFactory.getProductLineService().createProductLine(productLine);
                 break;
         }
+    }
+
+    private ProductLine createProductLine(Scanner scanner) {
+        System.out.println("Enter new product line");
+        String productLine = scanner.nextLine();
+
+        System.out.println("Enter text description");
+        String textDescription = scanner.nextLine();
+
+        System.out.println("Enter html description");
+        String htmlDescription = scanner.nextLine();
+
+        return new ProductLine(productLine, textDescription, htmlDescription, null);
     }
 
     private Product createProduct(Scanner scanner) {
