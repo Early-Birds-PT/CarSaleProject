@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 public class Customer {
 
     @Id
-    private int customerNumber;
+    private Integer customerNumber;
     private String customerName;
     private String contactLastName;
     private String contactFirstName;

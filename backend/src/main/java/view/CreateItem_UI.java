@@ -44,7 +44,8 @@ public class CreateItem_UI {
                 ServiceBeanFactory.getEmployeeService().createEmployee(employee);
                 break;
             case "3":
-                System.out.println("Not implemented yet. Try again later.");
+                Customer customer = createCustomer(scanner);
+                ServiceBeanFactory.getCustomerService().createCustomer(customer);
                 break;
             case "4":
                 Payment payment = createPayment(scanner);
@@ -63,6 +64,39 @@ public class CreateItem_UI {
                 System.out.println("Not implemented yet. Try again later.");
                 break;
         }
+    }
+
+    private Customer createCustomer(Scanner scanner) {
+        System.out.println("Enter customer name");
+        String customerName = scanner.nextLine();
+        System.out.println("Enter contact last name");
+        String contactLastName = scanner.nextLine();
+        System.out.println("Enter contact first name");
+        String contactFirstName = scanner.nextLine();
+        System.out.println("Enter phone number");
+        String phone = scanner.nextLine();
+        System.out.println("Enter address line 1");
+        String addressLine1 = scanner.nextLine();
+        System.out.println("Enter address line 2");
+        String addressLine2 = scanner.nextLine();
+        System.out.println("Enter city");
+        String city = scanner.nextLine();
+        System.out.println("Enter state");
+        String state = scanner.nextLine();
+        System.out.println("Enter postal code");
+        String postalCode = scanner.nextLine();
+        System.out.println("Enter country");
+        String country = scanner.nextLine();
+        System.out.println("Enter salesRep employee number");
+        int salesRepEmployeeNumber= Integer.valueOf(scanner.nextLine());
+        System.out.println("Enter credit limit");
+        BigDecimal creditLimit = BigDecimal.valueOf(Long.parseLong(scanner.nextLine()));
+
+        Employee employee = ServiceBeanFactory.getEmployeeService().readEmployee(salesRepEmployeeNumber);
+
+        return new Customer(null, customerName, contactLastName, contactFirstName,
+                phone, addressLine1, addressLine2, city, state, postalCode, country,
+                creditLimit, employee);
     }
 
     private Payment createPayment(Scanner scanner) {
