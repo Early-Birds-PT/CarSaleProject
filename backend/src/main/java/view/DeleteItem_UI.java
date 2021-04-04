@@ -36,19 +36,19 @@ public class DeleteItem_UI {
                 System.out.println("Enter office code");
                 String input = scanner.nextLine();
                 Boolean isDeleted = ServiceBeanFactory.getOfficeService().deleteOffice(input);
-                System.out.println(isDeleted);
+                System.out.println("STATUS Deleted: " + isDeleted);
                 break;
             case "2":
                 System.out.println("Enter employee number");
                 input = scanner.nextLine();
                 Boolean isDeleted2 = ServiceBeanFactory.getEmployeeService().deleteEmployee(Integer.valueOf(input));
-                System.out.println(isDeleted2);
+                System.out.println("STATUS Deleted: " + isDeleted2);
                 break;
             case "3":
                 System.out.println("Enter customer number");
                 input = scanner.nextLine();
                 Boolean isDeleted3 = ServiceBeanFactory.getCustomerService().deleteCustomer(Integer.valueOf(input));
-                System.out.println(isDeleted3);
+                System.out.println("STATUS Deleted: " + isDeleted3);
                 break;
             case "4":
                 System.out.println("Enter check number");
@@ -65,7 +65,7 @@ public class DeleteItem_UI {
                 System.out.println("Enter order number");
                 input = scanner.nextLine();
                 Boolean isDeleted5 = ServiceBeanFactory.getOrderService().deleteOrder(Integer.valueOf(input));
-                System.out.println(isDeleted5);
+                System.out.println("STATUS Deleted: " + isDeleted5);
                 break;
             case "6":
                 System.out.println("Enter order number");
@@ -78,19 +78,19 @@ public class DeleteItem_UI {
                 Product product = ServiceBeanFactory.getProductService().readProduct(productCode);
 
                 Boolean isDeleted6 = ServiceBeanFactory.getOrderDetailService().deleteOrderDetail(new OrderDetailId(order, product));
-                System.out.println(isDeleted6);
+                System.out.println("STATUS Deleted: " + isDeleted6);
                 break;
             case "7":
                 System.out.println("Enter product code");
                 input = scanner.nextLine();
                 Boolean isDeleted7 = ServiceBeanFactory.getProductService().deleteProduct(input);
-                System.out.println(isDeleted7);
+                System.out.println("STATUS Deleted: " + isDeleted7);
                 break;
             case "8":
                 System.out.println("Enter product line");
                 input = scanner.nextLine();
                 Boolean isDeleted8 = ServiceBeanFactory.getProductLineService().deleteProductLine(input);
-                System.out.println(isDeleted8);
+                System.out.println("STATUS Deleted: " + isDeleted8);
                 break;
         }
     }
