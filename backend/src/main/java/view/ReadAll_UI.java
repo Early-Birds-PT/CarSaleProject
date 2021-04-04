@@ -32,14 +32,22 @@ public class ReadAll_UI {
                 showAllCustomersAsATable();
                 break;
             case "2":
-                List<Employee> employees = ServiceBeanFactory.getEmployeeService().getAllEmployees();
-                employees.forEach(employee -> System.out.println(employee));
+                showAllEmployeesAsATable();
                 break;
             case "3":
                 List<Product> products = ServiceBeanFactory.getProductService().getAllProducts();
                 products.forEach(product -> System.out.println(product));
                 break;
         }
+    }
+
+    private void showAllEmployeesAsATable() {
+        List<Employee> employees = ServiceBeanFactory.getEmployeeService().getAllEmployees();
+        System.out.println(Header.EMPLOYEE_LINE);
+        System.out.println(Header.EMPLOYEE);
+        System.out.println(Header.EMPLOYEE_LINE);
+        employees.forEach(employee -> System.out.println(employee));
+        System.out.println(Header.EMPLOYEE_LINE);
     }
 
     private void showAllCustomersAsATable() {
