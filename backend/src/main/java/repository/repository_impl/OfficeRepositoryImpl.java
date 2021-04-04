@@ -1,5 +1,6 @@
 package repository.repository_impl;
 
+import data.model.entity.Employee;
 import repository.entity_manager.EntityManagerProvider;
 import data.model.entity.Office;
 import repository.OfficeRepository;
