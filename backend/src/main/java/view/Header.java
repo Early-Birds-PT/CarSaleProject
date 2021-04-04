@@ -15,4 +15,10 @@ public class Header {
     public static String EMPLOYEE_LINE = String.format("| %-150s|", "---------------------------------------------------------------------------------------------------------------" +
             "------------------------------------------------");
 
+
+    public static String PRODUCT = String.format("| %-14s |  %-45s |  %-18s |  %-13s |  %-30s |  %-20s  |  %-15s  |  %-10s |  %-10s |", "productCode", "productName", "productLine",
+    "productScale", "productVendor", "productDescription", "quantityInStock", "buyPrice","msrp");
+    public static String PRODUCT_LINE = String.format("| %-170s|", "---------------------------------------------------------------------------------------------------------------" +
+            "---------------------------------------------------------------------------------------------------");
+
 }

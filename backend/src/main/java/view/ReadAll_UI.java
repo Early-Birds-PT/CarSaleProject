@@ -35,10 +35,18 @@ public class ReadAll_UI {
                 showAllEmployeesAsATable();
                 break;
             case "3":
-                List<Product> products = ServiceBeanFactory.getProductService().getAllProducts();
-                products.forEach(product -> System.out.println(product));
+                showAllProductsAsATable();
                 break;
         }
+    }
+
+    private void showAllProductsAsATable() {
+        List<Product> products = ServiceBeanFactory.getProductService().getAllProducts();
+        System.out.println(Header.PRODUCT_LINE);
+        System.out.println(Header.PRODUCT);
+        System.out.println(Header.PRODUCT_LINE);
+        products.forEach(product -> System.out.println(product));
+        System.out.println(Header.PRODUCT_LINE);
     }
 
     private void showAllEmployeesAsATable() {
