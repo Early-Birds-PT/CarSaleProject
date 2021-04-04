@@ -37,4 +37,11 @@ public class Product {
     private Short quantityInStock;
     private BigDecimal buyPrice;
     private BigDecimal msrp;
+
+    @Override
+    public String toString() {
+
+        return String.format("| %-14s |  %-45s |  %-18s |  %-13s |  %-30s |  %-20s  |  %-15s  |  %-10s |  %-10s |", productCode, productName, productLine.getProductLine(),
+                productScale, productVendor, (productDescription.length()<20 ? productDescription:productDescription.substring(0,20)), quantityInStock, buyPrice,msrp);
+    }
 }

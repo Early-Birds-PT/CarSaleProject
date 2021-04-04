@@ -3,20 +3,13 @@ package view;
 import data.model.embeddable.OrderDetailId;
 import data.model.embeddable.PaymentId;
 import data.model.entity.*;
-import repository.repository_impl.PaymentRepositoryImpl;
-import service.ProductService;
-import service.impl.ProductServiceImpl;
 import utils.ServiceBeanFactory;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.Scanner;
 
 public class DeleteItem_UI {
 
-    void manageDeleteItemCommand(Scanner scanner) {
+    public void manageDeleteItemCommand(Scanner scanner) {
         while (true) {
             System.out.println("Commands:");
             System.out.println("1 - delete office");
@@ -30,11 +23,14 @@ public class DeleteItem_UI {
             System.out.println("X - return to main menu");
             String command = scanner.nextLine();
 
-            if (command.equalsIgnoreCase("X")) {
-                break;
-            }
 
-            this.manageCommand(command, scanner);
+
+                if (command.equalsIgnoreCase("X")) {
+                    break;
+                }
+
+
+                this.manageCommand(command, scanner);
         }
     }
 
@@ -43,17 +39,20 @@ public class DeleteItem_UI {
             case "1":
                 System.out.println("Enter office code");
                 String input = scanner.nextLine();
-                System.out.println(ServiceBeanFactory.getOfficeService().deleteOffice(input));
+                Boolean isDeleted = ServiceBeanFactory.getOfficeService().deleteOffice(input);
+                System.out.println("STATUS Deleted: " + isDeleted);
                 break;
             case "2":
                 System.out.println("Enter employee number");
                 input = scanner.nextLine();
-                System.out.println(ServiceBeanFactory.getEmployeeService().deleteEmployee(Integer.valueOf(input)));
+                Boolean isDeleted2 = ServiceBeanFactory.getEmployeeService().deleteEmployee(Integer.valueOf(input));
+                System.out.println("STATUS Deleted: " + isDeleted2);
                 break;
             case "3":
                 System.out.println("Enter customer number");
                 input = scanner.nextLine();
-                System.out.println(ServiceBeanFactory.getCustomerService().deleteCustomer(Integer.valueOf(input)));
+                Boolean isDeleted3 = ServiceBeanFactory.getCustomerService().deleteCustomer(Integer.valueOf(input));
+                System.out.println("STATUS Deleted: " + isDeleted3);
                 break;
             case "4":
                 System.out.println("Enter check number");
@@ -63,14 +62,14 @@ public class DeleteItem_UI {
                 String customerNumber = scanner.nextLine();
 
                 Customer customer = ServiceBeanFactory.getCustomerService().readCustomer(Integer.valueOf(customerNumber));
-                Payment payment = ServiceBeanFactory.getPaymentService().readPayment(new PaymentId(checkNumber,customer));
-                System.out.println(ServiceBeanFactory.getPaymentService().deletePayment(payment.getPaymentId()));
-
+                Boolean isDeleted4 = ServiceBeanFactory.getPaymentService().deletePayment(new PaymentId(checkNumber, customer));
+                System.out.println(isDeleted4);
                 break;
             case "5":
                 System.out.println("Enter order number");
                 input = scanner.nextLine();
-                System.out.println(ServiceBeanFactory.getOrderService().deleteOrder(Integer.valueOf(input)));
+                Boolean isDeleted5 = ServiceBeanFactory.getOrderService().deleteOrder(Integer.valueOf(input));
+                System.out.println("STATUS Deleted: " + isDeleted5);
                 break;
             case "6":
                 System.out.println("Enter order number");
@@ -82,19 +81,21 @@ public class DeleteItem_UI {
                 Order order = ServiceBeanFactory.getOrderService().readOrder(Integer.valueOf(orderNumber));
                 Product product = ServiceBeanFactory.getProductService().readProduct(productCode);
 
-                System.out.println(ServiceBeanFactory.getOrderDetailService().deleteOrderDetail(new OrderDetailId(order, product)));
+                Boolean isDeleted6 = ServiceBeanFactory.getOrderDetailService().deleteOrderDetail(new OrderDetailId(order, product));
+                System.out.println("STATUS Deleted: " + isDeleted6);
                 break;
             case "7":
                 System.out.println("Enter product code");
                 input = scanner.nextLine();
-                System.out.println(ServiceBeanFactory.getProductService().deleteProduct(input));
+                Boolean isDeleted7 = ServiceBeanFactory.getProductService().deleteProduct(input);
+                System.out.println("STATUS Deleted: " + isDeleted7);
                 break;
             case "8":
                 System.out.println("Enter product line");
                 input = scanner.nextLine();
-                System.out.println(ServiceBeanFactory.getProductLineService().deleteProductLine(input));
+                Boolean isDeleted8 = ServiceBeanFactory.getProductLineService().deleteProductLine(input);
+                System.out.println("STATUS Deleted: " + isDeleted8);
                 break;
         }
     }
-
 }

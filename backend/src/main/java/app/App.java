@@ -1,5 +1,21 @@
 package app;
 
+
+import data.model.embeddable.PaymentId;
+import data.model.entity.Customer;
+import data.model.entity.Office;
+import data.model.entity.Order;
+import data.model.entity.Payment;
+import service.EmployeeService;
+import service.OfficeService;
+import service.impl.EmployeeServiceImpl;
+import service.impl.OfficeServiceImpl;
+import utils.ServiceBeanFactory;
+import view.UserInterface;
+
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Scanner;
 import view.CLI;
 import view.UserInterface;
 
@@ -24,15 +40,15 @@ public class App {
         List<Product> allProducts = ServiceBeanFactory.getProductService().getAllProducts();
         allProducts.forEach(product -> System.out.println(product));*/
 
-
-        /*Customer customer = ServiceBeanFactory.getCustomerService().readCustomer(181);
+/*
+        Customer customer = ServiceBeanFactory.getCustomerService().readCustomer(181);
         List<Order> orderList = ServiceBeanFactory.getOrderService().findAllOrdersByCustomer(customer);
         orderList.forEach(order -> System.out.println(order));
 
         List<Payment> paymentList = ServiceBeanFactory.getPaymentService().findAllPaymentsByCustomer(customer);
-        paymentList.forEach(payment -> System.out.println(payment));*/
+        paymentList.forEach(payment -> System.out.println(payment));
 
-        /*Customer customer = ServiceBeanFactory.getCustomerService().readCustomer(103);
+        Customer customer = ServiceBeanFactory.getCustomerService().readCustomer(103);
         PaymentId paymentId = new PaymentId("OM314933",customer);
         ServiceBeanFactory.getOrderService().deleteOrder(10100);
         ServiceBeanFactory.getCustomerService().deleteCustomer(128);
@@ -41,10 +57,10 @@ public class App {
         System.out.println(ServiceBeanFactory.getPaymentService().updatePayment(payment));
         payment.setPaymentId(new PaymentId("14082001",customer));
         System.out.println(ServiceBeanFactory.getPaymentService().createPayment(payment));*/
-
-        /*EmployeeService employeeService = new EmployeeServiceImpl();
-
-        System.out.println(employeeService.deleteEmployee(1102));*/
+//
+//        EmployeeService employeeService = new EmployeeServiceImpl();
+//
+//        System.out.println(employeeService.deleteEmployee(1501));
 
 
 //        CustomerService customerService = new CustomerServiceImpl();
@@ -83,7 +99,7 @@ public class App {
 //        System.out.println(orders);
 
 
-       /* PaymentService paymentService = new PaymentServiceImpl();
+       /* zPaymentService paymentService = new PaymentServiceImpl();
         Payment payment = paymentService.readPayment("HQ336336");
         System.out.println(payment);
 
