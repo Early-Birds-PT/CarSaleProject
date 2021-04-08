@@ -1,7 +1,7 @@
 package repository;
 
-import data.model.entity.Product;
-import data.model.entity.ProductLine;
+import model.entity.Product;
+import model.entity.ProductLine;
 import java.util.List;
 
 public interface ProductRepository {

@@ -1,10 +1,10 @@
 package repository.repository_impl;
 
 import repository.entity_manager.EntityManagerProvider;
-import data.model.entity.Customer;
-import data.model.entity.Employee;
-import data.model.entity.Order;
-import data.model.entity.Payment;
+import model.entity.Customer;
+import model.entity.Employee;
+import model.entity.Order;
+import model.entity.Payment;
 import repository.CustomerRepository;
 import repository.OrderRepository;
 import repository.PaymentRepository;

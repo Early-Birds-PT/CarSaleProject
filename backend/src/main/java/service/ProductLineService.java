@@ -1,6 +1,6 @@
 package service;
 
-import data.model.entity.ProductLine;
+import model.entity.ProductLine;
 
 public interface ProductLineService {
 

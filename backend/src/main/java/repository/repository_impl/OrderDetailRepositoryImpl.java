@@ -1,10 +1,10 @@
 package repository.repository_impl;
 
 import repository.entity_manager.EntityManagerProvider;
-import data.model.embeddable.OrderDetailId;
-import data.model.entity.Order;
-import data.model.entity.OrderDetail;
-import data.model.entity.Product;
+import model.embeddable.OrderDetailId;
+import model.entity.Order;
+import model.entity.OrderDetail;
+import model.entity.Product;
 import repository.OrderDetailRepository;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;

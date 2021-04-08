@@ -1,8 +1,8 @@
 package service.impl;
 
-import data.model.embeddable.PaymentId;
-import data.model.entity.Customer;
-import data.model.entity.Payment;
+import model.embeddable.PaymentId;
+import model.entity.Customer;
+import model.entity.Payment;
 import repository.PaymentRepository;
 import service.PaymentService;
 import utils.RepositoryBeanFactory;

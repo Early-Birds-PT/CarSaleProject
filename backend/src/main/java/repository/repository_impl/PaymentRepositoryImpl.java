@@ -1,9 +1,9 @@
 package repository.repository_impl;
 
 import repository.entity_manager.EntityManagerProvider;
-import data.model.embeddable.PaymentId;
-import data.model.entity.Customer;
-import data.model.entity.Payment;
+import model.embeddable.PaymentId;
+import model.entity.Customer;
+import model.entity.Payment;
 import repository.PaymentRepository;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;

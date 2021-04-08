@@ -1,8 +1,8 @@
 package service;
 
 
-import data.model.entity.Employee;
-import data.model.entity.Office;
+import model.entity.Employee;
+import model.entity.Office;
 
 import java.util.List;
 

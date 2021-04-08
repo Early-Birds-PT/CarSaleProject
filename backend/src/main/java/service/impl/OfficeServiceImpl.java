@@ -1,6 +1,6 @@
 package service.impl;
 
-import data.model.entity.Office;
+import model.entity.Office;
 import repository.OfficeRepository;
 import service.OfficeService;
 import utils.RepositoryBeanFactory;

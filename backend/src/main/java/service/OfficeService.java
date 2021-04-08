@@ -1,7 +1,6 @@
 package service;
 
-import data.model.entity.Employee;
-import data.model.entity.Office;
+import model.entity.Office;
 
 public interface OfficeService {
 

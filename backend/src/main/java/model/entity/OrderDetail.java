@@ -1,6 +1,6 @@
-package data.model.entity;
+package model.entity;
 
-import data.model.embeddable.OrderDetailId;
+import model.embeddable.OrderDetailId;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

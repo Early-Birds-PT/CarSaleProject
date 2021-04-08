@@ -1,8 +1,7 @@
-package data.model.entity;
+package model.entity;
 
 import lombok.*;
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @NoArgsConstructor

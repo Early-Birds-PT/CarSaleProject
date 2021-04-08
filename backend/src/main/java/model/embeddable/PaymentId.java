@@ -1,6 +1,6 @@
-package data.model.embeddable;
+package model.embeddable;
 
-import data.model.entity.Customer;
+import model.entity.Customer;
 import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;

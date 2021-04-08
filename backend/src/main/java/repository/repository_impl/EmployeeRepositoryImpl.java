@@ -1,12 +1,11 @@
 package repository.repository_impl;
 
-import data.model.entity.Customer;
+import model.entity.Customer;
 import repository.entity_manager.EntityManagerProvider;
-import data.model.entity.Employee;
-import data.model.entity.Office;
+import model.entity.Employee;
+import model.entity.Office;
 import repository.EmployeeRepository;
 import repository.OfficeRepository;
-import repository.entity_manager.EntityManagerProvider;
 import utils.RepositoryBeanFactory;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;

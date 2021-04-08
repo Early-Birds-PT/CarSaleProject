@@ -1,7 +1,7 @@
 package service;
 
-import data.model.entity.Customer;
-import data.model.entity.Order;
+import model.entity.Customer;
+import model.entity.Order;
 
 import java.util.List;
 

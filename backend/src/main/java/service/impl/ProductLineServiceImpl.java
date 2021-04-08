@@ -1,6 +1,6 @@
 package service.impl;
 
-import data.model.entity.ProductLine;
+import model.entity.ProductLine;
 import repository.ProductLineRepository;
 import service.ProductLineService;
 import utils.RepositoryBeanFactory;

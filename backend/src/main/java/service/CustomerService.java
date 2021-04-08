@@ -1,7 +1,7 @@
 package service;
 
-import data.model.entity.Customer;
-import data.model.entity.Employee;
+import model.entity.Customer;
+import model.entity.Employee;
 
 import java.util.List;
 

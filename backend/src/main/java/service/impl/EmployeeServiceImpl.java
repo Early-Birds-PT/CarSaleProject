@@ -1,7 +1,7 @@
 package service.impl;
 
-import data.model.entity.Employee;
-import data.model.entity.Office;
+import model.entity.Employee;
+import model.entity.Office;
 import repository.EmployeeRepository;
 import service.EmployeeService;
 import utils.RepositoryBeanFactory;

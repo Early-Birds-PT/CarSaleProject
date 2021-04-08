@@ -1,8 +1,8 @@
 package repository;
 
-import data.model.embeddable.PaymentId;
-import data.model.entity.Customer;
-import data.model.entity.Payment;
+import model.embeddable.PaymentId;
+import model.entity.Customer;
+import model.entity.Payment;
 import java.util.List;
 
 public interface PaymentRepository {

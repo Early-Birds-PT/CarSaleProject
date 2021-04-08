@@ -1,9 +1,9 @@
 package repository.repository_impl;
 
 import repository.entity_manager.EntityManagerProvider;
-import data.model.entity.Customer;
-import data.model.entity.Order;
-import data.model.entity.OrderDetail;
+import model.entity.Customer;
+import model.entity.Order;
+import model.entity.OrderDetail;
 import repository.OrderDetailRepository;
 import repository.OrderRepository;
 import utils.RepositoryBeanFactory;

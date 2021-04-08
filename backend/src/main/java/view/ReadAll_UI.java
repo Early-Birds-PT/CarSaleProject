@@ -1,8 +1,8 @@
 package view;
 
-import data.model.entity.Customer;
-import data.model.entity.Employee;
-import data.model.entity.Product;
+import model.entity.Customer;
+import model.entity.Employee;
+import model.entity.Product;
 import utils.ServiceBeanFactory;
 
 import java.util.List;

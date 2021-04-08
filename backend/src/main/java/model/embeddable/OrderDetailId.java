@@ -1,7 +1,7 @@
-package data.model.embeddable;
+package model.embeddable;
 
-import data.model.entity.Order;
-import data.model.entity.Product;
+import model.entity.Order;
+import model.entity.Product;
 import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;

@@ -1,4 +1,4 @@
-package data.model.entity;
+package model.entity;
 
 import lombok.*;
 import org.hibernate.annotations.Type;

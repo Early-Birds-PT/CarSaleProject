@@ -1,8 +1,10 @@
 package view;
 
-import data.model.embeddable.OrderDetailId;
-import data.model.embeddable.PaymentId;
-import data.model.entity.*;
+import model.embeddable.OrderDetailId;
+import model.embeddable.PaymentId;
+import model.entity.Customer;
+import model.entity.Order;
+import model.entity.Product;
 import utils.ServiceBeanFactory;
 
 import java.util.Scanner;

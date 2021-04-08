@@ -1,8 +1,7 @@
-package data.model.entity;
+package model.entity;
 
-import data.model.embeddable.PaymentId;
+import model.embeddable.PaymentId;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;

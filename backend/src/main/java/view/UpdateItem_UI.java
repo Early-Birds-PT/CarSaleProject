@@ -1,12 +1,9 @@
 package view;
 
-import data.model.embeddable.OrderDetailId;
-import data.model.embeddable.PaymentId;
-import data.model.entity.*;
-import service.PaymentService;
-import service.impl.PaymentServiceImpl;
+import model.embeddable.OrderDetailId;
+import model.entity.*;
 import utils.ServiceBeanFactory;
-import javax.persistence.EmbeddedId;
+
 import java.math.BigDecimal;
 import java.util.Scanner;
 

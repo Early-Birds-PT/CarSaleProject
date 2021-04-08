@@ -1,8 +1,8 @@
 package repository.repository_impl;
 
 import repository.entity_manager.EntityManagerProvider;
-import data.model.entity.Product;
-import data.model.entity.ProductLine;
+import model.entity.Product;
+import model.entity.ProductLine;
 import repository.ProductLineRepository;
 import repository.ProductRepository;
 import utils.RepositoryBeanFactory;
