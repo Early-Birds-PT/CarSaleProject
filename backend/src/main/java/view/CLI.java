@@ -1,7 +1,5 @@
 package view;
 
-import utils.ServiceBeanFactory;
-
 public class CLI {
 
     public static void commandFromCLI(String command) {

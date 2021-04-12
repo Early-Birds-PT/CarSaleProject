@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
-//@AllArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "offices")
 public class Office {
@@ -21,15 +21,4 @@ public class Office {
     private String country;
     private String territory;
 
-    public Office(String officeCode, String city, String phone, String addressLine1, String addressLine2, String state, String postalCode, String country, String territory) {
-        this.officeCode = officeCode;
-        this.city = city;
-        this.phone = phone;
-        this.addressLine1 = addressLine1;
-        this.addressLine2 = addressLine2;
-        this.state = state;
-        this.postalCode = postalCode;
-        this.country = country;
-        this.territory = territory;
-    }
 }
