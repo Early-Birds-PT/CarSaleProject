@@ -6,11 +6,11 @@ public class CLI {
 
     public static void commandFromCLI(String command) {
         if(command.equals("1")){
-            ServiceBeanFactory.getCustomerService().getAllCustomers();
+            ReadAll_UI.showAllCustomersAsATable();
         } else if(command.equals("2")){
-            ServiceBeanFactory.getProductService().getAllProducts();
+            ReadAll_UI.showAllEmployeesAsATable();
         } else{
-            ServiceBeanFactory.getEmployeeService().getAllEmployees();
+            ReadAll_UI.showAllProductsAsATable();
         }
     }
 }

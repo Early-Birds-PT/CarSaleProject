@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ReadAll_UI {
-    void managePrintAllCommand(Scanner scanner) {
+    public static void managePrintAllCommand(Scanner scanner) {
         while(true){
             System.out.println("Commands:");
             System.out.println("1 - print all customers");
@@ -22,11 +22,11 @@ public class ReadAll_UI {
                 break;
             }
 
-            this.manageCommand(command);
+            manageCommand(command);
         }
     }
 
-    private void manageCommand(String command) {
+    public static void manageCommand(String command) {
         switch(command){
             case "1":
                 showAllCustomersAsATable();
@@ -40,7 +40,7 @@ public class ReadAll_UI {
         }
     }
 
-    private void showAllProductsAsATable() {
+    public static void showAllProductsAsATable() {
         List<Product> products = ServiceBeanFactory.getProductService().getAllProducts();
         System.out.println(Header.PRODUCT_LINE);
         System.out.println(Header.PRODUCT);
@@ -49,7 +49,7 @@ public class ReadAll_UI {
         System.out.println(Header.PRODUCT_LINE);
     }
 
-    private void showAllEmployeesAsATable() {
+    public static void showAllEmployeesAsATable() {
         List<Employee> employees = ServiceBeanFactory.getEmployeeService().getAllEmployees();
         System.out.println(Header.EMPLOYEE_LINE);
         System.out.println(Header.EMPLOYEE);
@@ -58,7 +58,7 @@ public class ReadAll_UI {
         System.out.println(Header.EMPLOYEE_LINE);
     }
 
-    private void showAllCustomersAsATable() {
+    public static void showAllCustomersAsATable() {
         List<Customer> customers = ServiceBeanFactory.getCustomerService().getAllCustomers();
         System.out.println(Header.CUSTOMER_LINE);
         System.out.println(Header.CUSTOMER);
